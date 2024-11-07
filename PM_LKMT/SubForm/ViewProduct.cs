@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PM_LKMT
+namespace PM_LKMT.SubForm
 {
-    public partial class StaffForm : Form
+    public partial class ViewProduct : Form
     {
-        public StaffForm()
+        public ViewProduct()
         {
             InitializeComponent();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

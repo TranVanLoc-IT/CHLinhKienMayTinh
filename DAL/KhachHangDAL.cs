@@ -37,5 +37,12 @@ namespace DAL
         {
             return (ResponseDTO.KhachHang)_db.GetData().Where(r => r.MaKH == id);
         }
+        public string CheckCustomer(string phone)
+        {
+            QueriesTableAdapter query = new QueriesTableAdapter();
+
+            string id = query.KiemTraKH(phone).ToString();
+            return id;
+        }
     }
 }

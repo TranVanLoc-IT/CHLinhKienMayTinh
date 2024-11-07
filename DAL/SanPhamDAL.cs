@@ -12,11 +12,11 @@ namespace DAL
     public class SanPhamDAL
     {
         private SANPHAMTableAdapter _db;
-        private CTDonHangDAL _ctdhDAL;
+        private LKMT _context;
         public SanPhamDAL()
         {
             _db = new SANPHAMTableAdapter();
-            _ctdhDAL = new CTDonHangDAL();
+            _context = new LKMT();
         }
         public void Update(SANPHAMDataTable sp)
         {
@@ -27,10 +27,9 @@ namespace DAL
             QueriesTableAdapter query = new QueriesTableAdapter();
             query.CapNhatSLSP(slmua, id);
         }
-        public void Create(EditDTO.SanPham sp, EditDTO.ChiTietDonHang[] dhs)
+        public void Create(EditDTO.SanPham sp)
         {
             _db.Insert(sp.MaSanPham, sp.MaLoaiSP, sp.MaThuongHieu, sp.TenSanPham, sp.DonGia, sp.TGBaoHanh, sp.Hinh, sp.MoTa, sp.SoLuongTon, sp.SoLuongDaBan, sp.NgayTao, sp.DaXoa, sp.CapNhatGanNhat, sp.NguoiChinhSuaGanNhat);
-            _ctdhDAL.Create(dhs);
         }
         public void Delete(string id)
         {
@@ -39,11 +38,17 @@ namespace DAL
         }
         public IEnumerable<ResponseDTO.SanPham> GetAll()
         {
-            return (IEnumerable<ResponseDTO.SanPham>)_db.GetData();
-        }
-        public ResponseDTO.SanPham GetById(string id)
-        {
-            return (ResponseDTO.SanPham)_db.GetData().Where(r => r.MaSanPham == id);
+            return _db.GetData().Where(r => !r.DaXoa).Select(r => new ResponseDTO.SanPham()
+            {
+                MaSanPham = r.MaSanPham,
+                TenLoaiSP = _context.LOAISANPHAM.Where(e => e.MaLoaiSP == r.MaLoaiSP).Select(r => r.TenLoai).FirstOrDefault() ?? "Không có",
+                TenThuongHieu = _context.THUONGHIEU.Where(e => e.MaThuongHieu == r.MaThuongHieu).Select(r => r.TenThuongHieu).FirstOrDefault() ?? "Không có",
+                MoTa = r.MoTa,
+                TenSanPham = r.TenSanPham,
+                DonGia = r.DonGia,
+                SoLuongTon = r.SoLuongTon,
+                SoLuongDaBan = r.SoLuongDaBan
+            });
         }
     }
 }

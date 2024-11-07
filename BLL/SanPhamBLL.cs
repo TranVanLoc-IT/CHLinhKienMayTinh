@@ -59,9 +59,5 @@ namespace BLL
 
             return _dal.GetAll();
         }
-        public ResponseDTO.SanPham GetById(string id)
-        {
-            return _dal.GetById(id);
-        }
     }
 }

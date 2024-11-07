@@ -28,13 +28,13 @@ namespace BLL
             }
             return Constant.SUCCESS;
         }
-        public string Create(EditDTO.DonHang dh)
+        public string Create(EditDTO.DonHang dh, EditDTO.ChiTietDonHang[] dhs)
         {
 
             if (dh == null) return Constant.NOT_FOUND;
             try
             {
-                _dal.Create(dh);
+                _dal.Create(dh, dhs);
             }
             catch (Exception ex)
             {
@@ -58,11 +58,6 @@ namespace BLL
         {
 
             return _dal.GetAll();
-        }
-        public ResponseDTO.DonHang GetById(string id)
-        {
-
-            return _dal.GetById(id);
         }
     }
 }

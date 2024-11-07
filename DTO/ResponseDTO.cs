@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,21 +11,25 @@ namespace DTO
     {
         public class NhomSanPham
         {
+            public string MaNhomSP { get; set; }
             public string TenNhom { get; set; }
             public DateTime NgayTao { get; set; }
         }
 
         public class ThuongHieu
         {
+            public string MaThuongHieu { get; set; }
             public string TenThuongHieu { get; set; }
             public DateTime NgayTao { get; set; }
         }
 
         public class LoaiSanPham
         {
+            public string MaLoaiSP { get; set; }
             public string MaNhomSP { get; set; }
             public string TenLoai { get; set; }
             public DateTime NgayTao { get; set; }
+            public bool DaXoa { get; set; }
         }
 
         public class NhanVien
@@ -38,48 +43,82 @@ namespace DTO
             public string ChucVu { get; set; }
             public bool TrangThai { get; set; }
             public DateTime NgayVaoLam { get; set; }
+            public DateTime ChinhSuaGanNhat { get; set; }
+            public string NguoiChinhSuaGanNhat { get; set; }
         }
 
         public class KhachHang
         {
+            public string MaKH { get; set; }
             public string SDT { get; set; }
             public string HoTen { get; set; }
             public DateTime NgayThamGia { get; set; }
+            public DateTime ChinhSuaGanNhat { get; set; }
+            public string NguoiChinhSuaGanNhat { get; set; }
         }
 
         public class SanPham
         {
+            [DisplayName("Mã sản phẩm")]
             public string MaSanPham { get; set; }
-            public string MaLoaiSP { get; set; }
-            public string MaThuongHieu { get; set; }
+
+            [DisplayName("Tên sản phầm")]
             public string TenSanPham { get; set; }
+
+            [DisplayName("Tên loại")]
+            public string TenLoaiSP { get; set; }
+
+            [DisplayName("Tên thương hiệu")]
+            public string TenThuongHieu { get; set; }
+
+            [DisplayName("Đơn giá")]
             public decimal DonGia { get; set; }
+
+            [DisplayName("Thời gian bảo hành")]
             public byte TGBaoHanh { get; set; }
-            public byte[] Hinh { get; set; }
+
+            [DisplayName("Mô tả")]
             public string MoTa { get; set; }
+
+            [DisplayName("Số lượng còn")]
             public int SoLuongTon { get; set; }
+
+            [DisplayName("Đã bán")]
             public int SoLuongDaBan { get; set; }
-            public DateTime NgayTao { get; set; }
         }
 
         public class PhieuNhap
         {
             public string MaPN { get; set; }
             public string MaSP { get; set; }
-            public decimal TangTien { get; set; }
+            public decimal GiaNhap { get; set; }
             public DateTime NgayNhap { get; set; }
-            public bool DaXoa { get; set; }
         }
 
         public class DonHang
         {
+            [DisplayName("Mã đơn hàng")]
             public string MaDonHang { get; set; }
+
+            [DisplayName("Tên nhân viên")]
             public string NhanVienTao { get; set; }
+
+            [DisplayName("Tên khách hàng")]
             public string MaKH { get; set; }
+
+            [DisplayName("Ngày tạo")]
             public DateTime NgayTao { get; set; }
+
+            [DisplayName("Tình trạng")]
             public bool TinhTrang { get; set; }
+
+            [DisplayName("Ghi chú")]
             public string GhiChu { get; set; }
+
+            [DisplayName("Số lượng mua")]
             public int TongSL { get; set; }
+
+            [DisplayName("Tổng tiền")]
             public decimal ThanhTien { get; set; }
         }
 

@@ -28,10 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
+            gridProductSelected = new DataGridView();
+            txtNote = new RichTextBox();
+            label12 = new Label();
+            cancelBtn = new Controls.Button.Cancel();
             deleteBtn = new Controls.Button.Delete();
             createBtn = new Controls.Button.Create();
-            productSelectedList = new ListBox();
             txtTotalPrice = new TextBox();
             label6 = new Label();
             txtTotalQuantity = new TextBox();
@@ -43,38 +47,46 @@
             label2 = new Label();
             txtMaHD = new TextBox();
             label1 = new Label();
-            dataGridView1 = new DataGridView();
             groupBox1 = new GroupBox();
             panel3 = new Panel();
-            txtSLDB = new TextBox();
+            txtTH = new TextBox();
             label11 = new Label();
             txtSLC = new TextBox();
             label9 = new Label();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             addBtn = new Controls.Button.Add();
-            textBox9 = new TextBox();
+            txtQuantity = new TextBox();
             label10 = new Label();
-            textBox4 = new TextBox();
+            txtPrice = new TextBox();
             label7 = new Label();
-            textBox7 = new TextBox();
+            txtProductName = new TextBox();
             label8 = new Label();
-            cancelBtn = new Controls.Button.Cancel();
+            panel4 = new Panel();
+            button1 = new Button();
+            searchTxt = new TextBox();
+            comboTable = new ComboBox();
+            label14 = new Label();
+            dataGrid = new DataGridView();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridProductSelected).BeginInit();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGrid).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.WhiteSmoke;
+            panel1.Controls.Add(gridProductSelected);
+            panel1.Controls.Add(txtNote);
+            panel1.Controls.Add(label12);
             panel1.Controls.Add(cancelBtn);
             panel1.Controls.Add(deleteBtn);
             panel1.Controls.Add(createBtn);
-            panel1.Controls.Add(productSelectedList);
             panel1.Controls.Add(txtTotalPrice);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(txtTotalQuantity);
@@ -89,35 +101,72 @@
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(448, 506);
+            panel1.Size = new Size(448, 589);
             panel1.TabIndex = 0;
+            // 
+            // gridProductSelected
+            // 
+            gridProductSelected.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            gridProductSelected.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            gridProductSelected.BackgroundColor = SystemColors.ActiveCaption;
+            gridProductSelected.BorderStyle = BorderStyle.Fixed3D;
+            gridProductSelected.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridProductSelected.GridColor = SystemColors.HotTrack;
+            gridProductSelected.Location = new Point(183, 216);
+            gridProductSelected.Name = "gridProductSelected";
+            gridProductSelected.RowHeadersWidth = 51;
+            gridProductSelected.Size = new Size(259, 142);
+            gridProductSelected.TabIndex = 17;
+            // 
+            // txtNote
+            // 
+            txtNote.BorderStyle = BorderStyle.FixedSingle;
+            txtNote.ForeColor = Color.Red;
+            txtNote.Location = new Point(124, 364);
+            txtNote.Name = "txtNote";
+            txtNote.Size = new Size(304, 87);
+            txtNote.TabIndex = 16;
+            txtNote.Text = "";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
+            label12.ForeColor = Color.Black;
+            label12.Location = new Point(41, 379);
+            label12.Name = "label12";
+            label12.Size = new Size(77, 25);
+            label12.TabIndex = 15;
+            label12.Text = "Ghi chú";
+            // 
+            // cancelBtn
+            // 
+            cancelBtn.Location = new Point(304, 504);
+            cancelBtn.Name = "cancelBtn";
+            cancelBtn.Size = new Size(124, 62);
+            cancelBtn.TabIndex = 14;
+            cancelBtn.Click += cancelBtn_Click;
             // 
             // deleteBtn
             // 
-            deleteBtn.Location = new Point(171, 423);
+            deleteBtn.Location = new Point(178, 504);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(120, 61);
             deleteBtn.TabIndex = 13;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // createBtn
             // 
-            createBtn.Location = new Point(43, 426);
+            createBtn.Location = new Point(50, 507);
             createBtn.Name = "createBtn";
             createBtn.Size = new Size(122, 59);
             createBtn.TabIndex = 13;
-            // 
-            // productSelectedList
-            // 
-            productSelectedList.FormattingEnabled = true;
-            productSelectedList.Location = new Point(176, 214);
-            productSelectedList.Name = "productSelectedList";
-            productSelectedList.Size = new Size(259, 144);
-            productSelectedList.TabIndex = 12;
+            createBtn.Click += createBtn_Click;
             // 
             // txtTotalPrice
             // 
             txtTotalPrice.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtTotalPrice.Location = new Point(276, 379);
+            txtTotalPrice.Location = new Point(283, 460);
             txtTotalPrice.Name = "txtTotalPrice";
             txtTotalPrice.Size = new Size(159, 25);
             txtTotalPrice.TabIndex = 11;
@@ -127,7 +176,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(176, 382);
+            label6.Location = new Point(183, 463);
             label6.Name = "label6";
             label6.Size = new Size(94, 25);
             label6.TabIndex = 10;
@@ -135,7 +184,7 @@
             // 
             // txtTotalQuantity
             // 
-            txtTotalQuantity.Location = new Point(118, 376);
+            txtTotalQuantity.Location = new Point(125, 457);
             txtTotalQuantity.Name = "txtTotalQuantity";
             txtTotalQuantity.Size = new Size(47, 27);
             txtTotalQuantity.TabIndex = 9;
@@ -145,7 +194,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(34, 382);
+            label5.Location = new Point(41, 463);
             label5.Name = "label5";
             label5.Size = new Size(80, 25);
             label5.TabIndex = 8;
@@ -217,61 +266,48 @@
             label1.TabIndex = 0;
             label1.Text = "Mã đơn hàng";
             // 
-            // dataGridView1
-            // 
-            dataGridView1.BackgroundColor = SystemColors.ActiveCaption;
-            dataGridView1.BorderStyle = BorderStyle.Fixed3D;
-            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(448, 318);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(479, 188);
-            dataGridView1.TabIndex = 1;
-            // 
             // groupBox1
             // 
             groupBox1.Controls.Add(panel3);
             groupBox1.Controls.Add(pictureBox1);
             groupBox1.Controls.Add(panel2);
-            groupBox1.Dock = DockStyle.Right;
+            groupBox1.Dock = DockStyle.Top;
             groupBox1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(451, 0);
+            groupBox1.Location = new Point(448, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(476, 318);
+            groupBox1.Size = new Size(479, 290);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin sản phẩm";
             // 
             // panel3
             // 
-            panel3.Controls.Add(txtSLDB);
+            panel3.Controls.Add(txtTH);
             panel3.Controls.Add(label11);
             panel3.Controls.Add(txtSLC);
             panel3.Controls.Add(label9);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(292, 26);
+            panel3.Location = new Point(262, 26);
             panel3.Name = "panel3";
-            panel3.Size = new Size(181, 164);
+            panel3.Size = new Size(214, 136);
             panel3.TabIndex = 2;
             // 
-            // txtSLDB
+            // txtTH
             // 
-            txtSLDB.Location = new Point(8, 118);
-            txtSLDB.Name = "txtSLDB";
-            txtSLDB.Size = new Size(143, 30);
-            txtSLDB.TabIndex = 13;
+            txtTH.Location = new Point(8, 99);
+            txtTH.Name = "txtTH";
+            txtTH.Size = new Size(143, 30);
+            txtTH.TabIndex = 13;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label11.Location = new Point(8, 90);
+            label11.Location = new Point(8, 71);
             label11.Name = "label11";
-            label11.Size = new Size(151, 25);
+            label11.Size = new Size(121, 25);
             label11.TabIndex = 12;
-            label11.Text = "Số lượng đã bán";
+            label11.Text = "Thương hiệu";
             // 
             // txtSLC
             // 
@@ -295,7 +331,7 @@
             pictureBox1.Dock = DockStyle.Left;
             pictureBox1.Location = new Point(3, 26);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(283, 164);
+            pictureBox1.Size = new Size(253, 136);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
@@ -303,16 +339,16 @@
             // 
             panel2.BackColor = Color.SaddleBrown;
             panel2.Controls.Add(addBtn);
-            panel2.Controls.Add(textBox9);
+            panel2.Controls.Add(txtQuantity);
             panel2.Controls.Add(label10);
-            panel2.Controls.Add(textBox4);
+            panel2.Controls.Add(txtPrice);
             panel2.Controls.Add(label7);
-            panel2.Controls.Add(textBox7);
+            panel2.Controls.Add(txtProductName);
             panel2.Controls.Add(label8);
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(3, 190);
+            panel2.Location = new Point(3, 162);
             panel2.Name = "panel2";
-            panel2.Size = new Size(470, 125);
+            panel2.Size = new Size(473, 125);
             panel2.TabIndex = 0;
             // 
             // addBtn
@@ -321,13 +357,14 @@
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(130, 66);
             addBtn.TabIndex = 12;
+            addBtn.Click += addToCartBtn_Click;
             // 
-            // textBox9
+            // txtQuantity
             // 
-            textBox9.Location = new Point(157, 90);
-            textBox9.Name = "textBox9";
-            textBox9.Size = new Size(69, 30);
-            textBox9.TabIndex = 11;
+            txtQuantity.Location = new Point(157, 90);
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Size = new Size(69, 30);
+            txtQuantity.TabIndex = 11;
             // 
             // label10
             // 
@@ -340,12 +377,12 @@
             label10.TabIndex = 10;
             label10.Text = "Nhập số lượng";
             // 
-            // textBox4
+            // txtPrice
             // 
-            textBox4.Location = new Point(93, 54);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(216, 30);
-            textBox4.TabIndex = 7;
+            txtPrice.Location = new Point(93, 54);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(216, 30);
+            txtPrice.TabIndex = 7;
             // 
             // label7
             // 
@@ -358,12 +395,12 @@
             label7.TabIndex = 6;
             label7.Text = "Giá bán";
             // 
-            // textBox7
+            // txtProductName
             // 
-            textBox7.Location = new Point(145, 15);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(269, 30);
-            textBox7.TabIndex = 5;
+            txtProductName.Location = new Point(145, 15);
+            txtProductName.Name = "txtProductName";
+            txtProductName.Size = new Size(319, 30);
+            txtProductName.TabIndex = 5;
             // 
             // label8
             // 
@@ -376,33 +413,112 @@
             label8.TabIndex = 4;
             label8.Text = "Tên sản phẩm";
             // 
-            // cancelBtn
+            // panel4
             // 
-            cancelBtn.Location = new Point(297, 423);
-            cancelBtn.Name = "cancelBtn";
-            cancelBtn.Size = new Size(124, 68);
-            cancelBtn.TabIndex = 14;
+            panel4.Controls.Add(button1);
+            panel4.Controls.Add(searchTxt);
+            panel4.Controls.Add(comboTable);
+            panel4.Controls.Add(label14);
+            panel4.Controls.Add(dataGrid);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(448, 290);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(479, 299);
+            panel4.TabIndex = 3;
+            // 
+            // button1
+            // 
+            button1.BackColor = SystemColors.HotTrack;
+            button1.BackgroundImage = Resource.see;
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.ButtonHighlight;
+            button1.Location = new Point(22, 248);
+            button1.Name = "button1";
+            button1.Size = new Size(85, 36);
+            button1.TabIndex = 13;
+            button1.Text = "Tìm";
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
+            // searchTxt
+            // 
+            searchTxt.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            searchTxt.Location = new Point(112, 254);
+            searchTxt.Name = "searchTxt";
+            searchTxt.Size = new Size(176, 28);
+            searchTxt.TabIndex = 12;
+            // 
+            // comboTable
+            // 
+            comboTable.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            comboTable.FormattingEnabled = true;
+            comboTable.Items.AddRange(new object[] { "Đơn hàng", "Sản phẩm" });
+            comboTable.Location = new Point(370, 254);
+            comboTable.Name = "comboTable";
+            comboTable.Size = new Size(109, 28);
+            comboTable.TabIndex = 7;
+            comboTable.SelectedIndexChanged += comboTable_SelectedIndexChanged;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
+            label14.ForeColor = Color.Black;
+            label14.Location = new Point(299, 254);
+            label14.Name = "label14";
+            label14.Size = new Size(56, 25);
+            label14.TabIndex = 6;
+            label14.Text = "Bảng";
+            // 
+            // dataGrid
+            // 
+            dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGrid.BackgroundColor = SystemColors.ActiveCaption;
+            dataGrid.BorderStyle = BorderStyle.Fixed3D;
+            dataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.Padding = new Padding(1);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGrid.Dock = DockStyle.Top;
+            dataGrid.Location = new Point(0, 0);
+            dataGrid.Name = "dataGrid";
+            dataGrid.RowHeadersWidth = 51;
+            dataGrid.Size = new Size(479, 232);
+            dataGrid.TabIndex = 0;
             // 
             // OrderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(927, 506);
+            ClientSize = new Size(927, 589);
+            Controls.Add(panel4);
             Controls.Add(groupBox1);
-            Controls.Add(dataGridView1);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "OrderForm";
             Text = "OrderForm";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridProductSelected).EndInit();
             groupBox1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGrid).EndInit();
             ResumeLayout(false);
         }
 
@@ -411,7 +527,6 @@
         private Panel panel1;
         private TextBox txtMaHD;
         private Label label1;
-        private DataGridView dataGridView1;
         private GroupBox groupBox1;
         private Label label4;
         private TextBox txtCustomerName;
@@ -425,14 +540,13 @@
         private Label label6;
         private TextBox txtTotalQuantity;
         private Label label5;
-        private ListBox productSelectedList;
-        private TextBox textBox9;
+        private TextBox txtQuantity;
         private Label label10;
-        private TextBox textBox4;
+        private TextBox txtPrice;
         private Label label7;
-        private TextBox textBox7;
+        private TextBox txtProductName;
         private Label label8;
-        private TextBox txtSLDB;
+        private TextBox txtTH;
         private Label label11;
         private TextBox txtSLC;
         private Label label9;
@@ -440,5 +554,14 @@
         private Controls.Button.Create createBtn;
         private Controls.Button.Add addBtn;
         private Controls.Button.Cancel cancelBtn;
+        private RichTextBox txtNote;
+        private Label label12;
+        private Panel panel4;
+        private DataGridView dataGrid;
+        private ComboBox comboTable;
+        private Label label14;
+        private DataGridView gridProductSelected;
+        private TextBox searchTxt;
+        private Button button1;
     }
 }

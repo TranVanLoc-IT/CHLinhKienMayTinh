@@ -28,13 +28,13 @@ namespace BLL
             }
             return Constant.SUCCESS;
         }
-        public string Create(EditDTO.PhieuNhap pn)
+        public string Create(EditDTO.PhieuNhap pn, EditDTO.ChiTietPhieuNhap[] pns)
         {
 
             if (pn == null) return Constant.NOT_FOUND;
             try
             {
-                _dal.Create(pn);
+                _dal.Create(pn, pns);
             }
             catch (Exception ex)
             {

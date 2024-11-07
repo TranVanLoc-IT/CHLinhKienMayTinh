@@ -31,11 +31,18 @@ namespace DAL
         }
         public IEnumerable<ResponseDTO.DonHang> GetAll()
         {
-            return (IEnumerable<ResponseDTO.DonHang>)_db.GetData();
+            return _db.GetData().Where(r => !r.DaXoa).Select(r => new ResponseDTO.DonHang()
+            {
+                MaDonHang = r.MaDonHang,
+                NgayTao = r.NgayTao,
+                NhanVienTao = r.NhanVienTao,
+                ThanhTien = r.ThanhTien,
+                MaKH = r.MaKH,
+                TinhTrang = r.TinhTrang,
+                TongSL = r.TongSL,
+                GhiChu = r.GhiChu
+            });
         }
-        public ResponseDTO.DonHang GetById(string id)
-        {
-            return (ResponseDTO.DonHang)_db.GetData().Where(r => r.MaDonHang == id);
-        }
+       
     }
 }

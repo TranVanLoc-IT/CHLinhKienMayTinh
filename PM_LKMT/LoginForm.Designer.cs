@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            panel2 = new Panel();
             pictureBox1 = new PictureBox();
-            label1 = new Label();
-            txtUserName = new TextBox();
-            button1 = new Button();
-            label2 = new Label();
-            label3 = new Label();
+            panel2 = new Panel();
             txtPassword = new TextBox();
+            label3 = new Label();
+            label2 = new Label();
+            btnLogin = new Button();
+            txtUserName = new TextBox();
+            label1 = new Label();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -52,21 +52,6 @@
             panel1.Size = new Size(368, 450);
             panel1.TabIndex = 0;
             // 
-            // panel2
-            // 
-            panel2.BackColor = SystemColors.ButtonFace;
-            panel2.Controls.Add(txtPassword);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(button1);
-            panel2.Controls.Add(txtUserName);
-            panel2.Controls.Add(label1);
-            panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(369, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(431, 450);
-            panel2.TabIndex = 1;
-            // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = Resource.logocompany;
@@ -77,42 +62,41 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
-            // label1
+            // panel2
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(52, 61);
-            label1.Name = "label1";
-            label1.Size = new Size(330, 32);
-            label1.TabIndex = 0;
-            label1.Text = "PHẦN MỀM BÁN HÀNG";
+            panel2.BackColor = SystemColors.ButtonFace;
+            panel2.Controls.Add(txtPassword);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(btnLogin);
+            panel2.Controls.Add(txtUserName);
+            panel2.Controls.Add(label1);
+            panel2.Dock = DockStyle.Right;
+            panel2.Location = new Point(369, 0);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(431, 450);
+            panel2.TabIndex = 1;
             // 
-            // txtUserName
+            // txtPassword
             // 
-            txtUserName.BackColor = SystemColors.ActiveCaption;
-            txtUserName.Font = new Font("Times New Roman", 12F);
-            txtUserName.ForeColor = SystemColors.InactiveBorder;
-            txtUserName.Location = new Point(196, 130);
-            txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(185, 30);
-            txtUserName.TabIndex = 1;
+            txtPassword.BackColor = SystemColors.ActiveCaption;
+            txtPassword.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            txtPassword.ForeColor = SystemColors.InactiveBorder;
+            txtPassword.Location = new Point(177, 191);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new Size(185, 30);
+            txtPassword.TabIndex = 2;
             // 
-            // button1
+            // label3
             // 
-            button1.BackColor = Color.SeaGreen;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.FlatAppearance.MouseOverBackColor = Color.LimeGreen;
-            button1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonFace;
-            button1.Image = Resource.login1;
-            button1.ImageAlign = ContentAlignment.MiddleRight;
-            button1.Location = new Point(121, 269);
-            button1.Name = "button1";
-            button1.Size = new Size(200, 59);
-            button1.TabIndex = 2;
-            button1.Text = "ĐĂNG NHẬP";
-            button1.TextAlign = ContentAlignment.MiddleLeft;
-            button1.UseVisualStyleBackColor = false;
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            label3.Location = new Point(52, 137);
+            label3.Name = "label3";
+            label3.Size = new Size(122, 23);
+            label3.TabIndex = 4;
+            label3.Text = "Mã nhân viên";
             // 
             // label2
             // 
@@ -124,25 +108,43 @@
             label2.TabIndex = 3;
             label2.Text = "Mật khẩu";
             // 
-            // label3
+            // btnLogin
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label3.Location = new Point(52, 137);
-            label3.Name = "label3";
-            label3.Size = new Size(132, 23);
-            label3.TabIndex = 4;
-            label3.Text = "Tên đăng nhập";
+            btnLogin.BackColor = Color.SeaGreen;
+            btnLogin.BackgroundImageLayout = ImageLayout.None;
+            btnLogin.FlatAppearance.MouseOverBackColor = Color.LimeGreen;
+            btnLogin.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogin.ForeColor = SystemColors.ButtonFace;
+            btnLogin.Image = Resource.login1;
+            btnLogin.ImageAlign = ContentAlignment.MiddleRight;
+            btnLogin.Location = new Point(121, 269);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(200, 59);
+            btnLogin.TabIndex = 3;
+            btnLogin.Text = "ĐĂNG NHẬP";
+            btnLogin.TextAlign = ContentAlignment.MiddleLeft;
+            btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
-            // txtPassword
+            // txtUserName
             // 
-            txtPassword.BackColor = SystemColors.ActiveCaption;
-            txtPassword.Font = new Font("Times New Roman", 12F);
-            txtPassword.ForeColor = SystemColors.InactiveBorder;
-            txtPassword.Location = new Point(177, 191);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(185, 30);
-            txtPassword.TabIndex = 5;
+            txtUserName.BackColor = SystemColors.ActiveCaption;
+            txtUserName.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            txtUserName.ForeColor = SystemColors.InactiveBorder;
+            txtUserName.Location = new Point(196, 130);
+            txtUserName.Name = "txtUserName";
+            txtUserName.Size = new Size(185, 30);
+            txtUserName.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(52, 61);
+            label1.Name = "label1";
+            label1.Size = new Size(330, 32);
+            label1.TabIndex = 0;
+            label1.Text = "PHẦN MỀM BÁN HÀNG";
             // 
             // LoginForm
             // 
@@ -152,11 +154,11 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "LoginForm";
-            Text = "Form1";
+            Text = "Đăng nhập";
             panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -168,7 +170,7 @@
         private TextBox txtPassword;
         private Label label3;
         private Label label2;
-        private Button button1;
+        private Button btnLogin;
         private TextBox txtUserName;
         private Label label1;
     }

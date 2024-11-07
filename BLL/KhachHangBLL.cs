@@ -62,7 +62,13 @@ namespace BLL
         public ResponseDTO.KhachHang GetById(string id)
         {
 
-            return _dal.GetById();
+            return _dal.GetById(id);
+        }
+
+        public string CheckCustomer(string phone)
+        {
+
+            return _dal.CheckCustomer(phone);
         }
     }
 }
