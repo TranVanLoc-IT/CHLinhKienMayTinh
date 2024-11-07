@@ -143,6 +143,7 @@ namespace DTO
         {
             public string MaKhuyenMai { get; set; }
             public string MaCT { get; set; }
+            public string MaHD { get; set; }
             public bool DaDung { get; set; }
         }
 
