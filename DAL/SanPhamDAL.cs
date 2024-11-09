@@ -12,11 +12,13 @@ namespace DAL
     public class SanPhamDAL
     {
         private SANPHAMTableAdapter _db;
-        private LKMT _context;
+        private THUONGHIEUTableAdapter _th;
+        private LOAISANPHAMTableAdapter _lsp;
         public SanPhamDAL()
         {
             _db = new SANPHAMTableAdapter();
-            _context = new LKMT();
+            _th = new THUONGHIEUTableAdapter();
+            _lsp = new LOAISANPHAMTableAdapter();
         }
         public void Update(SANPHAMDataTable sp)
         {
@@ -41,8 +43,8 @@ namespace DAL
             return _db.GetData().Where(r => !r.DaXoa).Select(r => new ResponseDTO.SanPham()
             {
                 MaSanPham = r.MaSanPham,
-                TenLoaiSP = _context.LOAISANPHAM.Where(e => e.MaLoaiSP == r.MaLoaiSP).Select(r => r.TenLoai).FirstOrDefault() ?? "Không có",
-                TenThuongHieu = _context.THUONGHIEU.Where(e => e.MaThuongHieu == r.MaThuongHieu).Select(r => r.TenThuongHieu).FirstOrDefault() ?? "Không có",
+                TenLoaiSP = _lsp.GetData().Where(e => e.MaLoaiSP == r.MaLoaiSP).Select(r => r.TenLoai).FirstOrDefault() ?? "Không có",
+                TenThuongHieu = _th.GetData().Where(e => e.MaThuongHieu == r.MaThuongHieu).Select(r => r.TenThuongHieu).FirstOrDefault() ?? "Không có",
                 MoTa = r.MoTa,
                 TenSanPham = r.TenSanPham,
                 DonGia = r.DonGia,

@@ -30,26 +30,31 @@
         {
             flowLayoutPanel1 = new FlowLayoutPanel();
             label1 = new Label();
-            panelBanChay = new Panel();
-            label2 = new Label();
-            panelNoiBat = new Panel();
+            searchBox = new TextBox();
+            panelBanChay = new FlowLayoutPanel();
+            labels = new Label();
+            panelAll = new FlowLayoutPanel();
             label3 = new Label();
-            panelThuongHieuHot = new Panel();
+            panelThuongHieuHot = new FlowLayoutPanel();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.BackColor = SystemColors.Control;
             flowLayoutPanel1.Controls.Add(label1);
+            flowLayoutPanel1.Controls.Add(searchBox);
             flowLayoutPanel1.Controls.Add(panelBanChay);
-            flowLayoutPanel1.Controls.Add(label2);
-            flowLayoutPanel1.Controls.Add(panelNoiBat);
+            flowLayoutPanel1.Controls.Add(labels);
+            flowLayoutPanel1.Controls.Add(panelAll);
             flowLayoutPanel1.Controls.Add(label3);
             flowLayoutPanel1.Controls.Add(panelThuongHieuHot);
             flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
+            flowLayoutPanel1.ForeColor = SystemColors.ControlText;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(800, 450);
+            flowLayoutPanel1.Size = new Size(800, 576);
             flowLayoutPanel1.TabIndex = 1;
             // 
             // label1
@@ -62,58 +67,69 @@
             label1.TabIndex = 3;
             label1.Text = "Bán chạy";
             // 
+            // searchBox
+            // 
+            searchBox.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            searchBox.Location = new Point(3, 26);
+            searchBox.Name = "searchBox";
+            searchBox.PlaceholderText = "Tìm kiếm bằng mã hoặc tên";
+            searchBox.Size = new Size(284, 31);
+            searchBox.TabIndex = 1;
+            // 
             // panelBanChay
             // 
             panelBanChay.AutoScroll = true;
-            panelBanChay.BorderStyle = BorderStyle.FixedSingle;
-            panelBanChay.Location = new Point(3, 26);
+            panelBanChay.Location = new Point(3, 63);
             panelBanChay.Name = "panelBanChay";
-            panelBanChay.Size = new Size(797, 164);
-            panelBanChay.TabIndex = 2;
+            panelBanChay.Size = new Size(785, 290);
+            panelBanChay.TabIndex = 8;
+            panelBanChay.WrapContents = false;
             // 
-            // label2
+            // labels
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label2.Location = new Point(3, 193);
-            label2.Name = "label2";
-            label2.Size = new Size(71, 23);
-            label2.TabIndex = 5;
-            label2.Text = "Nổi bật";
+            labels.AutoSize = true;
+            labels.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            labels.Location = new Point(3, 336);
+            labels.Name = "labels";
+            labels.Size = new Size(64, 23);
+            labels.TabIndex = 9;
+            labels.Text = "Tất cả";
             // 
-            // panelNoiBat
+            // panelAll
             // 
-            panelNoiBat.AutoScroll = true;
-            panelNoiBat.BackgroundImageLayout = ImageLayout.None;
-            panelNoiBat.BorderStyle = BorderStyle.Fixed3D;
-            panelNoiBat.Location = new Point(3, 219);
-            panelNoiBat.Name = "panelNoiBat";
-            panelNoiBat.Size = new Size(797, 164);
-            panelNoiBat.TabIndex = 4;
+            panelAll.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panelAll.AutoScroll = true;
+            panelAll.Location = new Point(794, 3);
+            panelAll.Name = "panelAll";
+            panelAll.Size = new Size(26, 290);
+            panelAll.TabIndex = 10;
+            panelAll.WrapContents = false;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label3.Location = new Point(3, 386);
+            label3.Location = new Point(794, 276);
             label3.Name = "label3";
-            label3.Size = new Size(165, 23);
-            label3.TabIndex = 7;
+            label3.Size = new Size(26, 276);
+            label3.TabIndex = 11;
             label3.Text = "Thương hiệu HOT";
             // 
             // panelThuongHieuHot
             // 
+            panelThuongHieuHot.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelThuongHieuHot.AutoScroll = true;
-            panelThuongHieuHot.Location = new Point(3, 412);
+            panelThuongHieuHot.Location = new Point(826, 3);
             panelThuongHieuHot.Name = "panelThuongHieuHot";
-            panelThuongHieuHot.Size = new Size(817, 164);
-            panelThuongHieuHot.TabIndex = 6;
+            panelThuongHieuHot.Size = new Size(0, 189);
+            panelThuongHieuHot.TabIndex = 11;
+            panelThuongHieuHot.WrapContents = false;
             // 
             // ViewProduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 576);
             Controls.Add(flowLayoutPanel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "ViewProduct";
@@ -127,10 +143,11 @@
 
         private FlowLayoutPanel flowLayoutPanel1;
         private Label label1;
-        private Panel panelBanChay;
-        private Label label2;
-        private Panel panelNoiBat;
+        private TextBox searchBox;
+        private Label labels;
+        private FlowLayoutPanel panelAll;
         private Label label3;
-        private Panel panelThuongHieuHot;
+        private FlowLayoutPanel panelThuongHieuHot;
+        private FlowLayoutPanel panelBanChay;
     }
 }

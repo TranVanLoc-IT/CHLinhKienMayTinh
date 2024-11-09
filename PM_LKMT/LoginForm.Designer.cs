@@ -153,6 +153,8 @@
             ClientSize = new Size(800, 450);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "LoginForm";
             Text = "Đăng nhập";
             panel1.ResumeLayout(false);

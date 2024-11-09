@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             panel1 = new Panel();
             gridProductSelected = new DataGridView();
             txtNote = new RichTextBox();
@@ -53,7 +53,7 @@
             label11 = new Label();
             txtSLC = new TextBox();
             label9 = new Label();
-            pictureBox1 = new PictureBox();
+            img = new PictureBox();
             panel2 = new Panel();
             addBtn = new Controls.Button.Add();
             txtQuantity = new TextBox();
@@ -72,7 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)gridProductSelected).BeginInit();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)img).BeginInit();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid).BeginInit();
@@ -269,7 +269,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(panel3);
-            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(img);
             groupBox1.Controls.Add(panel2);
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -326,14 +326,14 @@
             label9.TabIndex = 10;
             label9.Text = "Số lượng còn";
             // 
-            // pictureBox1
+            // img
             // 
-            pictureBox1.Dock = DockStyle.Left;
-            pictureBox1.Location = new Point(3, 26);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(253, 136);
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            img.Dock = DockStyle.Left;
+            img.Location = new Point(3, 26);
+            img.Name = "img";
+            img.Size = new Size(253, 136);
+            img.TabIndex = 1;
+            img.TabStop = false;
             // 
             // panel2
             // 
@@ -447,8 +447,10 @@
             searchTxt.Font = new Font("Times New Roman", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             searchTxt.Location = new Point(112, 254);
             searchTxt.Name = "searchTxt";
+            searchTxt.PlaceholderText = "Tìm kiếm bằng mã hoặc tên";
             searchTxt.Size = new Size(176, 28);
             searchTxt.TabIndex = 12;
+            searchTxt.TextChanged += searchTxt_TextChanged;
             // 
             // comboTable
             // 
@@ -480,15 +482,15 @@
             dataGrid.BorderStyle = BorderStyle.Fixed3D;
             dataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.Padding = new Padding(1);
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGrid.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new Padding(1);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dataGrid.DefaultCellStyle = dataGridViewCellStyle2;
             dataGrid.Dock = DockStyle.Top;
             dataGrid.Location = new Point(0, 0);
             dataGrid.Name = "dataGrid";
@@ -513,7 +515,7 @@
             groupBox1.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)img).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel4.ResumeLayout(false);
@@ -533,7 +535,7 @@
         private Label label3;
         private TextBox txtSDT;
         private Label label2;
-        private PictureBox pictureBox1;
+        private PictureBox img;
         private Panel panel2;
         private Panel panel3;
         private TextBox txtTotalPrice;

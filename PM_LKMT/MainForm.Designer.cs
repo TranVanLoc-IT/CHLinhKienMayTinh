@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             menuStrip1 = new MenuStrip();
             côngTyLinhKiệnECOMToolStripMenuItem = new ToolStripMenuItem();
             staffInfo = new ToolStripMenuItem();
@@ -45,6 +46,7 @@
             logout = new ToolStripMenuItem();
             timeWork = new ToolStripTextBox();
             main = new Panel();
+            timer1 = new System.Windows.Forms.Timer(components);
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -215,7 +217,7 @@
             timeWork.Enabled = false;
             timeWork.ForeColor = Color.White;
             timeWork.Name = "timeWork";
-            timeWork.Size = new Size(150, 29);
+            timeWork.Size = new Size(160, 29);
             timeWork.Text = "21/20/2024 12:00:12";
             timeWork.ToolTipText = "Thời gian làm việc";
             // 
@@ -227,6 +229,10 @@
             main.Size = new Size(1153, 429);
             main.TabIndex = 1;
             // 
+            // timer1
+            // 
+            timer1.Tick += timer1_Tick;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -236,6 +242,8 @@
             Controls.Add(main);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "MainForm";
             Text = "Trang chủ";
             menuStrip1.ResumeLayout(false);
@@ -263,5 +271,6 @@
         private ToolStripMenuItem manageImportPage;
         private ToolStripMenuItem manageSalePage;
         private Panel main;
+        private System.Windows.Forms.Timer timer1;
     }
 }

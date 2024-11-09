@@ -1,6 +1,7 @@
 ﻿using DAL;
 using DTO;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace BLL
     public class SanPhamBLL
     {
         private SanPhamDAL _dal;
+        private IEnumerable<ResponseDTO.SanPham> data;
         public SanPhamBLL()
         {
             _dal = new SanPhamDAL();
@@ -56,8 +58,25 @@ namespace BLL
         }
         public IEnumerable<ResponseDTO.SanPham> GetAll()
         {
-
-            return _dal.GetAll();
+            data = _dal.GetAll();
+            return data;
+        }
+        public IEnumerable<ResponseDTO.SanPham> HotSale()
+        {
+            if(data == null)
+            {
+                data = _dal.GetAll();
+            }
+            return data.OrderByDescending(r => r.SoLuongDaBan).Take(5);
+        }
+        public string[] HotBrand()
+        {
+            if (data == null)
+            {
+                data = _dal.GetAll();
+            }
+            string[] result = data.OrderByDescending(r => r.SoLuongDaBan).Distinct().Take(3).Select( r => r.TenThuongHieu).ToArray();
+            return result;
         }
     }
 }

@@ -22,6 +22,8 @@ namespace PM_LKMT.SubForm
         private ErrorProvider _errorProvider;
         private List<EditDTO.ChiTietDonHang> sps = new List<EditDTO.ChiTietDonHang>();
         private List<ProductCartModel> cart = new List<ProductCartModel>();
+        private List<ResponseDTO.DonHang> _donHangs;
+        private List<ResponseDTO.SanPham> _sanPhams;
         public OrderForm(string uname)
         {
             InitializeComponent();
@@ -45,8 +47,28 @@ namespace PM_LKMT.SubForm
                 txtSLC.Text = row.Cells[8].Value.ToString();
                 txtTH.Text = row.Cells[3].Value.ToString();
                 txtProductName.Text = row.Cells[0].Value.ToString() + '-' + row.Cells[1].Value.ToString();
-                txtPrice.Text = row.Cells[4].Value.ToString();
+                txtPrice.Text = row.Cells[4].Value.ToString() + "VND";
                 txtQuantity.Text = "";
+                if (img.Image != null)
+                {
+                    img.Image.Dispose();
+                    img.Image = null;
+                }
+                string filePath = $"../../../images/Product/{row.Cells[0].Value.ToString()}.jpg";
+
+                if (File.Exists(filePath))
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+                    {
+                        img.Image = Image.FromStream(stream);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("File not found: " + filePath);
+                }
+
+
             }
         }
 
@@ -102,7 +124,7 @@ namespace PM_LKMT.SubForm
                     // required
                     if (tb.Name != "txtNote")
                     {
-                        if (string.IsNullOrWhiteSpace(tb.Text))
+                        if (!string.IsNullOrWhiteSpace(tb.Text))
                         {
                             tb.Text = string.Empty;
                         }
@@ -128,12 +150,26 @@ namespace PM_LKMT.SubForm
             List<ComboBoxItemModel> items;
             if (comboTable.Items[comboTable.SelectedIndex]!.ToString() == "Đơn hàng")
             {
-                this.dataGrid.DataSource = _dhBLL.GetAll().ToList();
+                _donHangs = _dhBLL.GetAll().ToList();
+                searchTxt.PlaceholderText = "Nhập mã đơn hàng";
+
+                if (_sanPhams != null)
+                {
+                    _sanPhams.Clear();
+                }
+                this.dataGrid.DataSource = _donHangs;
 
             }
             else
             {
-                this.dataGrid.DataSource = _spBLL.GetAll().ToList();
+                _sanPhams = _spBLL.GetAll().ToList();
+                searchTxt.PlaceholderText = "Nhập mã hoặc tên sản phẩm";
+
+                if (_donHangs != null)
+                {
+                    _donHangs.Clear();
+                }
+                this.dataGrid.DataSource = _sanPhams;
             }
             this.dataGrid.Show();
 
@@ -143,11 +179,11 @@ namespace PM_LKMT.SubForm
         {
             if (comboTable.Items[comboTable.SelectedIndex]!.ToString() == "Đơn hàng")
             {
-                List<ResponseDTO.DonHang> dhs = (List<ResponseDTO.DonHang>)this.dataGrid.DataSource;
+                List<ResponseDTO.DonHang> dhs = _donHangs;
                 ResponseDTO.DonHang dh = dhs.Where(r => r.MaDonHang == this.searchTxt.Text).FirstOrDefault()!;
+
                 if (dh == null)
                 {
-                    MessageBox.Show("Không thấy đơn hàng !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 dhs = new List<ResponseDTO.DonHang>() { dh };
@@ -156,10 +192,9 @@ namespace PM_LKMT.SubForm
             else
             {
                 List<ResponseDTO.SanPham> sps = (List<ResponseDTO.SanPham>)this.dataGrid.DataSource;
-                ResponseDTO.SanPham sp = sps.Where(r => r.MaSanPham == this.searchTxt.Text).FirstOrDefault()!;
+                ResponseDTO.SanPham sp = sps.Where(r => r.MaSanPham == this.searchTxt.Text || r.TenSanPham.ToLower().Contains(searchTxt.Text.ToLower())).FirstOrDefault()!;
                 if (sp == null)
                 {
-                    MessageBox.Show("Không thấy sản phầm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
                 sps = new List<ResponseDTO.SanPham>() { sp };
@@ -170,9 +205,13 @@ namespace PM_LKMT.SubForm
 
         private void addToCartBtn_Click(object sender, EventArgs e)
         {
+            if(txtQuantity.Text == "")
+            {
+                MessageBox.Show("Nhập số lượng mua", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             ProductCartModel giohang = new ProductCartModel() { MaSanPham = this.ProductName.Split('-')[0], ThanhTien = decimal.Parse(this.txtTotalPrice.Text), SoLuong = int.Parse(this.txtTotalQuantity.Text) };
-            List<ProductCartModel> cartExisted = (List<ProductCartModel>)this.gridProductSelected.DataSource;
-            ProductCartModel prEx = cartExisted.Where(r => r.MaSanPham == giohang.MaSanPham).FirstOrDefault()!;
+            ProductCartModel prEx = cart.Where(r => r.MaSanPham == giohang.MaSanPham).FirstOrDefault()!;
 
             if (prEx == null)
             {
@@ -180,10 +219,21 @@ namespace PM_LKMT.SubForm
             }
             else
             {
+                cart.Remove(prEx);
                 prEx.SoLuong = giohang.SoLuong;
+                cart.Add(prEx);
             }
-            this.gridProductSelected.DataSource = cartExisted;
+            this.gridProductSelected.DataSource = cart;
             this.gridProductSelected.Show();
+        }
+
+        private void searchTxt_TextChanged(object sender, EventArgs e)
+        {
+            if(searchTxt.Text == "")
+            {
+                this.dataGrid.DataSource = _donHangs != null ? _donHangs : _sanPhams;
+            }
+            button1_Click(sender, e);
         }
     }
 }

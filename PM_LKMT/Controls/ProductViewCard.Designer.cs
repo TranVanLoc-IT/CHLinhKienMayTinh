@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
             imgBox = new PictureBox();
             productName = new Label();
             brand = new Label();
@@ -37,32 +36,24 @@
             ((System.ComponentModel.ISupportInitialize)imgBox).BeginInit();
             SuspendLayout();
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(65, 183);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
-            // 
             // imgBox
             // 
             imgBox.BackgroundImageLayout = ImageLayout.Stretch;
             imgBox.Dock = DockStyle.Top;
             imgBox.Location = new Point(0, 0);
             imgBox.Name = "imgBox";
-            imgBox.Size = new Size(150, 93);
+            imgBox.Size = new Size(220, 164);
             imgBox.TabIndex = 1;
             imgBox.TabStop = false;
             // 
             // productName
             // 
             productName.AutoSize = true;
-            productName.BackColor = Color.DeepSkyBlue;
-            productName.Location = new Point(3, 96);
+            productName.BackColor = SystemColors.Control;
+            productName.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            productName.Location = new Point(3, 187);
             productName.Name = "productName";
-            productName.Size = new Size(50, 20);
+            productName.Size = new Size(51, 20);
             productName.TabIndex = 2;
             productName.Text = "label2";
             // 
@@ -70,7 +61,7 @@
             // 
             brand.AutoSize = true;
             brand.Font = new Font("Segoe UI", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            brand.Location = new Point(86, 96);
+            brand.Location = new Point(157, 185);
             brand.Name = "brand";
             brand.Size = new Size(48, 20);
             brand.TabIndex = 3;
@@ -80,7 +71,7 @@
             // 
             price.AutoSize = true;
             price.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            price.Location = new Point(3, 133);
+            price.Location = new Point(3, 254);
             price.Name = "price";
             price.Size = new Size(55, 20);
             price.TabIndex = 4;
@@ -91,11 +82,12 @@
             buttonView.BackColor = SystemColors.ActiveCaption;
             buttonView.BackgroundImage = Resource.see;
             buttonView.BackgroundImageLayout = ImageLayout.None;
-            buttonView.Location = new Point(86, 119);
+            buttonView.Location = new Point(157, 208);
             buttonView.Name = "buttonView";
-            buttonView.Size = new Size(44, 36);
+            buttonView.Size = new Size(43, 41);
             buttonView.TabIndex = 5;
             buttonView.UseVisualStyleBackColor = false;
+            buttonView.Click += buttonView_Click;
             // 
             // ProductViewCard
             // 
@@ -106,22 +98,18 @@
             Controls.Add(brand);
             Controls.Add(productName);
             Controls.Add(imgBox);
-            Controls.Add(label1);
             Name = "ProductViewCard";
-            Size = new Size(150, 164);
+            Size = new Size(220, 280);
             ((System.ComponentModel.ISupportInitialize)imgBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
         public PictureBox imgBox;
         public Label productName;
         public Label brand;
         public Label price;
-        private PictureBox pictureBox1;
         public System.Windows.Forms.Button buttonView;
     }
 }

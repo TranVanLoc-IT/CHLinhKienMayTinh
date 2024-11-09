@@ -25,7 +25,9 @@ namespace PM_LKMT
             uname = welcome.Split(" - ")[1];
             OpenFuncByRole();
             this.WindowState = FormWindowState.Maximized;
-            this.timeWork.Text = TimeHelper.GetCurrentTime().ToString();
+            timer1.Tick += timer1_Tick;
+            timer1.Start();
+
         }
 
         private void OpenFuncByRole()
@@ -72,24 +74,29 @@ namespace PM_LKMT
 
         private void orderPage_Click(object sender, EventArgs e)
         {
+            this.main.Controls.Clear();
             OrderForm currentForm = new OrderForm(uname);
             currentForm.TopLevel = false;       // 
             currentForm.FormBorderStyle = FormBorderStyle.None; // 
             currentForm.Dock = DockStyle.Fill;  //  
             this.main.Controls.Add(currentForm);
             currentForm.Show();
-
-
         }
 
         private void viewProductPage_Click(object sender, EventArgs e)
         {
+            this.main.Controls.Clear();
             ViewProduct currentForm = new ViewProduct();
             currentForm.TopLevel = false;       // 
             currentForm.FormBorderStyle = FormBorderStyle.None; // 
             currentForm.Dock = DockStyle.Fill;  //  
             this.main.Controls.Add(currentForm);
             currentForm.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            this.timeWork.Text = TimeHelper.GetCurrentTime().ToString();
         }
     }
 }
