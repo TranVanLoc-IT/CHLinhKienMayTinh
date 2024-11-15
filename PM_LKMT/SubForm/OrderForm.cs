@@ -1,15 +1,7 @@
 ﻿using BLL;
 using DTO;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static DAL.LKMT;
+using System.Text.Json;
 
 namespace PM_LKMT.SubForm
 {
@@ -19,6 +11,7 @@ namespace PM_LKMT.SubForm
         private KhachHangBLL _khBLL;
         private SanPhamBLL _spBLL;
         private DonHangBLL _dhBLL;
+        private ConvertMoneyUnitBLL _convertMoneyUnitBLL;
         private ErrorProvider _errorProvider;
         private List<EditDTO.ChiTietDonHang> sps = new List<EditDTO.ChiTietDonHang>();
         private List<ProductCartModel> cart = new List<ProductCartModel>();
@@ -28,12 +21,15 @@ namespace PM_LKMT.SubForm
         {
             InitializeComponent();
             this.userName = uname;
+            this._convertMoneyUnitBLL = new ConvertMoneyUnitBLL();
             this._khBLL = new KhachHangBLL();
             this._dhBLL = new DonHangBLL();
             this._spBLL = new SanPhamBLL();
             this._errorProvider = new ErrorProvider();
             this.dataGrid.RowHeaderMouseClick += DataGrid_RowHeaderMouseClick;
         }
+
+      
 
         private void DataGrid_RowHeaderMouseClick(object? sender, DataGridViewCellMouseEventArgs e)
         {
@@ -133,6 +129,19 @@ namespace PM_LKMT.SubForm
             }
         }
 
+        // Đọc dữ liệu từ file JSON
+        public static async Task<T> ReadFromJsonFile<T>(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("File not found.");
+                return default;
+            }
+
+            string jsonString = await File.ReadAllTextAsync(filePath);
+            return JsonSerializer.Deserialize<T>(jsonString);
+        }
+
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtMaHD.Text))
@@ -225,6 +234,20 @@ namespace PM_LKMT.SubForm
             }
             this.gridProductSelected.DataSource = cart;
             this.gridProductSelected.Show();
+            UpdateTotalQuantityAndPrice();
+        }
+
+        private void UpdateTotalQuantityAndPrice()
+        {
+            int totalQuantity = 0;
+            decimal totalPrice = 0;
+            foreach(ProductCartModel cart in cart)
+            {
+                totalQuantity += cart.SoLuong;
+                totalPrice += cart.ThanhTien;
+            }
+            this.txtTotalQuantity.Text = totalQuantity.ToString();
+            this.txtTotalPrice.Text = _convertMoneyUnitBLL.ConvertToVND(totalPrice);
         }
 
         private void searchTxt_TextChanged(object sender, EventArgs e)

@@ -81,7 +81,7 @@
             panelBanChay.AutoScroll = true;
             panelBanChay.Location = new Point(3, 63);
             panelBanChay.Name = "panelBanChay";
-            panelBanChay.Size = new Size(785, 290);
+            panelBanChay.Size = new Size(785, 300);
             panelBanChay.TabIndex = 8;
             panelBanChay.WrapContents = false;
             // 
@@ -89,7 +89,7 @@
             // 
             labels.AutoSize = true;
             labels.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            labels.Location = new Point(3, 336);
+            labels.Location = new Point(3, 366);
             labels.Name = "labels";
             labels.Size = new Size(64, 23);
             labels.TabIndex = 9;
@@ -101,7 +101,7 @@
             panelAll.AutoScroll = true;
             panelAll.Location = new Point(794, 3);
             panelAll.Name = "panelAll";
-            panelAll.Size = new Size(26, 290);
+            panelAll.Size = new Size(0, 300);
             panelAll.TabIndex = 10;
             panelAll.WrapContents = false;
             // 
@@ -109,9 +109,9 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label3.Location = new Point(794, 276);
+            label3.Location = new Point(800, 0);
             label3.Name = "label3";
-            label3.Size = new Size(26, 276);
+            label3.Size = new Size(165, 23);
             label3.TabIndex = 11;
             label3.Text = "Thương hiệu HOT";
             // 
@@ -119,9 +119,9 @@
             // 
             panelThuongHieuHot.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelThuongHieuHot.AutoScroll = true;
-            panelThuongHieuHot.Location = new Point(826, 3);
+            panelThuongHieuHot.Location = new Point(800, 26);
             panelThuongHieuHot.Name = "panelThuongHieuHot";
-            panelThuongHieuHot.Size = new Size(0, 189);
+            panelThuongHieuHot.Size = new Size(165, 250);
             panelThuongHieuHot.TabIndex = 11;
             panelThuongHieuHot.WrapContents = false;
             // 

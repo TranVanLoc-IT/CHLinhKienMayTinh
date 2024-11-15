@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new System.Windows.Forms.Button();
+            button = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
-            // button1
+            // button
             // 
-            button1.BackColor = Color.DarkSlateGray;
-            button1.BackgroundImage = Resource.icons8_cart_48;
-            button1.BackgroundImageLayout = ImageLayout.None;
-            button1.FlatAppearance.MouseOverBackColor = Color.DarkCyan;
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ButtonFace;
-            button1.Location = new Point(3, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(119, 59);
-            button1.TabIndex = 1;
-            button1.Text = "Mua";
-            button1.TextAlign = ContentAlignment.MiddleRight;
-            button1.UseVisualStyleBackColor = false;
+            button.BackColor = Color.DarkSlateGray;
+            button.BackgroundImage = Resource.icons8_cart_48;
+            button.BackgroundImageLayout = ImageLayout.None;
+            button.FlatAppearance.MouseOverBackColor = Color.DarkCyan;
+            button.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button.ForeColor = SystemColors.ButtonFace;
+            button.Location = new Point(3, 3);
+            button.Name = "button";
+            button.Size = new Size(119, 59);
+            button.TabIndex = 1;
+            button.Text = "Mua";
+            button.TextAlign = ContentAlignment.MiddleRight;
+            button.UseVisualStyleBackColor = false;
             // 
             // Add
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(button1);
+            Controls.Add(button);
             Name = "Add";
             Size = new Size(124, 64);
             ResumeLayout(false);
@@ -59,6 +59,7 @@
 
         #endregion
 
+        public System.Windows.Forms.Button button;
         private System.Windows.Forms.Button button1;
     }
 }

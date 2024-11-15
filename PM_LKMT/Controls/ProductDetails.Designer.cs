@@ -67,7 +67,7 @@
             txtDId.BorderStyle = BorderStyle.None;
             txtDId.Enabled = false;
             txtDId.Font = new Font("Segoe UI", 10.2F);
-            txtDId.Location = new Point(368, 16);
+            txtDId.Location = new Point(373, 17);
             txtDId.Name = "txtDId";
             txtDId.Size = new Size(220, 23);
             txtDId.TabIndex = 2;
@@ -77,7 +77,7 @@
             txtDQuantityLeft.BorderStyle = BorderStyle.None;
             txtDQuantityLeft.Enabled = false;
             txtDQuantityLeft.Font = new Font("Segoe UI", 10.2F);
-            txtDQuantityLeft.Location = new Point(374, 204);
+            txtDQuantityLeft.Location = new Point(374, 207);
             txtDQuantityLeft.Name = "txtDQuantityLeft";
             txtDQuantityLeft.Size = new Size(131, 23);
             txtDQuantityLeft.TabIndex = 4;
@@ -97,7 +97,7 @@
             txtDPrice.BorderStyle = BorderStyle.None;
             txtDPrice.Enabled = false;
             txtDPrice.Font = new Font("Segoe UI", 10.2F);
-            txtDPrice.Location = new Point(334, 153);
+            txtDPrice.Location = new Point(334, 155);
             txtDPrice.Name = "txtDPrice";
             txtDPrice.Size = new Size(219, 23);
             txtDPrice.TabIndex = 6;
@@ -117,7 +117,7 @@
             txtDBrand.BorderStyle = BorderStyle.None;
             txtDBrand.Enabled = false;
             txtDBrand.Font = new Font("Segoe UI", 10.2F);
-            txtDBrand.Location = new Point(368, 105);
+            txtDBrand.Location = new Point(368, 107);
             txtDBrand.Name = "txtDBrand";
             txtDBrand.Size = new Size(220, 23);
             txtDBrand.TabIndex = 8;
@@ -137,7 +137,7 @@
             txtDName.BorderStyle = BorderStyle.None;
             txtDName.Enabled = false;
             txtDName.Font = new Font("Segoe UI", 10.2F);
-            txtDName.Location = new Point(368, 58);
+            txtDName.Location = new Point(374, 59);
             txtDName.Name = "txtDName";
             txtDName.Size = new Size(220, 23);
             txtDName.TabIndex = 10;

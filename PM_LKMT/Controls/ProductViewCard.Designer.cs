@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             imgBox = new PictureBox();
-            productName = new Label();
             brand = new Label();
             price = new Label();
             buttonView = new System.Windows.Forms.Button();
+            productName = new TextBox();
             ((System.ComponentModel.ISupportInitialize)imgBox).BeginInit();
             SuspendLayout();
             // 
@@ -45,17 +45,6 @@
             imgBox.Size = new Size(220, 164);
             imgBox.TabIndex = 1;
             imgBox.TabStop = false;
-            // 
-            // productName
-            // 
-            productName.AutoSize = true;
-            productName.BackColor = SystemColors.Control;
-            productName.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            productName.Location = new Point(3, 187);
-            productName.Name = "productName";
-            productName.Size = new Size(51, 20);
-            productName.TabIndex = 2;
-            productName.Text = "label2";
             // 
             // brand
             // 
@@ -89,14 +78,25 @@
             buttonView.UseVisualStyleBackColor = false;
             buttonView.Click += buttonView_Click;
             // 
+            // productName
+            // 
+            productName.BackColor = SystemColors.Control;
+            productName.BorderStyle = BorderStyle.None;
+            productName.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            productName.Location = new Point(3, 170);
+            productName.Multiline = true;
+            productName.Name = "productName";
+            productName.Size = new Size(139, 79);
+            productName.TabIndex = 6;
+            // 
             // ProductViewCard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(productName);
             Controls.Add(buttonView);
             Controls.Add(price);
             Controls.Add(brand);
-            Controls.Add(productName);
             Controls.Add(imgBox);
             Name = "ProductViewCard";
             Size = new Size(220, 280);
@@ -107,9 +107,9 @@
 
         #endregion
         public PictureBox imgBox;
-        public Label productName;
         public Label brand;
         public Label price;
         public System.Windows.Forms.Button buttonView;
+        public TextBox productName;
     }
 }

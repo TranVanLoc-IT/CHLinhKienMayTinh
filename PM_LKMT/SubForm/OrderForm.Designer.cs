@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             panel1 = new Panel();
             gridProductSelected = new DataGridView();
             txtNote = new RichTextBox();
@@ -55,8 +55,8 @@
             label9 = new Label();
             img = new PictureBox();
             panel2 = new Panel();
+            txtQuantity = new NumericUpDown();
             addBtn = new Controls.Button.Add();
-            txtQuantity = new TextBox();
             label10 = new Label();
             txtPrice = new TextBox();
             label7 = new Label();
@@ -74,6 +74,7 @@
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)img).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)txtQuantity).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid).BeginInit();
             SuspendLayout();
@@ -328,6 +329,7 @@
             // 
             // img
             // 
+            img.BackgroundImageLayout = ImageLayout.Stretch;
             img.Dock = DockStyle.Left;
             img.Location = new Point(3, 26);
             img.Name = "img";
@@ -338,8 +340,8 @@
             // panel2
             // 
             panel2.BackColor = Color.SaddleBrown;
-            panel2.Controls.Add(addBtn);
             panel2.Controls.Add(txtQuantity);
+            panel2.Controls.Add(addBtn);
             panel2.Controls.Add(label10);
             panel2.Controls.Add(txtPrice);
             panel2.Controls.Add(label7);
@@ -351,6 +353,13 @@
             panel2.Size = new Size(473, 125);
             panel2.TabIndex = 0;
             // 
+            // txtQuantity
+            // 
+            txtQuantity.Location = new Point(155, 92);
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Size = new Size(150, 30);
+            txtQuantity.TabIndex = 13;
+            // 
             // addBtn
             // 
             addBtn.Location = new Point(337, 54);
@@ -358,13 +367,6 @@
             addBtn.Size = new Size(130, 66);
             addBtn.TabIndex = 12;
             addBtn.Click += addToCartBtn_Click;
-            // 
-            // txtQuantity
-            // 
-            txtQuantity.Location = new Point(157, 90);
-            txtQuantity.Name = "txtQuantity";
-            txtQuantity.Size = new Size(69, 30);
-            txtQuantity.TabIndex = 11;
             // 
             // label10
             // 
@@ -482,15 +484,15 @@
             dataGrid.BorderStyle = BorderStyle.Fixed3D;
             dataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new Padding(1);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.Padding = new Padding(1);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGrid.DefaultCellStyle = dataGridViewCellStyle1;
             dataGrid.Dock = DockStyle.Top;
             dataGrid.Location = new Point(0, 0);
             dataGrid.Name = "dataGrid";
@@ -518,6 +520,7 @@
             ((System.ComponentModel.ISupportInitialize)img).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)txtQuantity).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid).EndInit();
@@ -542,7 +545,6 @@
         private Label label6;
         private TextBox txtTotalQuantity;
         private Label label5;
-        private TextBox txtQuantity;
         private Label label10;
         private TextBox txtPrice;
         private Label label7;
@@ -565,5 +567,6 @@
         private DataGridView gridProductSelected;
         private TextBox searchTxt;
         private Button button1;
+        private NumericUpDown txtQuantity;
     }
 }
