@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace PM_LKMT.UserControlCustom
 {
-    public partial class WarehouseForm : Form
-    {
-        public WarehouseForm()
-        {
-            InitializeComponent();
-        }
-    }
+	public partial class WarehouseForm : Form
+	{
+		public WarehouseForm()
+		{
+			InitializeComponent();
+		}
+
+		private void WarehouseForm_Load(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

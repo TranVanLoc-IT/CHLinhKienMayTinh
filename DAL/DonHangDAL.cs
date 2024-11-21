@@ -11,9 +11,13 @@ namespace DAL
     public class DonHangDAL
     {
         private DONHANGTableAdapter _db;
+        private NHANVIENTableAdapter _nv;
+        private KHACHHANGTableAdapter _kh;
         public DonHangDAL()
         {
             _db = new DONHANGTableAdapter();
+            _nv = new NHANVIENTableAdapter();
+            _kh = new KHACHHANGTableAdapter();
         }
         public void Update(DONHANGDataTable dh)
         {
@@ -35,9 +39,9 @@ namespace DAL
             {
                 MaDonHang = r.MaDonHang,
                 NgayTao = r.NgayTao,
-                NhanVienTao = r.NhanVienTao,
+                TenNhanVien = _nv.GetData().Where(k => k.MaNV == r.NhanVienTao).Select(k => k.HoTen).First(),
                 ThanhTien = r.ThanhTien,
-                MaKH = r.MaKH,
+                TenKH = _kh.GetData().Where(k => k.MaKH ==  r.MaKH).Select( k => k.HoTen).First(),
                 TinhTrang = r.TinhTrang,
                 TongSL = r.TongSL,
                 GhiChu = r.GhiChu

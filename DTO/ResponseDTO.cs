@@ -101,10 +101,10 @@ namespace DTO
             public string MaDonHang { get; set; }
 
             [DisplayName("Tên nhân viên")]
-            public string NhanVienTao { get; set; }
+            public string TenNhanVien { get; set; }
 
             [DisplayName("Tên khách hàng")]
-            public string MaKH { get; set; }
+            public string TenKH { get; set; }
 
             [DisplayName("Ngày tạo")]
             public DateTime NgayTao { get; set; }

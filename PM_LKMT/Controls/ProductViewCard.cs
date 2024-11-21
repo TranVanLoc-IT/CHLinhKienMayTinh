@@ -9,12 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace PM_LKMT.Controls
 {
     public partial class ProductViewCard : UserControl
     {
         private ResponseDTO.SanPham _sp;
+        public ViewDetails view;
         public ProductViewCard(ResponseDTO.SanPham sp)
         {
             InitializeComponent();
@@ -41,12 +43,13 @@ namespace PM_LKMT.Controls
                 MessageBox.Show("File not found: " + filePath);
             }
         }
-
-        private void buttonView_Click(object sender, EventArgs e)
+        public void buttonView_Click(object sender, EventArgs e)
         {
             ProductDetails detail = new ProductDetails(_sp);
-            ViewDetails view = new ViewDetails(detail);
-            view.ShowDialog();
+            view = new ViewDetails(detail);
+            view.Size = new Size(700,420);
+            view.BringToFront();
+            view.Show();
         }
     }
 }
