@@ -2,6 +2,7 @@
 using DTO;
 using System.Data;
 using System.Text.Json;
+using static DAL.LKMT;
 
 namespace PM_LKMT.SubForm
 {
@@ -20,17 +21,26 @@ namespace PM_LKMT.SubForm
         public OrderForm(string uname)
         {
             InitializeComponent();
-            this.userName = uname;
-            this._convertMoneyUnitBLL = new ConvertMoneyUnitBLL();
-            this._khBLL = new KhachHangBLL();
-            this._dhBLL = new DonHangBLL();
-            this._spBLL = new SanPhamBLL();
-            this._errorProvider = new ErrorProvider();
-            this.dataGrid.RowHeaderMouseClick += DataGrid_RowHeaderMouseClick;
+			this.userName = uname;
+
+			this.Load += async (s, e) => await Config();
         }
 
-      
-
+        private async Task Config()
+        {
+			this._convertMoneyUnitBLL = new ConvertMoneyUnitBLL();
+			this._khBLL = new KhachHangBLL();
+			this._dhBLL = new DonHangBLL();
+			this._spBLL = new SanPhamBLL();
+			this._errorProvider = new ErrorProvider();
+			this.dataGrid.RowHeaderMouseClick += DataGrid_RowHeaderMouseClick;
+			this.addBtn.button.Click += addToCartBtn_Click;
+            this.createBtn.button1.Click += createBtn_Click;
+            this.deleteBtn.button1.Click += deleteBtn_Click;
+            this.cancelBtn.button1.Click += cancelBtn_Click;
+			cart = await ReadFromJsonFile($"../../../data/cart.json");
+            gridProductSelected.DataSource = cart;
+        }
         private void DataGrid_RowHeaderMouseClick(object? sender, DataGridViewCellMouseEventArgs e)
         {
             var row = this.dataGrid.Rows[e.RowIndex];
@@ -87,6 +97,17 @@ namespace PM_LKMT.SubForm
                 item.MaDonHang = donHangMoi.MaDonHang;
             }
             string message = _dhBLL.Create(donHangMoi, sps.ToArray());
+            _donHangs.Add(new ResponseDTO.DonHang()
+            {
+                MaDonHang = donHangMoi.MaDonHang,
+                TinhTrang = donHangMoi.TinhTrang,
+                TenNhanVien = userName,
+                NgayTao = donHangMoi.NgayTao,
+                ThanhTien = donHangMoi.ThanhTien,
+                TongSL = donHangMoi.TongSL,
+                GhiChu = donHangMoi.GhiChu,
+                TenKH = _khBLL.GetById(donHangMoi.MaKH).HoTen,
+			});
             MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -130,16 +151,15 @@ namespace PM_LKMT.SubForm
         }
 
         // Đọc dữ liệu từ file JSON
-        public static async Task<T> ReadFromJsonFile<T>(string filePath)
+        public static async Task<List<ProductCartModel>> ReadFromJsonFile(string filePath)
         {
             if (!File.Exists(filePath))
             {
-                Console.WriteLine("File not found.");
                 return default;
             }
 
             string jsonString = await File.ReadAllTextAsync(filePath);
-            return JsonSerializer.Deserialize<T>(jsonString);
+            return JsonSerializer.Deserialize<List<ProductCartModel>>(jsonString);
         }
 
         private void deleteBtn_Click(object sender, EventArgs e)
@@ -150,8 +170,9 @@ namespace PM_LKMT.SubForm
                 return;
             }
             string message = _dhBLL.Delete(txtMaHD.Text);
+            _donHangs.Remove(_donHangs.Where(r => r.MaDonHang == txtMaHD.Text).First());
 
-            MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void comboTable_SelectedIndexChanged(object sender, EventArgs e)
@@ -219,7 +240,15 @@ namespace PM_LKMT.SubForm
                 MessageBox.Show("Nhập số lượng mua", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            ProductCartModel giohang = new ProductCartModel() { MaSanPham = this.ProductName.Split('-')[0], ThanhTien = decimal.Parse(this.txtTotalPrice.Text), SoLuong = int.Parse(this.txtTotalQuantity.Text) };
+
+			int slcon = int.Parse(txtSLC.Text);
+			int slmua = int.Parse(txtQuantity.Text);
+			if (slmua > slcon)
+			{
+				MessageBox.Show("Vượt quá số lượng hàng hiện có!", "Thông báo");
+				return;
+			}
+			ProductCartModel giohang = new ProductCartModel() { MaSanPham = this.ProductName.Split('-')[0], TenSanPham = this.ProductName.Split('-')[1], ThanhTien = decimal.Parse(this.txtTotalPrice.Text), SoLuong = int.Parse(this.txtTotalQuantity.Text), GiaBan = decimal.Parse(txtPrice.Text) };
             ProductCartModel prEx = cart.Where(r => r.MaSanPham == giohang.MaSanPham).FirstOrDefault()!;
 
             if (prEx == null)

@@ -43,13 +43,13 @@ namespace PM_LKMT.Controls
                 MessageBox.Show("File not found: " + filePath);
             }
         }
-        private void buttonView_Click(object sender, EventArgs e)
+        public void buttonView_Click(object sender, EventArgs e)
         {
             ProductDetails detail = new ProductDetails(_sp);
-            view.Size = new Size(605, 312);
             view = new ViewDetails(detail);
-            
-            view.ShowDialog();
+            view.Size = new Size(700,420);
+            view.BringToFront();
+            view.Show();
         }
     }
 }

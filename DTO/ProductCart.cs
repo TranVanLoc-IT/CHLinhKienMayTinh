@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +9,16 @@ namespace DTO
 {
     public class ProductCart
     {
-        public string MaSP { get; set; }
-        public string TenSP { get; set; }
-        public int SoLuong { get; set; }
-        public decimal GiaBan { get; set; }
+		[DisplayName("Mã sản phẩm")]
+		public string MaSP { get; set; }
+
+		[DisplayName("Tên sản phẩm")]
+		public string TenSP { get; set; }
+
+		[DisplayName("Số lượng")]
+		public int SoLuong { get; set; }
+
+		[DisplayName("Giá bán")]
+		public decimal GiaBan { get; set; }
     }
 }
