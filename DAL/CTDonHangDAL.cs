@@ -21,13 +21,14 @@ namespace DAL
         {
             return (IEnumerable<ResponseDTO.ChiTietDonHang>)_db.GetData().Where(r => r.MaDonHang == idDH);
         }
-        public void Create(EditDTO.ChiTietDonHang[] dhs)
+        public void CreateRange(List<EditDTO.ChiTietDonHang> dhs)
         {
             foreach (var dh in dhs)
             {
                 _db.Insert(dh.MaDonHang, dh.MaSanPham, dh.ThanhTien, dh.SoLuong);
                 _spDAL.UpdateQuantity(dh.MaSanPham, dh.SoLuong);
             }
+
         }
     }
 }

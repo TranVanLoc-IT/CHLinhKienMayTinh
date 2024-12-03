@@ -20,7 +20,6 @@ namespace DTO
         {
             public string MaThuongHieu { get; set; }
             public string TenThuongHieu { get; set; }
-            public DateTime NgayTao { get; set; }
         }
 
         public class LoaiSanPham
@@ -32,6 +31,16 @@ namespace DTO
             public bool DaXoa { get; set; }
         }
 
+        public class LichSuGD
+        {
+            public string MaGiaoDich { get; set; }
+            public string MaDonHang { get; set; }
+            public string PhuongThuc { get; set; }
+            public byte TrangThai { get; set; }
+            public string NganHang { get; set; }
+            public decimal SoTien { get; set; }
+            public DateTime NgayTao { get; set; }
+        }
         public class NhanVien
         {
             public string MaNV { get; set; }
@@ -43,18 +52,21 @@ namespace DTO
             public string ChucVu { get; set; }
             public bool TrangThai { get; set; }
             public DateTime NgayVaoLam { get; set; }
-            public DateTime ChinhSuaGanNhat { get; set; }
-            public string NguoiChinhSuaGanNhat { get; set; }
         }
 
         public class KhachHang
         {
+            [DisplayName("Tên khách hàng")]
             public string MaKH { get; set; }
+
+            [DisplayName("Số điện thoại")]
             public string SDT { get; set; }
+
+            [DisplayName("Họ tên")]
             public string HoTen { get; set; }
+
+            [DisplayName("Ngày tham gia")]
             public DateTime NgayThamGia { get; set; }
-            public DateTime ChinhSuaGanNhat { get; set; }
-            public string NguoiChinhSuaGanNhat { get; set; }
         }
 
         public class SanPham
@@ -109,9 +121,6 @@ namespace DTO
             [DisplayName("Ngày tạo")]
             public DateTime NgayTao { get; set; }
 
-            [DisplayName("Tình trạng")]
-            public bool TinhTrang { get; set; }
-
             [DisplayName("Ghi chú")]
             public string GhiChu { get; set; }
 
@@ -120,7 +129,13 @@ namespace DTO
 
             [DisplayName("Tổng tiền")]
             public decimal ThanhTien { get; set; }
-        }
+
+            [DisplayName("Giảm giá")]
+            public decimal GiamGia { get; set; }
+
+            [DisplayName("Tình trạng")]
+			public string TinhTrang { get; set; }
+		}
 
         public class HoaDon
         {
@@ -155,6 +170,13 @@ namespace DTO
         {
             public string MaDonHang { get; set; }
             public string MaSanPham { get; set; }
+            public decimal ThanhTien { get; set; }
+            public int SoLuong { get; set; }
+        }
+
+        public class ChiTietDHResult
+        {
+            public string TenSanPham { get; set; }
             public decimal ThanhTien { get; set; }
             public int SoLuong { get; set; }
         }

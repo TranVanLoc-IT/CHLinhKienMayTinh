@@ -10,18 +10,7 @@ namespace DAL
     {
         public string ConvertToVND(decimal price)
         {
-            if(price < 1000){
-                return price.ToString("N0") + " Đồng VND";
-            }
-            if (price < 10000)
-            {
-                return price.ToString("N0") + " Nghìn VND";
-            }
-            if (price < 1000000)
-            {
-                return price.ToString("N0") + " Triệu VND";
-            }
-            return price.ToString("N0") + " Tỷ VND";
+            return price.ToString("N0") + " VND";
         }
     }
 }

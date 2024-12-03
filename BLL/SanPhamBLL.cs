@@ -44,7 +44,11 @@ namespace BLL
             }
             return Constant.SUCCESS;
         }
-        public string Delete(string id)
+		public string GetName(string masp)
+		{
+			return _dal.GetName(masp);
+		}
+		public string Delete(string id)
         {
             try
             {

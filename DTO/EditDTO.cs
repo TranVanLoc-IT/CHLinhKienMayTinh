@@ -93,20 +93,10 @@ namespace DTO
             public string NhanVienTao { get; set; }
             public string MaKH { get; set; }
             public DateTime NgayTao { get; set; }
-            public bool TinhTrang { get; set; }
+            public string TinhTrang { get; set; }
             public string GhiChu { get; set; }
-            public int TongSL { get; set; }
             public decimal ThanhTien { get; set; }
-            public bool DaXoa { get; set; }
-        }
-
-        public class HoaDon
-        {
-            public string MaHoaDon { get; set; }
-            public string MaDonHang { get; set; }
-            public string NhanVienTao { get; set; }
-            public DateTime NgayLap { get; set; }
-            public decimal TongTien { get; set; }
+            public decimal TienGiam { get; set; }
             public bool DaXoa { get; set; }
         }
 
@@ -138,6 +128,18 @@ namespace DTO
             public decimal ThanhTien { get; set; }
             public int SoLuong { get; set; }
         }
+
+        public class LichSuGD
+        {
+            public string MaGiaoDich { get; set; }
+            public string MaDonHang { get; set; }
+            public byte TrangThai { get; set; }
+            public string PhuongThuc { get; set; }
+            public string NganHang { get; set; }
+            public decimal SoTien { get; set; }
+            public DateTime NgayTao { get; set; }
+        }
+
 
         public class KhuyenMai
         {

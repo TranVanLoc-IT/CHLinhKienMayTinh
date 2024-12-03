@@ -31,7 +31,13 @@ namespace DAL
         }
         public IEnumerable<ResponseDTO.KhachHang> GetAll()
         {
-            return (IEnumerable<ResponseDTO.KhachHang>)_db.GetData();
+            return _db.GetData().Select(r => new ResponseDTO.KhachHang()
+            {
+                MaKH = r.MaKH,
+                HoTen = r.HoTen,
+                SDT = r.SDT,
+                NgayThamGia = r.NgayThamGia
+            });
         }
         public ResponseDTO.KhachHang GetById(string id)
         {

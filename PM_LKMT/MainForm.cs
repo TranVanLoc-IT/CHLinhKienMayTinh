@@ -46,6 +46,7 @@ namespace PM_LKMT
                 paymentPage.Visible = false;
                 exportBillPage.Visible = false;
                 manageSalePage.Visible = false;
+                manageBillPage.Visible = false;
                 manageProductPage.Visible = false;
                 manageSalePage.Visible = false;
             }
@@ -75,7 +76,7 @@ namespace PM_LKMT
         private void orderPage_Click(object sender, EventArgs e)
         {
             this.main.Controls.Clear();
-            OrderForm currentForm = new OrderForm(uname);
+            CreateOrder currentForm = new CreateOrder(uname);
             currentForm.TopLevel = false;       // 
             currentForm.FormBorderStyle = FormBorderStyle.None; // 
             currentForm.Dock = DockStyle.Fill;  //  
@@ -97,6 +98,17 @@ namespace PM_LKMT
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.timeWork.Text = TimeHelper.GetCurrentTime().ToString();
+        }
+
+        private void paymentPage_Click(object sender, EventArgs e)
+        {
+            this.main.Controls.Clear();
+            HandleOrderProcessForm currentForm = new HandleOrderProcessForm(uname);
+            currentForm.TopLevel = false;       // 
+            currentForm.FormBorderStyle = FormBorderStyle.None; // 
+            currentForm.Dock = DockStyle.Fill;  //  
+            this.main.Controls.Add(currentForm);
+            currentForm.Show();
         }
     }
 }

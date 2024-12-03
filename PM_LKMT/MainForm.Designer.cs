@@ -135,6 +135,7 @@
             paymentPage.Name = "paymentPage";
             paymentPage.Size = new Size(292, 30);
             paymentPage.Text = "Thanh toán";
+            paymentPage.Click += paymentPage_Click;
             // 
             // manageBillPage
             // 

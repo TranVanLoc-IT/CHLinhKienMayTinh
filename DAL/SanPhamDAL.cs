@@ -38,7 +38,11 @@ namespace DAL
             QueriesTableAdapter query = new QueriesTableAdapter();
             query.XoaSanPham(id);
         }
-        public IEnumerable<ResponseDTO.SanPham> GetAll()
+		public string GetName(string masp)
+		{
+            return _db.GetData().Where(r => !r.DaXoa && r.MaSanPham == masp).Select(r => r.TenSanPham).FirstOrDefault() ?? string.Empty;
+		}
+		public IEnumerable<ResponseDTO.SanPham> GetAll()
         {
             return _db.GetData().Where(r => !r.DaXoa).Select(r => new ResponseDTO.SanPham()
             {

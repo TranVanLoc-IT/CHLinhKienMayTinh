@@ -20,5 +20,10 @@ namespace BLL
 
             return _dal.GetAll(idDH);
         }
+        public void CreateRange(List<EditDTO.ChiTietDonHang> dhs)
+        {
+
+            _dal.CreateRange(dhs);
+        }
     }
 }

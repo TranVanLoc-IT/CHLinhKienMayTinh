@@ -18,10 +18,11 @@ namespace DTO
 		[DisplayName("Thành tiền")]
         public decimal ThanhTien { get; set; }
 
+        [DisplayName("Giá bán")]
+        public decimal GiaBan { get; set; }
+
         [DisplayName("Số lượng")]
         public int SoLuong { get; set; }
 
-		[DisplayName("Giá bán")]
-		public decimal GiaBan { get; set; }
 	}
 }

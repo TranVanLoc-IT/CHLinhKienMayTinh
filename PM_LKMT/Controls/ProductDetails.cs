@@ -1,15 +1,6 @@
 ﻿using DTO;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace PM_LKMT.Controls
 {
@@ -55,7 +46,7 @@ namespace PM_LKMT.Controls
             try
             {
                 int slcon = int.Parse(txtDQuantityLeft.Text);
-                int slmua = int.Parse(txtQuantitySold.Text);
+                int slmua = 1;
                 if(slmua > slcon)
                 {
 					MessageBox.Show("Vượt quá số lượng hàng hiện có!", "Thông báo");
@@ -67,6 +58,7 @@ namespace PM_LKMT.Controls
 				cart.SoLuong = slmua;
 				cart.GiaBan = decimal.Parse(txtDPrice.Text.ToString().Substring(0, txtDPrice.Text.ToString().Length - 4));
 				cart.ThanhTien = cart.SoLuong * cart.GiaBan;
+                carts = await ReadFromJsonFile($"../../../data/cart.json");
 				ProductCartModel prEx = carts.Where(r => r.MaSanPham == cart.MaSanPham).FirstOrDefault()!;
 				if (prEx == null)
 				{
@@ -80,9 +72,8 @@ namespace PM_LKMT.Controls
 				}
 				// Ghi dữ liệu vào file JSON
 				await WriteToJsonFile($"../../../data/cart.json", carts);
-                MessageBox.Show("Thêm thành công vào giỏ hàng !", "Thông báo");
+                MessageBox.Show("Thêm thành công!", "Thông báo");
                 txtDQuantityLeft.Text = (slcon - slmua).ToString();
-                txtQuantitySold.Text = "0";
 			}
 			catch(Exception ex)
             {
@@ -98,5 +89,17 @@ namespace PM_LKMT.Controls
 
             await File.WriteAllTextAsync(filePath, jsonString);
         }
-    }
+		// Đọc dữ liệu từ file JSON
+		public static async Task<List<ProductCartModel>> ReadFromJsonFile(string filePath)
+		{
+			if (!File.Exists(filePath))
+			{
+				return default;
+			}
+
+			string jsonString = await File.ReadAllTextAsync(filePath);
+			return JsonSerializer.Deserialize<List<ProductCartModel>>(jsonString);
+		}
+
+	}
 }

@@ -28,13 +28,13 @@ namespace BLL
             }
             return Constant.SUCCESS;
         }
-        public string Create(EditDTO.DonHang dh, EditDTO.ChiTietDonHang[] dhs)
+        public string Create(EditDTO.DonHang dh)
         {
 
             if (dh == null) return Constant.NOT_FOUND;
             try
             {
-                _dal.Create(dh, dhs);
+                _dal.Create(dh);
             }
             catch (Exception ex)
             {
@@ -54,10 +54,22 @@ namespace BLL
             }
             return Constant.SUCCESS;
         }
-        public IEnumerable<ResponseDTO.DonHang> GetAll()
+        public IEnumerable<ResponseDTO.DonHang> GetAllToday()
         {
 
-            return _dal.GetAll();
+            return _dal.GetAllToday();
+        }
+
+        public IEnumerable<ResponseDTO.DonHang> GetAllUnconfirmed()
+        {
+
+            return _dal.GetAllUnconfirmed();
+        }
+
+        public IEnumerable<ResponseDTO.ChiTietDHResult> GetAllCTDHResult(string madh)
+        {
+
+            return _dal.GetAllCTDHResult(madh);
         }
     }
 }
