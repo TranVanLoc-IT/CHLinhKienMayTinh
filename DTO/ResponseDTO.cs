@@ -9,6 +9,12 @@ namespace DTO
 {
     public class ResponseDTO
     {
+        public class DaXoaOption
+        {
+            public string Name { get; set; }
+            public bool IsDeleted { get; set; }
+        }
+
         public class NhomSanPham
         {
             public string MaNhomSP { get; set; }
@@ -155,6 +161,7 @@ namespace DTO
             public decimal GiaTriHoaDon { get; set; }
             public string DieuKienApDung { get; set; }
             public DateTime NgayTao { get; set; }
+            public bool DaXoa { get; set; }
         }
 
         public class ChiTietPhieuNhap
