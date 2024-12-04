@@ -25,7 +25,7 @@ namespace DAL
         }
         public void Create(EditDTO.DonHang dh, EditDTO.ChiTietDonHang[] dhs)
         {
-            _db.Insert(dh.MaDonHang, dh.NhanVienTao, dh.MaKH, dh.NgayTao, dh.TinhTrang, dh.GhiChu, dh.TongSL, dh.ThanhTien, dh.DaXoa);
+            _db.Insert(dh.MaDonHang, dh.NhanVienTao, dh.MaKH, dh.NgayTao, dh.NgayCapNhat, dh.TinhTrang, dh.GhiChu, dh.ThanhTien, dh.TienGiam, dh.DaXoa);
             
         }
         public void Delete(string id)
@@ -43,7 +43,6 @@ namespace DAL
                 ThanhTien = r.ThanhTien,
                 TenKH = _kh.GetData().Where(k => k.MaKH ==  r.MaKH).Select( k => k.HoTen).First(),
                 TinhTrang = r.TinhTrang,
-                TongSL = r.TongSL,
                 GhiChu = r.GhiChu
             });
         }

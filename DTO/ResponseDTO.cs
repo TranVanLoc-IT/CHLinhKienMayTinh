@@ -115,7 +115,7 @@ namespace DTO
             public DateTime NgayTao { get; set; }
 
             [DisplayName("Tình trạng")]
-            public bool TinhTrang { get; set; }
+            public string TinhTrang { get; set; }
 
             [DisplayName("Ghi chú")]
             public string GhiChu { get; set; }
@@ -151,6 +151,7 @@ namespace DTO
         public class ChiTietPhieuNhap
         {
             public string TenSP { get; set; }
+            public string TenThuongHieu { get; set; }
             public decimal GiaNhap { get; set; }
             public int SoLuong { get; set; }
             public decimal ThanhTien { get; set; }

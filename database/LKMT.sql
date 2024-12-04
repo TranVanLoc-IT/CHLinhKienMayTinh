@@ -8,12 +8,14 @@ CREATE TABLE NHOMSANPHAM (
     NgayTao DATETIME,
     DaXoa BIT
 );
+GO
 CREATE TABLE THUONGHIEU (
     MaThuongHieu CHAR(2) PRIMARY KEY,
     TenThuongHieu NVARCHAR(100),
     NgayTao DATETIME,
     DaXoa BIT
 );
+GO
 CREATE TABLE LOAISANPHAM (
     MaLoaiSP CHAR(4) PRIMARY KEY,
     MaNhomSP CHAR(3),
@@ -22,6 +24,7 @@ CREATE TABLE LOAISANPHAM (
     DaXoa BIT,
     FOREIGN KEY (MaNhomSP) REFERENCES NHOMSANPHAM(MaNhomSP)
 );
+GO
 CREATE TABLE NHANVIEN (
     MaNV CHAR(7) PRIMARY KEY,
     Email VARCHAR(100),
@@ -35,6 +38,7 @@ CREATE TABLE NHANVIEN (
     ChinhSuaGanNhat DATETIME,
     NguoiChinhSuaGanNhat CHAR(7)
 );
+GO
 CREATE TABLE KHACHHANG (
     MaKH CHAR(10) PRIMARY KEY,
     SDT CHAR(11),
@@ -44,7 +48,7 @@ CREATE TABLE KHACHHANG (
     ChinhSuaGanNhat DATETIME,
     NguoiChinhSuaGanNhat CHAR(7)
 );
-
+GO
 CREATE TABLE SANPHAM (
     MaSanPham CHAR(5) PRIMARY KEY,
     MaLoaiSP CHAR(4),
@@ -63,14 +67,14 @@ CREATE TABLE SANPHAM (
     FOREIGN KEY (MaLoaiSP) REFERENCES LOAISANPHAM(MaLoaiSP),
     FOREIGN KEY (MaThuongHieu) REFERENCES THUONGHIEU(MaThuongHieu)
 );
-
+GO
 CREATE TABLE PHIEUNHAP (
     MaPN CHAR(6) PRIMARY KEY,
     TangTien DECIMAL(18,2),
     NgayNhap DATETIME,
     DaXoa BIT,
 );
-
+GO
 CREATE TABLE DONHANG (
     MaDonHang CHAR(10) PRIMARY KEY,
     NhanVienTao CHAR(7),
@@ -85,7 +89,7 @@ CREATE TABLE DONHANG (
     FOREIGN KEY (NhanVienTao) REFERENCES NHANVIEN(MaNV),
     FOREIGN KEY (MaKH) REFERENCES KHACHHANG(MaKH)
 );
-
+GO
 CREATE TABLE LICHSU_GIAODICH (
     MaGiaoDich VARCHAR(20) PRIMARY KEY,
 	NganHang NVARCHAR(100),
@@ -96,8 +100,7 @@ CREATE TABLE LICHSU_GIAODICH (
     TrangThai TINYINT,
     FOREIGN KEY (MaDonHang) REFERENCES DONHANG(MaDonHang)
 );
-
-
+GO
 CREATE TABLE CHUONGTRINH (
     MaCT CHAR(4) PRIMARY KEY,
     NgayBD DATE,
@@ -108,6 +111,7 @@ CREATE TABLE CHUONGTRINH (
     NgayTao DATETIME,
     DaXoa BIT
 );
+GO
 CREATE TABLE CHITIETPHIEUNHAP (
     MaPN CHAR(6),
     MaSanPham CHAR(5),
@@ -120,6 +124,7 @@ CREATE TABLE CHITIETPHIEUNHAP (
     FOREIGN KEY (MaSanPham) REFERENCES SANPHAM(MaSanPham),
     FOREIGN KEY (MaThuongHieu) REFERENCES ThuongHieu(MaThuongHieu)
 );
+GO
 CREATE TABLE CHITIETDONHANG (
     MaDonHang CHAR(10),
     MaSanPham CHAR(5),
@@ -129,6 +134,7 @@ CREATE TABLE CHITIETDONHANG (
     FOREIGN KEY (MaDonHang) REFERENCES DONHANG(MaDonHang),
     FOREIGN KEY (MaSanPham) REFERENCES SANPHAM(MaSanPham)
 );
+GO
 CREATE TABLE KHUYENMAI (
     MaKhuyenMai CHAR(9) PRIMARY KEY,
 	MaDH CHAR(10),
@@ -146,7 +152,7 @@ VALUES
 ('003', N'Thiết bị mạng', GETDATE(), 0),
 ('004', N'Thiết bị lưu trữ', GETDATE(), 0),
 ('005', N'Thiết bị âm thanh', GETDATE(), 0);
-
+GO
 -- Dữ liệu mẫu cho bảng THUONGHIEU
 INSERT INTO THUONGHIEU (MaThuongHieu, TenThuongHieu, NgayTao, DaXoa)
 VALUES 
@@ -155,7 +161,7 @@ VALUES
 ('DE', 'Dell', GETDATE(), 0),
 ('HP', 'HP', GETDATE(), 0),
 ('AC', 'Acer', GETDATE(), 0);
-
+GO
 -- Dữ liệu mẫu cho bảng LOAISANPHAM
 INSERT INTO LOAISANPHAM (MaLoaiSP, MaNhomSP, TenLoai, NgayTao, DaXoa)
 VALUES 
@@ -164,7 +170,7 @@ VALUES
 ('L003', '001', N'RAM', GETDATE(), 0),
 ('L004', '001', N'Ổ cứng SSD', GETDATE(), 0),
 ('L005', '001', N'Card đồ họa', GETDATE(), 0);
-
+GO
 -- Dữ liệu mẫu cho bảng NHANVIEN
 INSERT INTO NHANVIEN (MaNV, Email, MatKhau, HoTen, SDT, DiaChi, ChucVu, TrangThai, NgayVaoLam, ChinhSuaGanNhat, NguoiChinhSuaGanNhat)
 VALUES 
@@ -173,6 +179,7 @@ VALUES
 ('NV00003', 'nv3@example.com', 'c1234', N'Lê Thị C', '03216549870', N'Đà Nẵng', N'Thu ngân', 1, GETDATE(), GETDATE(), 'NV00001'),
 ('NV00004', 'nv4@example.com', 'd1234', N'Phạm Văn D', '05678903412', N'Cần Thơ', N'Nhân viên', 1, GETDATE(), GETDATE(), 'NV00001'),
 ('NV00005', 'nv5@example.com', 'e1234', N'Hoàng Thị E', '07482913756', N'Huế', N'Thu ngân', 1, GETDATE(), GETDATE(), 'NV00001');
+GO
 -- Dữ liệu mẫu cho bảng KHACHHANG
 INSERT INTO KHACHHANG (MaKH, SDT, HoTen, NgayThamGia, DaXoa, ChinhSuaGanNhat, NguoiChinhSuaGanNhat)
 VALUES 
@@ -181,7 +188,7 @@ VALUES
 ('KH0000003', '0945678901', N'Lê Thị Hoa', GETDATE(), 0, GETDATE(), 'NV00001'),
 ('KH0000004', '0978901234', N'Phạm Quang Vinh', GETDATE(), 0, GETDATE(), 'NV00001'),
 ('KH0000005', '0990123456', N'Hoàng Thị Lan', GETDATE(), 0, GETDATE(), 'NV00001');
-
+GO
 -- Dữ liệu mẫu cho bảng SANPHAM
 INSERT INTO SANPHAM (MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, MoTa, SoLuongTon, SoLuongDaBan, NgayTao, DaXoa, CapNhatGanNhat, NguoiChinhSuaGanNhat)
 VALUES 
@@ -195,6 +202,8 @@ VALUES
 ('SP008', 'L004', 'HP', 'WD Green 240GB', 900000, 36, NULL, N'SSD 240GB', 85, 45, GETDATE(), 0, GETDATE(), 'NV00002'),
 ('SP009', 'L005', 'MS', 'NVIDIA GTX 1660', 7000000, 36, NULL, N'Card đồ họa 6GB', 20, 15, GETDATE(), 0, GETDATE(), 'NV00001'),
 ('SP010', 'L005', 'AS', 'NVIDIA RTX 2060', 12000000, 36, NULL, N'Card đồ họa 6GB', 10, 8, GETDATE(), 0, GETDATE(), 'NV00001');
+GO
+
 
 -- Dữ liệu mẫu cho bảng PHIEUNHAP
 INSERT INTO PHIEUNHAP (MaPN,  TangTien, NgayNhap, DaXoa)
@@ -217,3 +226,8 @@ VALUES
 ('PN0004', 'SP004', 2400000, 6, 14400000, 'MS'),
 ('PN0005', 'SP005', 600000, 15, 9000000, 'DE');
 
+select * from thuonghieu
+select * from sanpham
+select * from nhanvien
+select * from phieunhap
+select * from chitietphieunhap

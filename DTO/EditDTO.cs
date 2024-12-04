@@ -92,10 +92,11 @@ namespace DTO
             public string NhanVienTao { get; set; }
             public string MaKH { get; set; }
             public DateTime NgayTao { get; set; }
-            public bool TinhTrang { get; set; }
+            public DateTime NgayCapNhat { get; set; }
+            public string TinhTrang { get; set; }
             public string GhiChu { get; set; }
-            public int TongSL { get; set; }
             public decimal ThanhTien { get; set; }
+            public decimal TienGiam { get; set; }
             public bool DaXoa { get; set; }
         }
 
@@ -125,6 +126,7 @@ namespace DTO
         {
             public string MaPN { get; set; }
             public string MaSanPham { get; set; }
+            public string MaThuongHieu { get; set; }
             public decimal GiaNhap { get; set; }
             public int SoLuong { get; set; }
             public decimal ThanhTien { get; set; }

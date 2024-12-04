@@ -25,7 +25,7 @@ namespace DAL
         {
             foreach (var dh in dhs)
             {
-                _db.Insert(dh.MaPN, dh.MaSanPham, dh.GiaNhap, dh.SoLuong, dh.ThanhTien);
+                _db.Insert(dh.MaPN, dh.MaSanPham, dh.MaThuongHieu,dh.GiaNhap, dh.SoLuong, dh.ThanhTien);
                 _spDAL.UpdateQuantity(dh.MaSanPham, dh.SoLuong);
             }
         }

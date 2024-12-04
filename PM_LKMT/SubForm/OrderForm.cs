@@ -83,12 +83,12 @@ namespace PM_LKMT.SubForm
             if (!Validation()) return;
             EditDTO.DonHang donHangMoi = new EditDTO.DonHang();
             donHangMoi.MaDonHang = IDAutoGeneratorBLL.Generate("DH", 8);
-            donHangMoi.TinhTrang = true;
+            //donHangMoi.TinhTrang = true;
             donHangMoi.NhanVienTao = LoginBLL.GetCurrentUserId(this.userName);
             donHangMoi.DaXoa = false;
             donHangMoi.NgayTao = TimeHelper.GetCurrentTime().DateTime;
             donHangMoi.ThanhTien = decimal.Parse(txtTotalPrice.Text);
-            donHangMoi.TongSL = int.Parse(txtTotalQuantity.Text);
+            //donHangMoi.TongSL = int.Parse(txtTotalQuantity.Text);
             donHangMoi.GhiChu = txtNote.Text;
             donHangMoi.MaKH = _khBLL.CheckCustomer(txtSDT.Text);
 

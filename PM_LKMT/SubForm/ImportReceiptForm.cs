@@ -48,7 +48,7 @@ namespace PM_LKMT.SubForm
 
         private void DgvPN_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (dgvPN.Columns[e.ColumnIndex].Name == "GiaNhap" && e.Value != null)
+            if (dgvPN.Columns[e.ColumnIndex].Name == "TongTien" && e.Value != null)
             {
                 e.Value = string.Format(new System.Globalization.CultureInfo("vi-VN"), "{0:C0}", e.Value);
                 e.FormattingApplied = true;
