@@ -104,7 +104,7 @@ namespace PM_LKMT.SubForm
                 TenNhanVien = userName,
                 NgayTao = donHangMoi.NgayTao,
                 ThanhTien = donHangMoi.ThanhTien,
-                TongSL = donHangMoi.TongSL,
+                //TongSL = donHangMoi.TongSL,
                 GhiChu = donHangMoi.GhiChu,
                 TenKH = _khBLL.GetById(donHangMoi.MaKH).HoTen,
 			});
