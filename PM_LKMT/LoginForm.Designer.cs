@@ -48,17 +48,19 @@
             panel1.Controls.Add(pictureBox1);
             panel1.Dock = DockStyle.Left;
             panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(4, 4, 4, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(368, 450);
+            panel1.Size = new Size(460, 562);
             panel1.TabIndex = 0;
             // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = Resource.logocompany;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(0, 96);
+            pictureBox1.Location = new Point(0, 120);
+            pictureBox1.Margin = new Padding(4, 4, 4, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(368, 257);
+            pictureBox1.Size = new Size(460, 321);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             // 
@@ -72,39 +74,43 @@
             panel2.Controls.Add(txtUserName);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(369, 0);
+            panel2.Location = new Point(461, 0);
+            panel2.Margin = new Padding(4, 4, 4, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(431, 450);
+            panel2.Size = new Size(539, 562);
             panel2.TabIndex = 1;
             // 
             // txtPassword
             // 
             txtPassword.BackColor = SystemColors.ActiveCaption;
-            txtPassword.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            txtPassword.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtPassword.ForeColor = SystemColors.InactiveBorder;
-            txtPassword.Location = new Point(177, 191);
+            txtPassword.Location = new Point(245, 239);
+            txtPassword.Margin = new Padding(4, 4, 4, 4);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(185, 30);
+            txtPassword.Size = new Size(230, 35);
             txtPassword.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label3.Location = new Point(52, 137);
+            label3.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(65, 171);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(122, 23);
+            label3.Size = new Size(152, 26);
             label3.TabIndex = 4;
             label3.Text = "Mã nhân viên";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
-            label2.Location = new Point(52, 198);
+            label2.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(65, 248);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(91, 23);
+            label2.Size = new Size(112, 26);
             label2.TabIndex = 3;
             label2.Text = "Mật khẩu";
             // 
@@ -113,13 +119,14 @@
             btnLogin.BackColor = Color.SeaGreen;
             btnLogin.BackgroundImageLayout = ImageLayout.None;
             btnLogin.FlatAppearance.MouseOverBackColor = Color.LimeGreen;
-            btnLogin.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogin.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             btnLogin.ForeColor = SystemColors.ButtonFace;
             btnLogin.Image = Resource.login1;
             btnLogin.ImageAlign = ContentAlignment.MiddleRight;
-            btnLogin.Location = new Point(121, 269);
+            btnLogin.Location = new Point(151, 336);
+            btnLogin.Margin = new Padding(4, 4, 4, 4);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(200, 59);
+            btnLogin.Size = new Size(250, 74);
             btnLogin.TabIndex = 3;
             btnLogin.Text = "ĐĂNG NHẬP";
             btnLogin.TextAlign = ContentAlignment.MiddleLeft;
@@ -129,30 +136,33 @@
             // txtUserName
             // 
             txtUserName.BackColor = SystemColors.ActiveCaption;
-            txtUserName.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+            txtUserName.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point);
             txtUserName.ForeColor = SystemColors.InactiveBorder;
-            txtUserName.Location = new Point(196, 130);
+            txtUserName.Location = new Point(245, 162);
+            txtUserName.Margin = new Padding(4, 4, 4, 4);
             txtUserName.Name = "txtUserName";
-            txtUserName.Size = new Size(185, 30);
+            txtUserName.Size = new Size(230, 35);
             txtUserName.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(52, 61);
+            label1.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(65, 76);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(330, 32);
+            label1.Size = new Size(387, 37);
             label1.TabIndex = 0;
             label1.Text = "PHẦN MỀM BÁN HÀNG";
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1000, 562);
             Controls.Add(panel2);
             Controls.Add(panel1);
+            Margin = new Padding(4, 4, 4, 4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "LoginForm";
