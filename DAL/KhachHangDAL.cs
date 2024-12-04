@@ -23,6 +23,7 @@ namespace DAL
         public void Create(EditDTO.KhachHang kh)
         {
             _db.Insert(kh.MaKH, kh.SDT, kh.HoTen, kh.NgayThamGia, kh.DaXoa, kh.ChinhSuaGanNhat, kh.NguoiChinhSuaGanNhat);
+
         }
         public void Delete(string id)
         {

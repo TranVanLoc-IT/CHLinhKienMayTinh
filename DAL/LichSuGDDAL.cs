@@ -11,14 +11,18 @@ namespace DAL
     public class LichSuGDDAL
     {
         private LICHSU_GIAODICHTableAdapter _adapter;
+        private DonHangDAL _dh;
 
         public LichSuGDDAL()
         {
             _adapter = new LICHSU_GIAODICHTableAdapter();
+            _dh = new DonHangDAL();
         }
         public void Create(EditDTO.LichSuGD gd)
         {
             _adapter.Insert(gd.MaDonHang, gd.NganHang, gd.MaDonHang, gd.SoTien, gd.NgayTao, gd.PhuongThuc, gd.TrangThai);
+
+            _dh.UpdateStatus(gd.MaDonHang);
         }
 
         public IEnumerable<ResponseDTO.LichSuGD> GetAllGDToday()

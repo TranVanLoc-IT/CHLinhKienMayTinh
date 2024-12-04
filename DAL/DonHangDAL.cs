@@ -29,6 +29,11 @@ namespace DAL
         {
             _db.Update(dh);
         }
+        public void UpdateStatus(string madh)
+        {
+            QueriesTableAdapter query = new QueriesTableAdapter();
+            query.UpdateOrderStatus(madh);
+        }
         public void Create(EditDTO.DonHang dh)
         {
             _db.Insert(dh.MaDonHang, dh.NhanVienTao, dh.MaKH, dh.NgayTao, DateTime.Now, dh.TinhTrang, dh.GhiChu, dh.ThanhTien, dh.TienGiam, dh.DaXoa);
@@ -65,13 +70,8 @@ namespace DAL
         }
         public IEnumerable<ResponseDTO.DonHang> GetAllUnconfirmed()
         {
-            var all = GetAllToday();
-
-            var paid = from item in all
-                  join gd in _lsdal.GetAllGDToday()
-                  on item.MaDonHang equals gd.MaDonHang
-                  select item;
-            return all.Except(paid); ;
+            var all = GetAllToday().Where(r => r.TinhTrang == "Chưa thanh toán");
+            return all;
         }
     }
 }

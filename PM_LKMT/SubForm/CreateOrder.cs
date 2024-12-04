@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,13 +19,18 @@ namespace PM_LKMT.SubForm
     {
         private string userName { get; set; }
         private decimal giaBanChon { get; set; }
+        private string makh = string.Empty;
+        private static byte _currentStep;
+        private Panel frame;
         private KhachHangBLL _khBLL;
         private DonHangBLL _dhBLL;
         private ChiTietDonHangBLL _ctdhbll;
         private ConvertMoneyUnitBLL _convertMoneyUnitBLL;
-        private List<EditDTO.ChiTietDonHang> sps = new List<EditDTO.ChiTietDonHang>();
         private List<ProductCartModel> cart = new List<ProductCartModel>();
         private List<ResponseDTO.DonHang> _donHangs;
+
+        private ErrorProvider _errorProvider;
+        private IEnumerable<ResponseDTO.KhachHang> khs;
 
 
         public CreateOrder(string uname)
@@ -40,23 +46,14 @@ namespace PM_LKMT.SubForm
             this._khBLL = new KhachHangBLL();
             this._ctdhbll = new ChiTietDonHangBLL();
             this._dhBLL = new DonHangBLL();
+            _errorProvider = new ErrorProvider();
             this.dataGrid.RowHeaderMouseClick += DataGrid_RowHeaderMouseClick;
             this.createBtn.Click += async (s, e) => await createBtn_Click(s, e);
             this.deleteBtn.Click += deleteBtn_Click;
-            this.cancelBtn.Click += async (s, e) => await cancelBtn_Click(s, e);
+            this.cancelBtn.Click += cancelBtn_Click;
             cart = await ReadFromJsonFile($"../../../data/cart.json");
-            if(cart == null || cart.Count == 0)
+            if (cart.Count > 0)
             {
-                Label lb = new Label();
-                lb.Text = "Chưa có sản phẩm nào được chọn !!";
-                lb.Font = new Font("Arial", 16, FontStyle.Bold); // Thiết lập font chữ 16, in đậm
-                lb.ForeColor = Color.Red; // Thiết lập màu chữ đỏ
-
-                this.flowPanel.Controls.Add(lb);
-            }
-            else
-            {
-
                 foreach (var item in cart)
                 {
                     ProductCartLine line = new ProductCartLine();
@@ -121,7 +118,6 @@ namespace PM_LKMT.SubForm
             var row = this.dataGrid.Rows[e.RowIndex];
             txtMaDH.Text = row.Cells[0].Value.ToString();
             txtPricePayment.Text = row.Cells[5].Value.ToString();
-           
 
         }
 
@@ -135,20 +131,33 @@ namespace PM_LKMT.SubForm
 
         private async Task createBtn_Click(object sender, EventArgs e)
         {
-            EditDTO.DonHang donHangMoi = new EditDTO.DonHang();
-            donHangMoi.MaDonHang = IDAutoGeneratorBLL.Generate("DH", 8);
-            this.txtMaDH.Text = donHangMoi.MaDonHang;
-            donHangMoi.TinhTrang = "Chưa duyệt";
-            donHangMoi.NhanVienTao = LoginBLL.GetCurrentUserId(this.userName);
-            donHangMoi.DaXoa = false;
-            donHangMoi.NgayTao = TimeHelper.GetCurrentTime().DateTime;
-            donHangMoi.GhiChu = txtNote.Text;
-            AddProductCart(donHangMoi.MaDonHang);
+            if(flowPanel.Controls.Count == 0)
+            {
+                MessageBox.Show("Chưa có sản phẩm nào để tạo ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
+                if (makh == string.Empty)
+                {
+                    CreateNewCus();
+                }
+                EditDTO.DonHang donHangMoi = new EditDTO.DonHang();
+                donHangMoi.MaDonHang = IDAutoGeneratorBLL.Generate("DH", 8);
+                this.txtMaDH.Text = donHangMoi.MaDonHang;
+                donHangMoi.TinhTrang = "Chưa thanh toán";
+                donHangMoi.NhanVienTao = LoginBLL.GetCurrentUserId(this.userName);
+                donHangMoi.DaXoa = false;
+                donHangMoi.MaKH = makh;
+                donHangMoi.NgayTao = TimeHelper.GetCurrentTime().DateTime;
+                donHangMoi.ThanhTien = decimal.Parse(txtPricePayment.Text.Substring(0, txtPricePayment.Text.Length - 4));
+                donHangMoi.GhiChu = txtNote.Text;
                 _dhBLL.Create(donHangMoi);
-                _ctdhbll.CreateRange(sps);
-                MessageBox.Show("Tạo đơn hàng thành công !" , "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _ctdhbll.CreateRange(donHangMoi.MaDonHang, cart);
+                cancelBtn.PerformClick();
+
+
+                MessageBox.Show("Tạo đơn hàng thành công !", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch (Exception ex)
@@ -159,47 +168,22 @@ namespace PM_LKMT.SubForm
 
             _donHangs = _dhBLL.GetAllToday().ToList();
             dataGrid.DataSource = _donHangs;
-            // them san pham mua
+            this.cancelBtn.PerformClick();
+            // lam moi gio hang
             cart = new List<ProductCartModel>();
             await WriteToJsonFile($"../../../data/cart.json", cart);
-        }
-
-        private void AddProductCart(string maDonHang)
-        {
-            foreach (var item in sps)
-            {
-                item.MaDonHang = maDonHang;
-            }
+            loadGrid();
         }
 
 
-        private async Task cancelBtn_Click(object sender, EventArgs e)
+        private void cancelBtn_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Nhập mã đơn hàng", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            if (result == DialogResult.OK)
+            flowPanel.Controls.Clear();
+            foreach (Control c in this.Controls)
             {
-                List<StoreOrder> stored = await ReadOrderFromJsonFile($"../../../data/orders.json");
-                StoreOrder order = stored.Where(r => r.DonHang.MaDonHang == this.txtMaDH.Text).First();
-                if (order == null)
+                if (c is TextBox tb)
                 {
-                    MessageBox.Show("Nhập mã đơn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                stored.Remove(order);
-                flowPanel.Controls.Clear();
-                foreach (Control c in this.Controls)
-                {
-                    if (c is TextBox tb)
-                    {
-                        // required
-                        if (tb.Name != "txtNote")
-                        {
-                            if (!string.IsNullOrWhiteSpace(tb.Text))
-                            {
-                                tb.Text = string.Empty;
-                            }
-                        }
-                    }
+                   tb.Text = string.Empty;
                 }
             }
         }
@@ -244,8 +228,9 @@ namespace PM_LKMT.SubForm
         private void loadGrid()
         {
             List<ComboBoxItemModel> items;
+            khs = _khBLL.GetAll();
             _donHangs = _dhBLL.GetAllToday().ToList();
-            if(_donHangs == null)
+            if (_donHangs == null)
             {
                 dataGrid.Rows.Add("Không có dữ liệu");
                 return;
@@ -258,7 +243,7 @@ namespace PM_LKMT.SubForm
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void reloadGrid()
         {
             List<ResponseDTO.DonHang> dhs = _donHangs;
             ResponseDTO.DonHang dh = dhs.Where(r => r.MaDonHang == this.searchtxt.Text).FirstOrDefault()!;
@@ -276,10 +261,14 @@ namespace PM_LKMT.SubForm
         {
             decimal totalQuantity = 0;
             decimal totalPrice = 0;
-            foreach (ProductCartLine cart in this.flowPanel.Controls)
+            foreach (Control c in this.flowPanel.Controls)
             {
-                totalQuantity += cart.quantity.Value;
-                totalPrice += decimal.Parse(cart.price.Text.Substring(0, cart.price.Text.Length - 4));
+                if (c is ProductCartLine cart)
+                {
+
+                    totalQuantity += cart.quantity.Value;
+                    totalPrice += decimal.Parse(cart.price.Text.Substring(0, cart.price.Text.Length - 4));
+                }
             }
             this.txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(totalPrice);
         }
@@ -289,8 +278,9 @@ namespace PM_LKMT.SubForm
             if (searchtxt.Text == "")
             {
                 this.dataGrid.DataSource = _donHangs;
+                return;
             }
-            button1_Click(sender, e);
+            reloadGrid();
         }
 
         private void searchtxt_TextChanged_1(object sender, EventArgs e)
@@ -301,6 +291,76 @@ namespace PM_LKMT.SubForm
                 return;
             }
             dataGrid.DataSource = found;
+        }
+
+        private void CreateNewCus()
+        {
+            if (!Validation()) return;
+            EditDTO.KhachHang kh = new EditDTO.KhachHang();
+            kh.MaKH = IDAutoGeneratorBLL.Generate("KH", 7);
+            kh.HoTen = txtName.Text;
+            kh.NgayThamGia = DateTime.Now;
+            kh.NguoiChinhSuaGanNhat = LoginBLL.GetCurrentUserId(this.userName);
+            kh.SDT = sdt.Text;
+            makh = kh.MaKH;
+            if (string.IsNullOrWhiteSpace(kh.HoTen))
+            {
+                MessageBox.Show("Nhập đầy đủ thông tin mã khách hàng và họ tên", "Lỗi", MessageBoxButtons.OK);
+                return;
+            }
+            MessageBox.Show(this._khBLL.Create(kh), "cc");
+
+        }
+
+        private bool Validation()
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c is TextBox tb)
+                {
+                    if (string.IsNullOrWhiteSpace(tb.Text) && tb.Name != "txtNote")
+                    {
+                        _errorProvider.SetError(tb, "Không được để trống");
+                        return false;
+                    }
+                }
+            }
+            _errorProvider.Clear();
+            return true;
+        }
+        private void button8_Click(object sender, EventArgs e)
+        {
+            foreach (Control c in this.Controls)
+            {
+                if (c is TextBox)
+                {
+                    c.Text = string.Empty;
+                }
+            }
+        }
+
+
+        private void sdt_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void sdt_TextChanged(object sender, EventArgs e)
+        {
+            if (sdt.Text.Length >= 10)
+            {
+                ResponseDTO.KhachHang kh = khs.Where(r => r.SDT == sdt.Text).FirstOrDefault();
+                if (kh != null)
+                {
+                    makh = kh.MaKH;
+                    txtName.Text = kh.HoTen;
+                    sdt.Text = kh.SDT;
+                }
+                else
+                {
+                    MessageBox.Show("Chưa có thông tin khách hàng ! Vui lòng nhập đầy đủ thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
     }
 }

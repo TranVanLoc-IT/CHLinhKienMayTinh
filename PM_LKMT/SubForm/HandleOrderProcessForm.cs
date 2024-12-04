@@ -24,13 +24,11 @@ namespace PM_LKMT.SubForm
         private IEnumerable<ResponseDTO.ChiTietDHResult> bought = new List<ResponseDTO.ChiTietDHResult>();
         private List<ProductCartModel> cart = new List<ProductCartModel>();
         private List<ResponseDTO.DonHang> _donHangs;
-        private CustomerControl customerControl;
         private OrderResult resultControl;
         private PaymentControl paymentControl;
         private EditDTO.DonHang donHangmoi;
         private List<EditDTO.ChiTietDonHang> chitietDonHangMoi;
         private EditDTO.LichSuGD lichSuGD;
-        private ResponseDTO.KhachHang kh;
 
 
 
@@ -94,30 +92,18 @@ namespace PM_LKMT.SubForm
                     frame = panel;
                     break;
                 case 2:
-                    HandleOrder();
                     orderStepBtn.BackColor = Color.Green;
-                    customerBtnStep.BackColor = Color.Orange;
-                    orderStepBtn.Enabled = false;
-                    customerBtnStep.Enabled = true;
-                    customerControl = new CustomerControl();
-                    frame.Controls.Add(customerControl);
-                    break;
-                case 3:
-
-                    orderStepBtn.BackColor = Color.Green;
-                    customerBtnStep.BackColor = Color.Green;
                     paymentStepBtn.BackColor = Color.Orange;
-                    customerBtnStep.Enabled = false;
                     paymentStepBtn.Enabled = true;
                     paymentControl = new PaymentControl(userName, donHangmoi);
                     frame.Controls.Add(paymentControl);
                     break;
-                case 4:
+                case 3:
                     orderStepBtn.Enabled = false;
-                    customerBtnStep.Enabled = false;
                     paymentStepBtn.Enabled = false;
-                    resultControl = new OrderResult(bought, kh, donHangmoi, lichSuGD);
+                    resultControl = new OrderResult(bought, donHangmoi, lichSuGD);
                     frame.Controls.Add(resultControl);
+
                     break;
             }
         }
@@ -230,15 +216,6 @@ namespace PM_LKMT.SubForm
                         _currentStep++;
                         break;
                     case 2:
-                        kh = customerControl.kh;
-                        if (kh == null || _khBLL.GetById(kh.MaKH) == null)
-                        {
-                            MessageBox.Show("Không tìm thấy thông tin khách hàng", "Lỗi", MessageBoxButtons.OK);
-                            return false;
-                        }
-                        _currentStep++;
-                        break;
-                    case 3:
                         lichSuGD = paymentControl.lichSuGD;
                         if(lichSuGD == null)
                         {

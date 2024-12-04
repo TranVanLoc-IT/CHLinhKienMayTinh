@@ -20,10 +20,10 @@ namespace BLL
 
             return _dal.GetAll(idDH);
         }
-        public void CreateRange(List<EditDTO.ChiTietDonHang> dhs)
+        public void CreateRange(string madh, List<ProductCartModel> cart)
         {
 
-            _dal.CreateRange(dhs);
+            _dal.CreateRange(madh, cart);
         }
     }
 }

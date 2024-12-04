@@ -73,7 +73,6 @@ namespace PM_LKMT.Controls
 				// Ghi dữ liệu vào file JSON
 				await WriteToJsonFile($"../../../data/cart.json", carts);
                 MessageBox.Show("Thêm thành công!", "Thông báo");
-                txtDQuantityLeft.Text = (slcon - slmua).ToString();
 			}
 			catch(Exception ex)
             {

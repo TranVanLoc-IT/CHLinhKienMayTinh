@@ -24,7 +24,7 @@ namespace DAL
         }
         public void Create(EditDTO.PhieuNhap pn, EditDTO.ChiTietPhieuNhap[] pns)
         {
-            _db.Insert(pn.MaPN, pn.MaSP, pn.TangTien, pn.NgayNhap, pn.DaXoa);
+            _db.Insert(pn.MaPN, pn.TangTien, pn.NgayNhap, pn.DaXoa);
             _ctpnDAL.Create(pns);
         }
         public void Delete(string id)

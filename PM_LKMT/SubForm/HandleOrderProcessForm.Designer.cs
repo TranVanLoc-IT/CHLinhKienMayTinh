@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HandleOrderProcessForm));
             flowLayoutPanel1 = new FlowLayoutPanel();
             orderStepBtn = new Button();
-            customerBtnStep = new Button();
             paymentStepBtn = new Button();
             completeStepBtn = new Button();
             nextBtn = new Button();
@@ -42,7 +41,6 @@
             dataGrid = new DataGridView();
             panel2 = new Panel();
             refreshBtn = new Button();
-            txtNote = new TextBox();
             button10 = new Button();
             txtKM = new TextBox();
             txtPricePayment = new TextBox();
@@ -59,6 +57,10 @@
             label5 = new Label();
             txtMaDH = new TextBox();
             label1 = new Label();
+            label3 = new Label();
+            txtName = new TextBox();
+            label4 = new Label();
+            sdt = new TextBox();
             flowLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             frame.SuspendLayout();
@@ -72,7 +74,6 @@
             // 
             flowLayoutPanel1.BorderStyle = BorderStyle.Fixed3D;
             flowLayoutPanel1.Controls.Add(orderStepBtn);
-            flowLayoutPanel1.Controls.Add(customerBtnStep);
             flowLayoutPanel1.Controls.Add(paymentStepBtn);
             flowLayoutPanel1.Controls.Add(completeStepBtn);
             flowLayoutPanel1.Controls.Add(nextBtn);
@@ -95,23 +96,11 @@
             orderStepBtn.Text = "Thông tin đơn hàng";
             orderStepBtn.UseVisualStyleBackColor = false;
             // 
-            // customerBtnStep
-            // 
-            customerBtnStep.Enabled = false;
-            customerBtnStep.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic);
-            customerBtnStep.Location = new Point(150, 0);
-            customerBtnStep.Margin = new Padding(0);
-            customerBtnStep.Name = "customerBtnStep";
-            customerBtnStep.Size = new Size(150, 53);
-            customerBtnStep.TabIndex = 1;
-            customerBtnStep.Text = "Thông tin khách hàng";
-            customerBtnStep.UseVisualStyleBackColor = true;
-            // 
             // paymentStepBtn
             // 
             paymentStepBtn.Enabled = false;
             paymentStepBtn.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic);
-            paymentStepBtn.Location = new Point(300, 0);
+            paymentStepBtn.Location = new Point(150, 0);
             paymentStepBtn.Margin = new Padding(0);
             paymentStepBtn.Name = "paymentStepBtn";
             paymentStepBtn.Size = new Size(150, 53);
@@ -123,7 +112,7 @@
             // 
             completeStepBtn.Enabled = false;
             completeStepBtn.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic);
-            completeStepBtn.Location = new Point(450, 0);
+            completeStepBtn.Location = new Point(300, 0);
             completeStepBtn.Margin = new Padding(0);
             completeStepBtn.Name = "completeStepBtn";
             completeStepBtn.Size = new Size(150, 53);
@@ -138,7 +127,7 @@
             nextBtn.FlatAppearance.MouseDownBackColor = Color.Green;
             nextBtn.FlatAppearance.MouseOverBackColor = Color.Green;
             nextBtn.FlatStyle = FlatStyle.Flat;
-            nextBtn.Location = new Point(603, 3);
+            nextBtn.Location = new Point(453, 3);
             nextBtn.Name = "nextBtn";
             nextBtn.Size = new Size(57, 50);
             nextBtn.TabIndex = 40;
@@ -201,8 +190,11 @@
             // panel2
             // 
             panel2.BackColor = Color.WhiteSmoke;
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(txtName);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(sdt);
             panel2.Controls.Add(refreshBtn);
-            panel2.Controls.Add(txtNote);
             panel2.Controls.Add(button10);
             panel2.Controls.Add(txtKM);
             panel2.Controls.Add(txtPricePayment);
@@ -238,17 +230,6 @@
             refreshBtn.TabIndex = 55;
             refreshBtn.UseVisualStyleBackColor = true;
             // 
-            // txtNote
-            // 
-            txtNote.BorderStyle = BorderStyle.None;
-            txtNote.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtNote.Location = new Point(12, 64);
-            txtNote.Multiline = true;
-            txtNote.Name = "txtNote";
-            txtNote.PlaceholderText = "Ghi chú cho đơn hàng nếu có";
-            txtNote.Size = new Size(415, 90);
-            txtNote.TabIndex = 54;
-            // 
             // button10
             // 
             button10.BackColor = Color.Peru;
@@ -274,8 +255,8 @@
             // 
             // txtPricePayment
             // 
-            txtPricePayment.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtPricePayment.BorderStyle = BorderStyle.None;
+            txtPricePayment.Enabled = false;
             txtPricePayment.Font = new Font("Times New Roman", 13.8F);
             txtPricePayment.Location = new Point(15, 271);
             txtPricePayment.Name = "txtPricePayment";
@@ -287,11 +268,11 @@
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label2.ForeColor = Color.Black;
+            label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            label2.ForeColor = SystemColors.ControlDarkDark;
             label2.Location = new Point(12, 245);
             label2.Name = "label2";
-            label2.Size = new Size(195, 25);
+            label2.Size = new Size(227, 25);
             label2.TabIndex = 46;
             label2.Text = "Tổng tiền phải chi trả";
             // 
@@ -345,7 +326,6 @@
             // searchtxt
             // 
             searchtxt.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            searchtxt.Enabled = false;
             searchtxt.Font = new Font("Times New Roman", 13.8F);
             searchtxt.Location = new Point(455, 297);
             searchtxt.Name = "searchtxt";
@@ -368,7 +348,7 @@
             txtTotalPriceDiscount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtTotalPriceDiscount.BorderStyle = BorderStyle.None;
             txtTotalPriceDiscount.Font = new Font("Times New Roman", 13.8F);
-            txtTotalPriceDiscount.Location = new Point(143, 203);
+            txtTotalPriceDiscount.Location = new Point(192, 200);
             txtTotalPriceDiscount.Name = "txtTotalPriceDiscount";
             txtTotalPriceDiscount.Size = new Size(188, 27);
             txtTotalPriceDiscount.TabIndex = 31;
@@ -379,11 +359,11 @@
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label6.ForeColor = Color.Black;
-            label6.Location = new Point(12, 205);
+            label6.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            label6.ForeColor = SystemColors.ControlDarkDark;
+            label6.Location = new Point(12, 207);
             label6.Name = "label6";
-            label6.Size = new Size(56, 25);
+            label6.Size = new Size(66, 25);
             label6.TabIndex = 30;
             label6.Text = "Giảm";
             // 
@@ -392,7 +372,7 @@
             txtPriceBefore.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtPriceBefore.BorderStyle = BorderStyle.None;
             txtPriceBefore.Font = new Font("Times New Roman", 13.8F);
-            txtPriceBefore.Location = new Point(143, 160);
+            txtPriceBefore.Location = new Point(192, 156);
             txtPriceBefore.Name = "txtPriceBefore";
             txtPriceBefore.Size = new Size(188, 27);
             txtPriceBefore.TabIndex = 29;
@@ -402,11 +382,11 @@
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label5.ForeColor = Color.Black;
+            label5.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            label5.ForeColor = SystemColors.ControlDarkDark;
             label5.Location = new Point(12, 169);
             label5.Name = "label5";
-            label5.Size = new Size(104, 25);
+            label5.Size = new Size(121, 25);
             label5.TabIndex = 28;
             label5.Text = "Thành tiền";
             // 
@@ -415,21 +395,61 @@
             txtMaDH.BorderStyle = BorderStyle.FixedSingle;
             txtMaDH.Enabled = false;
             txtMaDH.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtMaDH.Location = new Point(143, 23);
+            txtMaDH.Location = new Point(192, 24);
             txtMaDH.Name = "txtMaDH";
-            txtMaDH.Size = new Size(284, 34);
+            txtMaDH.Size = new Size(234, 34);
             txtMaDH.TabIndex = 19;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            label1.ForeColor = Color.Black;
+            label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            label1.ForeColor = SystemColors.ControlDarkDark;
             label1.Location = new Point(12, 29);
             label1.Name = "label1";
-            label1.Size = new Size(125, 25);
+            label1.Size = new Size(148, 25);
             label1.TabIndex = 18;
             label1.Text = "Mã đơn hàng";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            label3.ForeColor = SystemColors.ControlDarkDark;
+            label3.Location = new Point(15, 77);
+            label3.Name = "label3";
+            label3.Size = new Size(173, 25);
+            label3.TabIndex = 85;
+            label3.Text = "Tên khách hàng";
+            // 
+            // txtName
+            // 
+            txtName.BorderStyle = BorderStyle.None;
+            txtName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            txtName.Location = new Point(192, 69);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(231, 27);
+            txtName.TabIndex = 84;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            label4.ForeColor = SystemColors.ControlDarkDark;
+            label4.Location = new Point(15, 124);
+            label4.Name = "label4";
+            label4.Size = new Size(141, 25);
+            label4.TabIndex = 83;
+            label4.Text = "Số điện thoại";
+            // 
+            // sdt
+            // 
+            sdt.BorderStyle = BorderStyle.None;
+            sdt.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            sdt.Location = new Point(192, 114);
+            sdt.Name = "sdt";
+            sdt.Size = new Size(234, 27);
+            sdt.TabIndex = 82;
             // 
             // HandleOrderProcessForm
             // 
@@ -454,7 +474,6 @@
         #endregion
         private FlowLayoutPanel flowLayoutPanel1;
         private Button orderStepBtn;
-        private Button customerBtnStep;
         private Button paymentStepBtn;
         private Button completeStepBtn;
         private Panel panel1;
@@ -462,7 +481,6 @@
         private Panel panel3;
         private Panel panel2;
         private Button nextBtn;
-        private TextBox txtNote;
         private Button button10;
         private TextBox txtKM;
         private TextBox txtPricePayment;
@@ -481,5 +499,9 @@
         private Label label1;
         private DataGridView dataGrid;
         private Button refreshBtn;
+        private Label label3;
+        private TextBox txtName;
+        private Label label4;
+        private TextBox sdt;
     }
 }

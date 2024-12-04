@@ -22,18 +22,16 @@ namespace PM_LKMT.SubForm
         private ConvertMoneyUnitBLL _convertMoneyUnitBLL;
         private ErrorProvider _errorProvider;
         private EditDTO.LichSuGD lichSuGD;
-        private ResponseDTO.KhachHang kh;
 
         private IEnumerable<ResponseDTO.ChiTietDHResult> sps;
         private EditDTO.DonHang donHang;
 
-        public OrderResult(IEnumerable<ResponseDTO.ChiTietDHResult> sps, ResponseDTO.KhachHang kh, EditDTO.DonHang donHang, EditDTO.LichSuGD lichSuGD)
+        public OrderResult(IEnumerable<ResponseDTO.ChiTietDHResult> sps, EditDTO.DonHang donHang, EditDTO.LichSuGD lichSuGD)
         {
             InitializeComponent();
             this.Load += async (s, e) => await Config();
             this.lichSuGD = lichSuGD;
             this.sps = sps;
-            this.kh = kh;
             this.donHang = donHang;
         }
         private async Task Config()
@@ -60,6 +58,7 @@ namespace PM_LKMT.SubForm
         }
         private void FillInfo()
         {
+            ResponseDTO.KhachHang kh = _khBLL.GetById(donHang.MaKH);
             txtMaDH.Text = donHang.MaDonHang;
             txtPricePayment.Text = donHang.ThanhTien.ToString();
             txtStatus.Text = "Thành công";

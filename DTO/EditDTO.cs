@@ -56,7 +56,7 @@ namespace DTO
             public string HoTen { get; set; }
             public DateTime NgayThamGia { get; set; }
             public bool DaXoa { get; set; }
-            public DateTime ChinhSuaGanNhat { get; set; }
+            public DateTime ChinhSuaGanNhat { get; set; } = DateTime.Now;
             public string NguoiChinhSuaGanNhat { get; set; }
         }
 
@@ -116,6 +116,7 @@ namespace DTO
         {
             public string MaPN { get; set; }
             public string MaSanPham { get; set; }
+            public string MaThuongHieu{ get; set; }
             public decimal GiaNhap { get; set; }
             public int SoLuong { get; set; }
             public decimal ThanhTien { get; set; }

@@ -21,14 +21,13 @@ namespace DAL
         {
             return (IEnumerable<ResponseDTO.ChiTietDonHang>)_db.GetData().Where(r => r.MaDonHang == idDH);
         }
-        public void CreateRange(List<EditDTO.ChiTietDonHang> dhs)
+        public void CreateRange(string madh, List<ProductCartModel> cart)
         {
-            foreach (var dh in dhs)
+            foreach (var dh in cart)
             {
-                _db.Insert(dh.MaDonHang, dh.MaSanPham, dh.ThanhTien, dh.SoLuong);
+                _db.Insert(madh, dh.MaSanPham, dh.ThanhTien, dh.SoLuong);
                 _spDAL.UpdateQuantity(dh.MaSanPham, dh.SoLuong);
             }
-
         }
     }
 }
