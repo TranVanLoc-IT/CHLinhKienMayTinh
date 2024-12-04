@@ -98,5 +98,16 @@ namespace PM_LKMT
         {
             this.timeWork.Text = TimeHelper.GetCurrentTime().ToString();
         }
+
+        private void manageSalePage_Click(object sender, EventArgs e)
+        {
+            this.main.Controls.Clear();
+            ViewProgramVoucher currentForm = new ViewProgramVoucher();
+            currentForm.TopLevel = false;       // 
+            currentForm.FormBorderStyle = FormBorderStyle.None; // 
+            currentForm.Dock = DockStyle.Fill;  //  
+            this.main.Controls.Add(currentForm);
+            currentForm.Show();
+        }
     }
 }
