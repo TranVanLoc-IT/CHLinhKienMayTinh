@@ -54,7 +54,7 @@ namespace BLL
             }
             return Constant.SUCCESS;
         }
-        public IEnumerable<ResponseDTO.PhieuNhap> GetAll()
+        public List<ResponseDTO.PhieuNhap> GetAll()
         {
             return _dal.GetAll();
         }

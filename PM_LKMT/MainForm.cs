@@ -27,6 +27,7 @@ namespace PM_LKMT
             this.WindowState = FormWindowState.Maximized;
             timer1.Tick += timer1_Tick;
             timer1.Start();
+            this.manageImportPage.Click += ManageImportPage_Click;
 
         }
 
@@ -93,6 +94,18 @@ namespace PM_LKMT
             this.main.Controls.Add(currentForm);
             currentForm.Show();
         }
+
+        private void ManageImportPage_Click(object? sender, EventArgs e)
+        {
+            this.main.Controls.Clear();
+            ImportReceiptForm currentForm = new ImportReceiptForm();
+            currentForm.TopLevel = false;       // 
+            currentForm.FormBorderStyle = FormBorderStyle.None; // 
+            currentForm.Dock = DockStyle.Fill;  //  
+            this.main.Controls.Add(currentForm);
+            currentForm.Show();
+        }
+
 
         private void timer1_Tick(object sender, EventArgs e)
         {

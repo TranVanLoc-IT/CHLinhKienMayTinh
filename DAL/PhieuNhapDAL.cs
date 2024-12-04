@@ -24,7 +24,7 @@ namespace DAL
         }
         public void Create(EditDTO.PhieuNhap pn, EditDTO.ChiTietPhieuNhap[] pns)
         {
-            _db.Insert(pn.MaPN, pn.MaSP, pn.TangTien, pn.NgayNhap, pn.DaXoa);
+            _db.Insert(pn.MaPN, pn.TongTien, pn.NgayNhap, pn.DaXoa);
             _ctpnDAL.Create(pns);
         }
         public void Delete(string id)
@@ -32,9 +32,9 @@ namespace DAL
             QueriesTableAdapter query = new QueriesTableAdapter();
             query.XoaPhieuNhap(id);
         }
-        public IEnumerable<ResponseDTO.PhieuNhap> GetAll()
+        public List<ResponseDTO.PhieuNhap> GetAll()
         {
-            return (IEnumerable<ResponseDTO.PhieuNhap>)_db.GetData();
+            return _db.GetData().Where(p => p.DaXoa == false).Select(p => new ResponseDTO.PhieuNhap { MaPN = p.MaPN, TongTien = p.TangTien, NgayNhap = p.NgayNhap }).ToList<ResponseDTO.PhieuNhap>();
         }
         public ResponseDTO.PhieuNhap GetById(string id)
         {

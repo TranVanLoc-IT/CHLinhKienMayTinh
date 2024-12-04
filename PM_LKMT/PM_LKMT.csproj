@@ -2,7 +2,11 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
+<<<<<<< HEAD
     <TargetFramework>net7.0-windows</TargetFramework>
+=======
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
+>>>>>>> d5efe55 (feature_Khiem/QLPhieuNhap#1)
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>

@@ -15,10 +15,15 @@ namespace BLL
         {
             _dal = new CTPhieuNhapDAL();
         }
-        public IEnumerable<ResponseDTO.ChiTietPhieuNhap> GetAll(string idPN)
+        public List<ResponseDTO.ChiTietPhieuNhap> GetAll(string idPN)
         {
 
             return _dal.GetAll(idPN);
+        }
+
+        public decimal GetTotal(string idPN)
+        {
+            return _dal.GetAll(idPN).Sum(p => p.ThanhTien);
         }
     }
 }

@@ -81,8 +81,7 @@ namespace DTO
         public class PhieuNhap
         {
             public string MaPN { get; set; }
-            public string MaSP { get; set; }
-            public decimal TangTien { get; set; }
+            public decimal TongTien { get; set; }
             public DateTime NgayNhap { get; set; }
             public bool DaXoa { get; set; }
         }

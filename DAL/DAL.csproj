@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Service Include="{3259aa49-8aa1-44d3-9025-a0b520596a8c}" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="LKMT.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

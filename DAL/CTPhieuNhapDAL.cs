@@ -17,9 +17,9 @@ namespace DAL
             _db = new CHITIETPHIEUNHAPTableAdapter();
             _spDAL = new SanPhamDAL();
         }
-        public IEnumerable<ResponseDTO.ChiTietPhieuNhap> GetAll(string idPN)
+        public List<ResponseDTO.ChiTietPhieuNhap> GetAll(string idPN)
         {
-            return (IEnumerable<ResponseDTO.ChiTietPhieuNhap>)_db.GetData().Where(r => r.MaPN == idPN);
+            return _db.GetData().Where(r => r.MaPN == idPN).Join(_spDAL.GetAll(), p => p.MaSanPham, q => q.MaSanPham, (p, q) => new ResponseDTO.ChiTietPhieuNhap { TenSP = q.TenSanPham, GiaNhap = p.GiaNhap, SoLuong = p.SoLuong, ThanhTien = p.ThanhTien }).ToList<ResponseDTO.ChiTietPhieuNhap>();
         }
         public void Create(EditDTO.ChiTietPhieuNhap[] dhs)
         {
