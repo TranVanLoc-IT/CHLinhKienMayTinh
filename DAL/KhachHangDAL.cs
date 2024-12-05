@@ -23,6 +23,7 @@ namespace DAL
         public void Create(EditDTO.KhachHang kh)
         {
             _db.Insert(kh.MaKH, kh.SDT, kh.HoTen, kh.NgayThamGia, kh.DaXoa, kh.ChinhSuaGanNhat, kh.NguoiChinhSuaGanNhat);
+
         }
         public void Delete(string id)
         {
@@ -31,7 +32,13 @@ namespace DAL
         }
         public IEnumerable<ResponseDTO.KhachHang> GetAll()
         {
-            return (IEnumerable<ResponseDTO.KhachHang>)_db.GetData();
+            return _db.GetData().Select(r => new ResponseDTO.KhachHang()
+            {
+                MaKH = r.MaKH,
+                HoTen = r.HoTen,
+                SDT = r.SDT,
+                NgayThamGia = r.NgayThamGia
+            });
         }
         public ResponseDTO.KhachHang GetById(string id)
         {

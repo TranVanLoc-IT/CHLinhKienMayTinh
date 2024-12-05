@@ -8,13 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PM_LKMT.UserControlCustom
+namespace PM_LKMT.Controls
 {
-    public partial class PaymentForm : Form
-    {
-        public PaymentForm()
-        {
-            InitializeComponent();
-        }
-    }
+	public partial class OrderCard : UserControl
+	{
+		public OrderCard()
+		{
+			InitializeComponent();
+		}
+	}
 }

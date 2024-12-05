@@ -56,7 +56,7 @@ namespace DTO
             public string HoTen { get; set; }
             public DateTime NgayThamGia { get; set; }
             public bool DaXoa { get; set; }
-            public DateTime ChinhSuaGanNhat { get; set; }
+            public DateTime ChinhSuaGanNhat { get; set; } = DateTime.Now;
             public string NguoiChinhSuaGanNhat { get; set; }
         }
 
@@ -100,16 +100,6 @@ namespace DTO
             public bool DaXoa { get; set; }
         }
 
-        public class HoaDon
-        {
-            public string MaHoaDon { get; set; }
-            public string MaDonHang { get; set; }
-            public string NhanVienTao { get; set; }
-            public DateTime NgayLap { get; set; }
-            public decimal TongTien { get; set; }
-            public bool DaXoa { get; set; }
-        }
-
         public class ChuongTrinh
         {
             public string MaCT { get; set; }
@@ -139,6 +129,18 @@ namespace DTO
             public decimal ThanhTien { get; set; }
             public int SoLuong { get; set; }
         }
+
+        public class LichSuGD
+        {
+            public string MaGiaoDich { get; set; }
+            public string MaDonHang { get; set; }
+            public byte TrangThai { get; set; }
+            public string PhuongThuc { get; set; }
+            public string NganHang { get; set; }
+            public decimal SoTien { get; set; }
+            public DateTime NgayTao { get; set; }
+        }
+
 
         public class KhuyenMai
         {

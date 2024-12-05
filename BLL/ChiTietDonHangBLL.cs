@@ -20,5 +20,10 @@ namespace BLL
 
             return _dal.GetAll(idDH);
         }
+        public void CreateRange(string madh, List<ProductCartModel> cart)
+        {
+
+            _dal.CreateRange(madh, cart);
+        }
     }
 }

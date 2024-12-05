@@ -91,6 +91,8 @@ namespace DAL {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+            " or extended by application code.", DiagnosticId="SYSLIB0051")]
         protected LKMT(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
@@ -826,6 +828,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected CHITIETDONHANGDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -1136,6 +1140,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected THUONGHIEUDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -1442,6 +1448,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected CHITIETPHIEUNHAPDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -1788,6 +1796,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected CHUONGTRINHDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -2150,6 +2160,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected DONHANGDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -2853,6 +2865,8 @@ namespace DAL {
             
             private global::System.Data.DataColumn columnDaDung;
             
+            private global::System.Data.DataColumn columnSoLuong;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public KHUYENMAIDataTable() {
@@ -2922,6 +2936,14 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn SoLuongColumn {
+                get {
+                    return this.columnSoLuong;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2957,13 +2979,14 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public KHUYENMAIRow AddKHUYENMAIRow(string MaKhuyenMai, DONHANGRow parentDONHANGRowByFK__KHUYENMAI__MaDH__59FA5E80, CHUONGTRINHRow parentCHUONGTRINHRowByFK__KHUYENMAI__MaCT__59063A47, bool DaDung) {
+            public KHUYENMAIRow AddKHUYENMAIRow(string MaKhuyenMai, DONHANGRow parentDONHANGRowByFK__KHUYENMAI__MaDH__59FA5E80, CHUONGTRINHRow parentCHUONGTRINHRowByFK__KHUYENMAI__MaCT__59063A47, bool DaDung, int SoLuong) {
                 KHUYENMAIRow rowKHUYENMAIRow = ((KHUYENMAIRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MaKhuyenMai,
                         null,
                         null,
-                        DaDung};
+                        DaDung,
+                        SoLuong};
                 if ((parentDONHANGRowByFK__KHUYENMAI__MaDH__59FA5E80 != null)) {
                     columnValuesArray[1] = parentDONHANGRowByFK__KHUYENMAI__MaDH__59FA5E80[0];
                 }
@@ -3003,6 +3026,7 @@ namespace DAL {
                 this.columnMaDH = base.Columns["MaDH"];
                 this.columnMaCT = base.Columns["MaCT"];
                 this.columnDaDung = base.Columns["DaDung"];
+                this.columnSoLuong = base.Columns["SoLuong"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3016,6 +3040,8 @@ namespace DAL {
                 base.Columns.Add(this.columnMaCT);
                 this.columnDaDung = new global::System.Data.DataColumn("DaDung", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDaDung);
+                this.columnSoLuong = new global::System.Data.DataColumn("SoLuong", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSoLuong);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnMaKhuyenMai}, true));
                 this.columnMaKhuyenMai.AllowDBNull = false;
@@ -3545,6 +3571,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected LOAISANPHAMDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -3877,6 +3905,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected NHANVIENDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -4269,6 +4299,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected NHOMSANPHAMDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -4571,6 +4603,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected PHIEUNHAPDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -4892,6 +4926,8 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            [System.ObsoleteAttribute("This API supports obsolete formatter-based serialization. It should not be called" +
+                " or extended by application code.", DiagnosticId="SYSLIB0051")]
             protected SANPHAMDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
@@ -6556,6 +6592,22 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public int SoLuong {
+                get {
+                    try {
+                        return ((int)(this[this.tableKHUYENMAI.SoLuongColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SoLuong\' in table \'KHUYENMAI\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKHUYENMAI.SoLuongColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public CHUONGTRINHRow CHUONGTRINHRow {
                 get {
                     return ((CHUONGTRINHRow)(this.GetParentRow(this.Table.ParentRelations["FK__KHUYENMAI__MaCT__59063A47"])));
@@ -6610,6 +6662,18 @@ namespace DAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetDaDungNull() {
                 this[this.tableKHUYENMAI.DaDungColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsSoLuongNull() {
+                return this.IsNull(this.tableKHUYENMAI.SoLuongColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetSoLuongNull() {
+                this[this.tableKHUYENMAI.SoLuongColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -11570,10 +11634,11 @@ SELECT MaKH, SDT, HoTen, NgayThamGia, DaXoa, ChinhSuaGanNhat, NguoiChinhSuaGanNh
             tableMapping.ColumnMappings.Add("MaDH", "MaDH");
             tableMapping.ColumnMappings.Add("MaCT", "MaCT");
             tableMapping.ColumnMappings.Add("DaDung", "DaDung");
+            tableMapping.ColumnMappings.Add("SoLuong", "SoLuong");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[KHUYENMAI] WHERE (([MaKhuyenMai] = @Original_MaKhuyenMai) AND ((@IsNull_MaDH = 1 AND [MaDH] IS NULL) OR ([MaDH] = @Original_MaDH)) AND ((@IsNull_MaCT = 1 AND [MaCT] IS NULL) OR ([MaCT] = @Original_MaCT)) AND ((@IsNull_DaDung = 1 AND [DaDung] IS NULL) OR ([DaDung] = @Original_DaDung)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[KHUYENMAI] WHERE (([MaKhuyenMai] = @Original_MaKhuyenMai) AND ((@IsNull_MaDH = 1 AND [MaDH] IS NULL) OR ([MaDH] = @Original_MaDH)) AND ((@IsNull_MaCT = 1 AND [MaCT] IS NULL) OR ([MaCT] = @Original_MaCT)) AND ((@IsNull_DaDung = 1 AND [DaDung] IS NULL) OR ([DaDung] = @Original_DaDung)) AND ((@IsNull_SoLuong = 1 AND [SoLuong] IS NULL) OR ([SoLuong] = @Original_SoLuong)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaKhuyenMai", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhuyenMai", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaDH", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaDH", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -11582,25 +11647,29 @@ SELECT MaKH, SDT, HoTen, NgayThamGia, DaXoa, ChinhSuaGanNhat, NguoiChinhSuaGanNh
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaCT", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaCT", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DaDung", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DaDung", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DaDung", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DaDung", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[KHUYENMAI] ([MaKhuyenMai], [MaDH], [MaCT], [DaDung]) VALUES (@" +
-                "MaKhuyenMai, @MaDH, @MaCT, @DaDung);\r\nSELECT MaKhuyenMai, MaDH, MaCT, DaDung FRO" +
-                "M KHUYENMAI WHERE (MaKhuyenMai = @MaKhuyenMai)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[KHUYENMAI] ([MaKhuyenMai], [MaDH], [MaCT], [DaDung], [SoLuong]" +
+                ") VALUES (@MaKhuyenMai, @MaDH, @MaCT, @DaDung, @SoLuong);\r\nSELECT MaKhuyenMai, M" +
+                "aDH, MaCT, DaDung, SoLuong FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKhuyenMai)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhuyenMai", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhuyenMai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaDH", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaDH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaCT", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaCT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DaDung", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DaDung", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[KHUYENMAI] SET [MaKhuyenMai] = @MaKhuyenMai, [MaDH] = @MaDH, [MaCT] = @MaCT, [DaDung] = @DaDung WHERE (([MaKhuyenMai] = @Original_MaKhuyenMai) AND ((@IsNull_MaDH = 1 AND [MaDH] IS NULL) OR ([MaDH] = @Original_MaDH)) AND ((@IsNull_MaCT = 1 AND [MaCT] IS NULL) OR ([MaCT] = @Original_MaCT)) AND ((@IsNull_DaDung = 1 AND [DaDung] IS NULL) OR ([DaDung] = @Original_DaDung)));
-SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKhuyenMai)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[KHUYENMAI] SET [MaKhuyenMai] = @MaKhuyenMai, [MaDH] = @MaDH, [MaCT] = @MaCT, [DaDung] = @DaDung, [SoLuong] = @SoLuong WHERE (([MaKhuyenMai] = @Original_MaKhuyenMai) AND ((@IsNull_MaDH = 1 AND [MaDH] IS NULL) OR ([MaDH] = @Original_MaDH)) AND ((@IsNull_MaCT = 1 AND [MaCT] IS NULL) OR ([MaCT] = @Original_MaCT)) AND ((@IsNull_DaDung = 1 AND [DaDung] IS NULL) OR ([DaDung] = @Original_DaDung)) AND ((@IsNull_SoLuong = 1 AND [SoLuong] IS NULL) OR ([SoLuong] = @Original_SoLuong)));
+SELECT MaKhuyenMai, MaDH, MaCT, DaDung, SoLuong FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKhuyenMai)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhuyenMai", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhuyenMai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaDH", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaDH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaCT", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaCT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DaDung", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DaDung", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaKhuyenMai", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhuyenMai", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaDH", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaDH", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaDH", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaDH", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -11608,6 +11677,8 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaCT", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaCT", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DaDung", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DaDung", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DaDung", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DaDung", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11624,7 +11695,7 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM dbo.KHUYENMAI";
+            this._commandCollection[0].CommandText = "SELECT MaKhuyenMai, MaDH, MaCT, DaDung, SoLuong FROM dbo.KHUYENMAI";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -11685,7 +11756,7 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_MaKhuyenMai, string Original_MaDH, string Original_MaCT, global::System.Nullable<bool> Original_DaDung) {
+        public virtual int Delete(string Original_MaKhuyenMai, string Original_MaDH, string Original_MaCT, global::System.Nullable<bool> Original_DaDung, global::System.Nullable<int> Original_SoLuong) {
             if ((Original_MaKhuyenMai == null)) {
                 throw new global::System.ArgumentNullException("Original_MaKhuyenMai");
             }
@@ -11716,6 +11787,14 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            if ((Original_SoLuong.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_SoLuong.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11736,7 +11815,7 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string MaKhuyenMai, string MaDH, string MaCT, global::System.Nullable<bool> DaDung) {
+        public virtual int Insert(string MaKhuyenMai, string MaDH, string MaCT, global::System.Nullable<bool> DaDung, global::System.Nullable<int> SoLuong) {
             if ((MaKhuyenMai == null)) {
                 throw new global::System.ArgumentNullException("MaKhuyenMai");
             }
@@ -11761,6 +11840,12 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
+            if ((SoLuong.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(SoLuong.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11781,7 +11866,7 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string MaKhuyenMai, string MaDH, string MaCT, global::System.Nullable<bool> DaDung, string Original_MaKhuyenMai, string Original_MaDH, string Original_MaCT, global::System.Nullable<bool> Original_DaDung) {
+        public virtual int Update(string MaKhuyenMai, string MaDH, string MaCT, global::System.Nullable<bool> DaDung, global::System.Nullable<int> SoLuong, string Original_MaKhuyenMai, string Original_MaDH, string Original_MaCT, global::System.Nullable<bool> Original_DaDung, global::System.Nullable<int> Original_SoLuong) {
             if ((MaKhuyenMai == null)) {
                 throw new global::System.ArgumentNullException("MaKhuyenMai");
             }
@@ -11806,35 +11891,49 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
+            if ((SoLuong.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(SoLuong.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
             if ((Original_MaKhuyenMai == null)) {
                 throw new global::System.ArgumentNullException("Original_MaKhuyenMai");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_MaKhuyenMai));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_MaKhuyenMai));
             }
             if ((Original_MaDH == null)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_MaDH));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_MaDH));
             }
             if ((Original_MaCT == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_MaCT));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_MaCT));
             }
             if ((Original_DaDung.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(Original_DaDung.Value));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((bool)(Original_DaDung.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((Original_SoLuong.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_SoLuong.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11856,8 +11955,8 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string MaDH, string MaCT, global::System.Nullable<bool> DaDung, string Original_MaKhuyenMai, string Original_MaDH, string Original_MaCT, global::System.Nullable<bool> Original_DaDung) {
-            return this.Update(Original_MaKhuyenMai, MaDH, MaCT, DaDung, Original_MaKhuyenMai, Original_MaDH, Original_MaCT, Original_DaDung);
+        public virtual int Update(string MaDH, string MaCT, global::System.Nullable<bool> DaDung, global::System.Nullable<int> SoLuong, string Original_MaKhuyenMai, string Original_MaDH, string Original_MaCT, global::System.Nullable<bool> Original_DaDung, global::System.Nullable<int> Original_SoLuong) {
+            return this.Update(Original_MaKhuyenMai, MaDH, MaCT, DaDung, SoLuong, Original_MaKhuyenMai, Original_MaDH, Original_MaCT, Original_DaDung, Original_SoLuong);
         }
     }
     
@@ -15150,7 +15249,7 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.IDbCommand[10];
+            this._commandCollection = new global::System.Data.IDbCommand[11];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
@@ -15214,6 +15313,12 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[9])).CommandText = "select makh from khachhang where sdt = @sdt";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[9])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[9])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sdt", global::System.Data.SqlDbType.Char, 11, global::System.Data.ParameterDirection.Input, 0, 0, "SDT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[10])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+                    "erverCertificate=True");
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[10])).CommandText = "UPDATE donhang set tinhtrang = \'Đã thanh toán\' where madonhang = @madh";
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[10])).CommandType = global::System.Data.CommandType.Text;
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[10])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@madh", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaDonHang", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15536,6 +15641,35 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
             else {
                 return ((string)(returnValue));
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateOrderStatus(string madh) {
+            global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[10]));
+            if ((madh == null)) {
+                throw new global::System.ArgumentNullException("madh");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(madh));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
