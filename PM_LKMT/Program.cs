@@ -1,3 +1,5 @@
+using PM_LKMT.SubForm;
+
 namespace PM_LKMT
 {
     internal static class Program
@@ -11,7 +13,7 @@ namespace PM_LKMT
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new LoginForm());
+            Application.Run(new FrmTHuongHieu());
             //Application.Run(new SubForm.ViewProgramVoucher());
         }
     }
