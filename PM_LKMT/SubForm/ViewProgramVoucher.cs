@@ -20,7 +20,9 @@ namespace PM_LKMT.SubForm
         public ViewProgramVoucher()
         {
             InitializeComponent();
-            //this.MaximizeBox = false;
+            this.WindowState = FormWindowState.Maximized;
+            dgvProgramVour.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 14, FontStyle.Bold);
+            dgvProgramVour.RowTemplate.Height = 50;
             bLL = new ChuongTrinhBLL();
             this.Load += ViewProgramVoucher_Load;
             dgvProgramVour.SelectionChanged += DgvProgramVour_SelectionChanged;
@@ -188,8 +190,15 @@ namespace PM_LKMT.SubForm
                 return;
             string ret = bLL.Delete(txtProgramId.Text);
             if (DTO.Constant.SUCCESS == ret)
+            {
                 loadData(dgvProgramVour, bLL.GetAll());
-            return;
+                MessageBox.Show("Thao tác thành công");
+            }
+            else
+            {
+                MessageBox.Show("Thao tác thất bại!");
+                return;
+            }
         }
 
         private void BtnAdd_Click(object? sender, EventArgs e)
@@ -245,6 +254,7 @@ namespace PM_LKMT.SubForm
         void loadData(DataGridView dgv, IEnumerable<ResponseDTO.ChuongTrinh> chuongTrinhs)
         {
             dgv.DataSource = migrateDataChuongTrinh(chuongTrinhs);
+            dgv.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         IEnumerable<object> migrateDataChuongTrinh(IEnumerable<ResponseDTO.ChuongTrinh> chuongTrinhs)

@@ -12,6 +12,7 @@ namespace PM_LKMT
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginForm());
+            //Application.Run(new SubForm.ViewProgramVoucher());
         }
     }
 }

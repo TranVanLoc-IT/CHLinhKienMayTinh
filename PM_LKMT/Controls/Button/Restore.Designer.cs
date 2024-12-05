@@ -1,6 +1,6 @@
 ﻿namespace PM_LKMT.Controls.Button
 {
-    partial class Add
+    partial class Restore
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,39 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button = new System.Windows.Forms.Button();
+            button1 = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
-            // button
+            // button1
             // 
-            button.BackColor = Color.DarkSlateGray;
-            button.BackgroundImage = Resource.icons8_cart_48;
-            button.BackgroundImageLayout = ImageLayout.None;
-            button.FlatAppearance.MouseOverBackColor = Color.DarkCyan;
-            button.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button.ForeColor = SystemColors.ButtonFace;
-            button.Location = new Point(4, 4);
-            button.Margin = new Padding(4, 4, 4, 4);
-            button.Name = "button";
-            button.Size = new Size(149, 74);
-            button.TabIndex = 1;
-            button.Text = "Mua";
-            button.TextAlign = ContentAlignment.MiddleRight;
-            button.UseVisualStyleBackColor = false;
+            button1.BackColor = Color.Green;
+            button1.BackgroundImage = Resource.update2;
+            button1.BackgroundImageLayout = ImageLayout.None;
+            button1.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.ButtonFace;
+            button1.ImageAlign = ContentAlignment.MiddleLeft;
+            button1.Location = new Point(0, 0);
+            button1.Name = "button1";
+            button1.Size = new Size(119, 59);
+            button1.TabIndex = 1;
+            button1.Text = "Restore";
+            button1.TextAlign = ContentAlignment.MiddleRight;
+            button1.UseVisualStyleBackColor = false;
             // 
-            // Add
+            // Update
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(button);
-            Margin = new Padding(4, 4, 4, 4);
-            Name = "Add";
-            Size = new Size(155, 80);
+            Controls.Add(button1);
+            Name = "Restore";
+            Size = new Size(124, 63);
             ResumeLayout(false);
         }
 
         #endregion
 
-        public System.Windows.Forms.Button button;
+        public System.Windows.Forms.Button button1;
     }
 }
