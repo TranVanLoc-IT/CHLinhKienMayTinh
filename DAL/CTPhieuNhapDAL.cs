@@ -17,16 +17,16 @@ namespace DAL
             _db = new CHITIETPHIEUNHAPTableAdapter();
             _spDAL = new SanPhamDAL();
         }
-        public IEnumerable<ResponseDTO.ChiTietPhieuNhap> GetAll(string idPN)
+        public List<ResponseDTO.ChiTietPhieuNhap> GetAll(string idPN)
         {
-            return (IEnumerable<ResponseDTO.ChiTietPhieuNhap>)_db.GetData().Where(r => r.MaPN == idPN);
+            return _db.GetData().Where(r => r.MaPN == idPN).Select(p => new ResponseDTO.ChiTietPhieuNhap { MaSP = p.MaSanPham, MaThuongHieu = p.MaThuongHieu, GiaNhap = p.GiaNhap, SoLuong = p.SoLuong, ThanhTien = p.ThanhTien}).ToList<ResponseDTO.ChiTietPhieuNhap>();
         }
-        public void Create(EditDTO.ChiTietPhieuNhap[] dhs)
+        public void Create(List<EditDTO.ChiTietPhieuNhap> dhs)
         {
             foreach (var dh in dhs)
             {
-                _db.Insert(dh.MaPN, dh.MaSanPham, dh.MaThuongHieu, dh.GiaNhap, dh.SoLuong, dh.ThanhTien);
-                _spDAL.UpdateQuantity(dh.MaSanPham, dh.SoLuong);
+                _db.Insert(dh.MaPN, dh.MaSanPham, dh.MaThuongHieu,dh.GiaNhap, dh.SoLuong, dh.ThanhTien);
+                //_spDAL.UpdateQuantity(dh.MaSanPham, dh.SoLuong);
             }
         }
     }
