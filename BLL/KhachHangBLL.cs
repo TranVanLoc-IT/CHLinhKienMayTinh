@@ -59,10 +59,10 @@ namespace BLL
 
             return _dal.GetAll();
         }
-        public ResponseDTO.KhachHang GetById(string id)
+        public ResponseDTO.KhachHang GetByIdOrByName(string id)
         {
 
-            return _dal.GetById(id);
+            return _dal.GetByIdOrByName(id);
         }
 
         public string CheckCustomer(string phone)

@@ -47,6 +47,7 @@ namespace PM_LKMT.Controls
             {
                 int slcon = int.Parse(txtDQuantityLeft.Text);
                 int slmua = 1;
+                ++slmua;
                 if(slmua > slcon)
                 {
 					MessageBox.Show("Vượt quá số lượng hàng hiện có!", "Thông báo");
@@ -60,7 +61,8 @@ namespace PM_LKMT.Controls
 				cart.ThanhTien = cart.SoLuong * cart.GiaBan;
                 carts = await ReadFromJsonFile($"../../../data/cart.json");
 				ProductCartModel prEx = carts.Where(r => r.MaSanPham == cart.MaSanPham).FirstOrDefault()!;
-				if (prEx == null)
+				
+                if (prEx == null)
 				{
                     // kiem tra cap nhat sl moi
 					carts.Add(cart);
@@ -68,7 +70,9 @@ namespace PM_LKMT.Controls
 				else
 				{
 					carts.Remove(prEx);
-					carts.Add(cart);
+                    ++prEx.SoLuong;
+                    prEx.ThanhTien = prEx.SoLuong * cart.GiaBan;
+					carts.Add(prEx);
 				}
 				// Ghi dữ liệu vào file JSON
 				await WriteToJsonFile($"../../../data/cart.json", carts);

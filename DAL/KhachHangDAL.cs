@@ -40,9 +40,13 @@ namespace DAL
                 NgayThamGia = r.NgayThamGia
             });
         }
-        public ResponseDTO.KhachHang GetById(string id)
+        public ResponseDTO.KhachHang GetByIdOrByName(string id)
         {
-            return (ResponseDTO.KhachHang)_db.GetData().Where(r => r.MaKH == id);
+            return _db.GetData().Where(r => r.MaKH == id || r.HoTen.Equals(id)).Select(r => new ResponseDTO.KhachHang()
+            {
+                HoTen = r.HoTen,
+                SDT = r.SDT
+            }).First();
         }
         public string CheckCustomer(string phone)
         {

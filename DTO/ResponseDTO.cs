@@ -130,9 +130,6 @@ namespace DTO
             [DisplayName("Ghi chú")]
             public string GhiChu { get; set; }
 
-            [DisplayName("Số lượng mua")]
-            public int TongSL { get; set; }
-
             [DisplayName("Tổng tiền")]
             public decimal ThanhTien { get; set; }
 

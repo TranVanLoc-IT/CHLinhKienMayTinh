@@ -1,9 +1,5 @@
 ﻿using DAL.LKMTTableAdapters;
 using DTO;
-using System;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static DAL.LKMT;
 
 namespace DAL
@@ -15,7 +11,6 @@ namespace DAL
         private SANPHAMTableAdapter _sp;
         private NHANVIENTableAdapter _nv;
         private KHACHHANGTableAdapter _kh;
-        private LichSuGDDAL _lsdal;
         public DonHangDAL()
         {
             _db = new DONHANGTableAdapter();
@@ -23,7 +18,6 @@ namespace DAL
             _kh = new KHACHHANGTableAdapter();
             _sp = new SANPHAMTableAdapter();
             _ctdh = new CHITIETDONHANGTableAdapter();
-            _lsdal = new LichSuGDDAL();
         }
         public void Update(DONHANGDataTable dh)
         {
@@ -70,7 +64,7 @@ namespace DAL
         }
         public IEnumerable<ResponseDTO.DonHang> GetAllUnconfirmed()
         {
-            var all = GetAllToday().Where(r => r.TinhTrang == "Chưa thanh toán");
+            var all = GetAllToday().Where(r => r.TinhTrang.Equals("Chưa thanh toán"));
             return all;
         }
     }

@@ -14,7 +14,7 @@ namespace PM_LKMT.SubForm
     public partial class ProductCartLine : UserControl
     {
         private ConvertMoneyUnitBLL _unit;
-        private decimal _giaBan;
+        public decimal _giaBan = 0;
         public ProductCartLine()
         {
             InitializeComponent();
@@ -26,8 +26,6 @@ namespace PM_LKMT.SubForm
         {
             if (quantity.Value > 0)
             {
-                _giaBan = decimal.Parse(price.Text.Substring(0, price.Text.Length - 4)) / quantity.Value;
-
                 price.Text = _unit.ConvertToVND(_giaBan * quantity.Value);
             }
 

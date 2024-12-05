@@ -14,10 +14,12 @@ namespace DAL
     public class ChuongTrinhDAL
     {
         private CHUONGTRINHTableAdapter _db;
+        private KHUYENMAITableAdapter _km;
 
         public ChuongTrinhDAL()
         {
             _db = new CHUONGTRINHTableAdapter();
+            _km = new KHUYENMAITableAdapter();
         }
 
         // Phương thức trả về CHUONGTRINHDataTable hiện tại
@@ -68,6 +70,20 @@ namespace DAL
                 GiaTriHoaDon = row.GiaTriHoaDon,
                 DieuKienApDung = row.DieuKienApDung,
             }).ToList();
+        }
+        public bool CheckEmptyKMCard(string MaCT)
+        {
+            if (_km.GetData().Where(r => r.MaCT == MaCT && !r.DaDung).Count() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        public void UseEmptyKMCard(string MaCT, string madh)
+        {
+            string makmEmpty = _km.GetData().Where(r => r.MaCT == MaCT && !r.DaDung).First().MaKhuyenMai;
+            QueriesTableAdapter adapter = new QueriesTableAdapter();
+            adapter.updatekm(madh, makmEmpty);
         }
     }
 }

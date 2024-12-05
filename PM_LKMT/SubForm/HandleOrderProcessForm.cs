@@ -11,24 +11,23 @@ namespace PM_LKMT.SubForm
     public partial class HandleOrderProcessForm : Form
     {
         private string userName { get; set; }
-
-        private static byte _currentStep = 1;
-        private decimal giaBanChon { get; set; }
-        private Panel panel;
-        private KhachHangBLL _khBLL;
-        private ChiTietDonHangBLL _ctdhBLL;
-        private SanPhamBLL _spBLL;
-        private DonHangBLL _dhBLL;
-        private ConvertMoneyUnitBLL _convertMoneyUnitBLL;
+        private string maCt { get; set; }
+        private int _currentStep = 1;
+        private decimal _discount = 0;
         private ErrorProvider _errorProvider;
         private IEnumerable<ResponseDTO.ChiTietDHResult> bought = new List<ResponseDTO.ChiTietDHResult>();
         private List<ProductCartModel> cart = new List<ProductCartModel>();
-        private List<ResponseDTO.DonHang> _donHangs;
+        private ResponseDTO.DonHang donHangmoi = new ResponseDTO.DonHang();
+        private EditDTO.LichSuGD lichSuGD = new EditDTO.LichSuGD();
         private OrderResult resultControl;
-        private PaymentControl paymentControl;
-        private EditDTO.DonHang donHangmoi;
-        private List<EditDTO.ChiTietDonHang> chitietDonHangMoi;
-        private EditDTO.LichSuGD lichSuGD;
+        private ChuongTrinhBLL _ct;
+
+        private LichSuGDBLL lsgd;
+        private SanPhamBLL _spBLL;
+        private DonHangBLL _dhBLL;
+        private KhachHangBLL _khBLL;
+        private ChiTietDonHangBLL _ctdhBLL;
+        private ConvertMoneyUnitBLL _convertMoneyUnitBLL;
 
 
 
@@ -36,173 +35,117 @@ namespace PM_LKMT.SubForm
         {
             InitializeComponent();
             this.userName = uname;
-            this.panel = frame;
-            this.Load += async (s, e) => await Config();
+            frame = panel2;
+            this.Text = "Xử lý thanh toán";
+            Config();
         }
 
-        private async Task Config()
+        private void Config()
         {
             this._convertMoneyUnitBLL = new ConvertMoneyUnitBLL();
             this._khBLL = new KhachHangBLL();
             this._dhBLL = new DonHangBLL();
             this._spBLL = new SanPhamBLL();
+            this._ct = new ChuongTrinhBLL();
+            this.lsgd = new LichSuGDBLL();
             this._ctdhBLL = new ChiTietDonHangBLL();
             this._errorProvider = new ErrorProvider();
             this.dataGrid.RowHeaderMouseClick += DataGrid_RowHeaderMouseClick;
-            this.nextBtn.Click += async (s, e) => await nextBtn_Click(s, e);
-            this.deleteBtn.Click += deleteBtn_Click;
-            this.cancelBtn.Click += async (s, e) => await cancelBtn_Click(s, e);
-            frame.ControlRemoved += Frame_ControlRemoved;
 
-            // load hoa don chua xu ly
-            refreshBtn.PerformClick();
+            loadgrid();
+            SetCbData();
 
-        }
-
-        private void Frame_ControlRemoved(object? sender, ControlEventArgs e)
-        {
-            
         }
 
         private void DataGrid_RowHeaderMouseClick(object? sender, DataGridViewCellMouseEventArgs e)
         {
             var row = this.dataGrid.Rows[e.RowIndex];
+            decimal vatPrice = 0;
+            ResponseDTO.KhachHang kh = _khBLL.GetAll().Where(r => r.HoTen.Equals(row.Cells[2].Value.ToString())).First();
+            donHangmoi = _dhBLL.GetAllUnconfirmed().Where(r => r.MaDonHang == row.Cells[0].Value.ToString()).First();
             txtMaDH.Text = row.Cells[0].Value.ToString();
-            txtPricePayment.Text = row.Cells[5].Value.ToString();
+            txtName.Text = kh.HoTen;
+            sdt.Text = kh.SDT;
             bought = _dhBLL.GetAllCTDHResult(txtMaDH.Text);
-            foreach (var item in bought)
-            {
-                ProductCartLine line = new ProductCartLine();
-                line.txtName.Text = item.TenSanPham;
-                line.quantity.Value = item.SoLuong;
-                line.price.Text = _convertMoneyUnitBLL.ConvertToVND(item.ThanhTien);
 
-                this.flowPanel.Controls.Add(line);
+            this.flowPanel.Controls.Clear();
+            // Tạo Label mới cho từng sản phẩm
+            Label lb = new Label();
+            Label price = new Label();
+
+            // Thiết lập thông tin cho lb
+            lb.Font = new Font("Times New Roman", 13, FontStyle.Italic);
+            lb.ForeColor = Color.Black;
+            lb.AutoSize = true;
+
+            // Thiết lập thông tin cho price
+            price.Font = new Font("Times New Roman", 14, FontStyle.Bold);
+            price.ForeColor = Color.Red;
+            price.AutoSize = true;
+            foreach (var i in bought)
+            {
+                lb.Text = i.TenSanPham + " SL: " + i.SoLuong;
+                price.Text = "Thành tiền: " + _convertMoneyUnitBLL.ConvertToVND(i.ThanhTien);
+                vatPrice += (decimal)(i.ThanhTien * 0.05m);
+                this.flowPanel.Controls.Add(lb);
+                this.flowPanel.Controls.Add(price);
             }
-        }
+            txtPriceBefore.Text = _convertMoneyUnitBLL.ConvertToVND(vatPrice);
 
-        private async Task nextBtn_Click(object sender, EventArgs e)
-        {
-            if (!ConfirmNextStep()) return;
-            frame.Controls.Clear();
-            _currentStep++;
-            switch (_currentStep)
+            decimal totalPrice = decimal.Parse(this.txtPricePayment.Text.Substring(0, txtPricePayment.Text.Length - 4));
+            var cts = _ct.GetAll().Where(r => r.GiaTriHoaDon <= totalPrice).OrderBy(r => r.GiaTriPhanTram).FirstOrDefault();
+            if (cts != null)
             {
-                case 1:
-                    frame = panel;
-                    break;
-                case 2:
-                    orderStepBtn.BackColor = Color.Green;
-                    paymentStepBtn.BackColor = Color.Orange;
-                    paymentStepBtn.Enabled = true;
-                    paymentControl = new PaymentControl(userName, donHangmoi);
-                    frame.Controls.Add(paymentControl);
-                    break;
-                case 3:
-                    orderStepBtn.Enabled = false;
-                    paymentStepBtn.Enabled = false;
-                    resultControl = new OrderResult(bought, donHangmoi, lichSuGD);
-                    frame.Controls.Add(resultControl);
-
-                    break;
-            }
-        }
-
-        private async Task HandleOrder()
-        {
-            List<StoreOrder> stored = await ReadOrderFromJsonFile($"../../../data/orders.json");
-            stored.Remove(stored.Where(r => r.DonHang.MaDonHang == txtMaDH.Text).First());
-            await WriteToJsonFile($"../../../data/orders.json", stored);
-        }
-        public static async Task WriteToJsonFile<T>(string filePath, T data)
-        {
-            var options = new JsonSerializerOptions { WriteIndented = true }; // Format đẹp
-            string jsonString = JsonSerializer.Serialize(data, options);
-
-            await File.WriteAllTextAsync(filePath, jsonString);
-        }
-        public static async Task<List<StoreOrder>> ReadOrderFromJsonFile(string filePath)
-        {
-            if (!File.Exists(filePath))
-            {
-                return default;
+                maCt = cts.MaCT;
+                useKM.Enabled = true;
+                txtKM.Text = cts.MaCT + "-" + cts.GiaTriPhanTram + " " + cts.DieuKienApDung;
+                _discount = totalPrice * cts.GiaTriPhanTram;
+                txtTotalPriceDiscount.Text = "-" + _convertMoneyUnitBLL.ConvertToVND(_discount);
             }
 
-            string jsonString = await File.ReadAllTextAsync(filePath);
-            return JsonSerializer.Deserialize<List<StoreOrder>>(jsonString);
+            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(decimal.Parse(row.Cells[5].Value.ToString()) + vatPrice - _discount);
+            recieveMoney.Text = txtPricePayment.Text;
+        }
+
+        private void ToCompleteForm()
+        {
+            panel2.Controls.Clear();
+            _currentStep = 2;
+            orderStepBtn.Enabled = false;
+            orderStepBtn.BackColor = Color.ForestGreen;
+            completeStepBtn.BackColor = Color.Orange;
+            completeStepBtn.ForeColor = Color.White;
+            cplBtn.Enabled = true;
+            resultControl = new OrderResult(bought, donHangmoi, lichSuGD);
+            resultControl.Dock = DockStyle.Fill;
+            panel2.Controls.Add(resultControl);
         }
 
         private bool Validation()
         {
-            foreach (Control c in this.Controls)
+
+            if (cbNh.SelectedText == "Chọn")
             {
-                if (c is TextBox tb)
-                {
-                    // required
-                    if (tb.Name != "txtNote")
-                    {
-                        if (string.IsNullOrWhiteSpace(tb.Text))
-                        {
-                            _errorProvider.SetError(tb, "Không được để trống");
-                            return false;
-                        }
-                    }
-                }
+                _errorProvider.SetError(cbNh, "Chọn ngân hàng");
+                return false;
+            }
+            if (txtMaDH.Text == "")
+            {
+                _errorProvider.SetError(txtMaDH, "Chọn đơn hàng");
+                return false;
             }
             _errorProvider.Clear();
             return true;
         }
 
-        private async Task cancelBtn_Click(object sender, EventArgs e)
-        {
-            foreach (Control c in this.Controls)
-            {
-                if (c is TextBox tb)
-                {
-                    c.Text = string.Empty;
-                }
-            }
-        }
-
-        private void deleteBtn_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtMaDH.Text))
-            {
-                MessageBox.Show("Nhập mã đơn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string message = _dhBLL.Delete(txtMaDH.Text);
-            _donHangs.Remove(_donHangs.Where(r => r.MaDonHang == txtMaDH.Text).First());
-
-            MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
         private void loadgrid()
         {
             IEnumerable<ResponseDTO.DonHang> dhs = _dhBLL.GetAllUnconfirmed();
-            this.dataGrid.DataSource = dhs;
-            this.dataGrid.Show();
+            this.dataGrid.DataSource = dhs.ToList();
         }
-
-        private void searchTxt_TextChanged(object sender, EventArgs e)
-        {
-            if (searchtxt.Text == "")
-            {
-                this.dataGrid.DataSource = _donHangs;
-            }
-            loadgrid();
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            // get value KM 
-            decimal totalPrice = decimal.Parse(this.txtPricePayment.Text);
-            this.txtTotalPriceDiscount.Text = "0";
-            this.txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(totalPrice - 0);
-        }
-
         private bool ConfirmNextStep()
         {
-            var result = MessageBox.Show("Xác nhận chuyển bước, mọi thay đổi sẽ được lưu !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information,MessageBoxDefaultButton.Button1);
+            var result = MessageBox.Show("Xác nhận chuyển bước, mọi thay đổi sẽ được lưu !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             if (result == DialogResult.OK)
             {
                 switch (_currentStep)
@@ -216,18 +159,134 @@ namespace PM_LKMT.SubForm
                         _currentStep++;
                         break;
                     case 2:
-                        lichSuGD = paymentControl.lichSuGD;
-                        if(lichSuGD == null)
-                        {
-                            return false;
-                        }
-                        _currentStep++;
+                        _currentStep = 1;
                         break;
                 }
                 return true;
             }
             return false;
         }
-     
+
+        private void refreshBtn_Click(object sender, EventArgs e)
+        {
+            loadgrid();
+        }
+
+        private void SetCbData()
+        {
+            List<ComboBoxItemModel> ptCombo = new List<ComboBoxItemModel>()
+            {
+                new ComboBoxItemModel()
+                {
+                    Text = "Chuyển khoản",
+                    Value = "Banking"
+                },
+                  new ComboBoxItemModel()
+                {
+                    Text = "Tiền mặt",
+                    Value = "Cost"
+                }
+            };
+            cbPt.DataSource = ptCombo;
+            cbPt.DisplayMember = "Text";
+            cbPt.ValueMember = "Value";
+        }
+
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            if (!Validation()) return;
+            if (cbPt.SelectedValue.ToString() == "Banking")
+            {
+                if (string.IsNullOrWhiteSpace(maGd.Text))
+                {
+                    _errorProvider.SetError(maGd, "Không được để trống");
+                    return;
+                }
+                lichSuGD.MaGiaoDich = txtMaDH.Text;
+            }
+            else
+            {
+                lichSuGD.MaGiaoDich = IDAutoGeneratorBLL.Generate("GD", 10);
+            }
+            lichSuGD.NgayTao = DateTime.Now;
+            lichSuGD.MaDonHang = txtMaDH.Text;
+            lichSuGD.SoTien = decimal.Parse(txtPricePayment.Text.Substring(0, txtPricePayment.Text.Length - 4)); // errror
+            lichSuGD.PhuongThuc = cbPt.SelectedText!.ToString()!;
+            lichSuGD.NganHang = cbNh.SelectedText!.ToString()!;
+
+            try
+            {
+                lsgd.Create(lichSuGD);
+                MessageBox.Show("Thành công", "Thanh toán thành công", MessageBoxButtons.OK);
+                ToCompleteForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi", "Thanh toán lỗi", MessageBoxButtons.OK);
+            }
+        }
+
+        private void cbPt_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (cbPt.SelectedValue.ToString() == "Banking")
+            {
+                cbNh.Enabled = true;
+                maGd.Enabled = true;
+                recieveMoney.Enabled = false;
+                leftMoney.Enabled = false;
+            }
+            else
+            {
+                cbNh.Enabled = false;
+                maGd.Enabled = false;
+                recieveMoney.Text = txtPricePayment.Text;
+                leftMoney.Enabled = true;
+            }
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            _ct.UseEmptyKMCard(maCt, txtMaDH.Text);
+            this.txtTotalPriceDiscount.Text = _convertMoneyUnitBLL.ConvertToVND(_discount);
+        }
+
+        private void txtPricePayment_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            flowPanel.Controls.Clear();
+            foreach (Control c in panel2.Controls)
+            {
+                if (c is TextBox tb)
+                {
+                    c.Text = string.Empty;
+                }
+            }
+            foreach (Control c in groupBox2.Controls)
+            {
+                if (c is TextBox tb)
+                {
+                    c.Text = string.Empty;
+                }
+            }
+            txtPriceBefore.Text = "0 VND";
+            txtPricePayment.Text = "0 VND";
+            txtTotalPriceDiscount.Text = "0 VND";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel2 = frame;
+            button1.PerformClick();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            leftMoney.Text = _convertMoneyUnitBLL.ConvertToVND(decimal.Parse(this.txtPricePayment.Text.Substring(0, txtPricePayment.Text.Length - 4)) - decimal.Parse(this.recieveMoney.Text.Substring(0, recieveMoney.Text.Length - 4)));
+        }
     }
 }

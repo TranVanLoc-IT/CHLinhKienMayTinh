@@ -1,1 +1,7 @@
-﻿
+﻿namespace DAL
+{
+}
+
+namespace DAL
+{
+}

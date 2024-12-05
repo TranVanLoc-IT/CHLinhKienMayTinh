@@ -76,6 +76,14 @@ namespace BLL
         {
             return _dal.GetChuongTrinhsByDaXoa(daXoa);
         }
+        public bool CheckEmptyKMCard(string MaCT)
+        {
+            return _dal.CheckEmptyKMCard(MaCT);
+        }
+        public void UseEmptyKMCard(string MaCT, string madh)
+        {
+            _dal.UseEmptyKMCard(MaCT, madh);
+        }
     }
 }
 

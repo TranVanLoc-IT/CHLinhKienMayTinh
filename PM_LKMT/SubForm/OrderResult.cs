@@ -24,9 +24,9 @@ namespace PM_LKMT.SubForm
         private EditDTO.LichSuGD lichSuGD;
 
         private IEnumerable<ResponseDTO.ChiTietDHResult> sps;
-        private EditDTO.DonHang donHang;
+        private ResponseDTO.DonHang donHang;
 
-        public OrderResult(IEnumerable<ResponseDTO.ChiTietDHResult> sps, EditDTO.DonHang donHang, EditDTO.LichSuGD lichSuGD)
+        public OrderResult(IEnumerable<ResponseDTO.ChiTietDHResult> sps, ResponseDTO.DonHang donHang, EditDTO.LichSuGD lichSuGD)
         {
             InitializeComponent();
             this.Load += async (s, e) => await Config();
@@ -46,19 +46,30 @@ namespace PM_LKMT.SubForm
         }
         private void LoadProduct()
         {
-            foreach (var item in sps)
-            {
-                ProductCartLine line = new ProductCartLine();
-                line.txtName.Text = item.TenSanPham;
-                line.quantity.Value = item.SoLuong;
-                line.price.Text = _convertMoneyUnitBLL.ConvertToVND(item.ThanhTien);
+          
+            Label lb = new Label();
+            Label price = new Label();
 
-                this.flowPanel.Controls.Add(line);
+            // Thiết lập thông tin cho lb
+            lb.Font = new Font("Times New Roman", 13, FontStyle.Italic);
+            lb.ForeColor = Color.Black;
+            lb.AutoSize = true;
+
+            // Thiết lập thông tin cho price
+            price.Font = new Font("Times New Roman", 14, FontStyle.Bold);
+            price.ForeColor = Color.Red;
+            price.AutoSize = true;
+            foreach (var i in sps)
+            {
+                lb.Text = i.TenSanPham + " SL: " + i.SoLuong;
+                price.Text = "Thành tiền: " + _convertMoneyUnitBLL.ConvertToVND(i.ThanhTien);
+                this.flowPanel.Controls.Add(lb);
+                this.flowPanel.Controls.Add(price);
             }
         }
         private void FillInfo()
         {
-            ResponseDTO.KhachHang kh = _khBLL.GetById(donHang.MaKH);
+            ResponseDTO.KhachHang kh = _khBLL.GetByIdOrByName(donHang.TenKH);
             txtMaDH.Text = donHang.MaDonHang;
             txtPricePayment.Text = donHang.ThanhTien.ToString();
             txtStatus.Text = "Thành công";
