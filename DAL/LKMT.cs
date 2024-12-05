@@ -5,3 +5,7 @@
 namespace DAL
 {
 }
+
+namespace DAL
+{
+}
