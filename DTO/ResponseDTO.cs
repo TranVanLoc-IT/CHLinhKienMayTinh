@@ -108,8 +108,7 @@ namespace DTO
         public class PhieuNhap
         {
             public string MaPN { get; set; }
-            public string MaSP { get; set; }
-            public decimal GiaNhap { get; set; }
+            public decimal TongTien { get; set; }
             public DateTime NgayNhap { get; set; }
         }
 
@@ -127,6 +126,9 @@ namespace DTO
             [DisplayName("Ngày tạo")]
             public DateTime NgayTao { get; set; }
 
+            [DisplayName("Tình trạng")]
+            public string TinhTrang { get; set; }
+
             [DisplayName("Ghi chú")]
             public string GhiChu { get; set; }
 
@@ -138,9 +140,6 @@ namespace DTO
 
             [DisplayName("Giảm giá")]
             public decimal GiamGia { get; set; }
-
-            [DisplayName("Tình trạng")]
-			public string TinhTrang { get; set; }
 		}
 
         public class HoaDon
@@ -166,8 +165,8 @@ namespace DTO
 
         public class ChiTietPhieuNhap
         {
-            public string MaPN { get; set; }
-            public string MaSanPham { get; set; }
+            public string MaSP { get; set; }
+            public string MaThuongHieu { get; set; }
             public decimal GiaNhap { get; set; }
             public int SoLuong { get; set; }
             public decimal ThanhTien { get; set; }
@@ -196,5 +195,14 @@ namespace DTO
             public bool DaDung { get; set; }
         }
 
+        public class SanPhamPhieuNhap
+        {
+            public string MaSP { get; set; }
+            public string TenSP { get; set; }
+            public string MaThuongHieu { get; set; }
+
+            public decimal DonGia { get; set; }
+            public int SoLuongTon { get; set; }
+        }
     }
 }
