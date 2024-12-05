@@ -22,187 +22,175 @@
     <Shape ID="DesignTable:KHUYENMAI" ZOrder="3" X="2517" Y="248" Height="204" Width="258" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="145" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:FK__CHITIETDO__MaDon__5535A963" ZOrder="20" LineWidth="11">
+    <Connector ID="DesignRelation:FK__CHITIETDO__MaDon__5535A963" ZOrder="26" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>3043</X>
-          <Y>463</Y>
+          <X>1899</X>
+          <Y>490</Y>
         </Point>
         <Point>
-          <X>3937</X>
-          <Y>463</Y>
+          <X>1899</X>
+          <Y>380</Y>
+        </Point>
+        <Point>
+          <X>2866</X>
+          <Y>380</Y>
         </Point>
       </RoutePoints>
     </Connector>
-    <Connector ID="DesignRelation:FK__CHITIETDO__MaSan__5629CD9C" ZOrder="19" LineWidth="11">
+    <Connector ID="DesignRelation:FK__CHITIETDO__MaSan__5629CD9C" ZOrder="25" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>4165</X>
-          <Y>624</Y>
+          <X>2929</X>
+          <Y>721</Y>
         </Point>
         <Point>
-          <X>4148</X>
-          <Y>624</Y>
+          <X>2921</X>
+          <Y>721</Y>
         </Point>
         <Point>
-          <X>4148</X>
-          <Y>599</Y>
+          <X>2921</X>
+          <Y>397</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK__LOAISANPH__MaNho__3B75D760" ZOrder="24" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>4938</X>
-          <Y>599</Y>
+          <X>4302</X>
+          <Y>397</Y>
         </Point>
         <Point>
-          <X>4938</X>
-          <Y>607</Y>
+          <X>4302</X>
+          <Y>405</Y>
         </Point>
         <Point>
-          <X>4921</X>
-          <Y>607</Y>
+          <X>4285</X>
+          <Y>405</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK__SANPHAM__MaLoaiS__4222D4EF" ZOrder="23" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>2780</X>
-          <Y>668</Y>
+          <X>4023</X>
+          <Y>420</Y>
         </Point>
         <Point>
-          <X>2780</X>
-          <Y>685</Y>
+          <X>4023</X>
+          <Y>532</Y>
         </Point>
         <Point>
-          <X>2797</X>
-          <Y>685</Y>
+          <X>3173</X>
+          <Y>532</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK__SANPHAM__MaThuon__4316F928" ZOrder="22" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>3709</X>
-          <Y>479</Y>
+          <X>3795</X>
+          <Y>397</Y>
         </Point>
         <Point>
-          <X>3043</X>
-          <Y>479</Y>
+          <X>3795</X>
+          <Y>540</Y>
+        </Point>
+        <Point>
+          <X>3173</X>
+          <Y>540</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK__DONHANG__MaKH__49C3F6B7" ZOrder="21" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>3481</X>
-          <Y>639</Y>
+          <X>2190</X>
+          <Y>216</Y>
         </Point>
         <Point>
-          <X>3464</X>
-          <Y>639</Y>
+          <X>2190</X>
+          <Y>170</Y>
         </Point>
         <Point>
-          <X>3464</X>
-          <Y>622</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
-    <Connector ID="DesignRelation:FK__KHUYENMAI__MaDH__59FA5E80" ZOrder="12" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>3043</X>
-          <Y>495</Y>
+          <X>1820</X>
+          <Y>170</Y>
         </Point>
         <Point>
-          <X>3253</X>
-          <Y>495</Y>
+          <X>1820</X>
+          <Y>490</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK__DONHANG__NhanVie__48CFD27E" ZOrder="20" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>2947</X>
-          <Y>418</Y>
+          <X>2223</X>
+          <Y>558</Y>
         </Point>
         <Point>
-          <X>2947</X>
-          <Y>388</Y>
+          <X>2223</X>
+          <Y>162</Y>
         </Point>
         <Point>
-          <X>3033</X>
-          <Y>388</Y>
+          <X>1812</X>
+          <Y>162</Y>
         </Point>
         <Point>
-          <X>3033</X>
-          <Y>418</Y>
+          <X>1812</X>
+          <Y>490</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK__LICHSU_GI__MaDon__4CA06362" ZOrder="14" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>5313</X>
-          <Y>414</Y>
+          <X>1670</X>
+          <Y>510</Y>
         </Point>
         <Point>
-          <X>5313</X>
-          <Y>380</Y>
+          <X>1653</X>
+          <Y>510</Y>
         </Point>
         <Point>
-          <X>5227</X>
-          <Y>380</Y>
-        </Point>
-        <Point>
-          <X>5227</X>
-          <Y>418</Y>
+          <X>1653</X>
+          <Y>493</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK__CHITIETPH__MaSan__5070F446" ZOrder="9" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>5085</X>
-          <Y>418</Y>
+          <X>3133</X>
+          <Y>515</Y>
         </Point>
         <Point>
-          <X>5085</X>
-          <Y>372</Y>
-        </Point>
-        <Point>
-          <X>4315</X>
-          <Y>372</Y>
-        </Point>
-        <Point>
-          <X>4315</X>
-          <Y>418</Y>
+          <X>3133</X>
+          <Y>377</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK__CHITIETPH__MaThu__5165187F" ZOrder="8" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>4401</X>
-          <Y>418</Y>
+          <X>3778</X>
+          <Y>228</Y>
         </Point>
         <Point>
-          <X>4401</X>
-          <Y>364</Y>
+          <X>3393</X>
+          <Y>228</Y>
         </Point>
       </RoutePoints>
     </Connector>
     <Connector ID="DesignRelation:FK__CHITIETPHI__MaPN__4F7CD00D" ZOrder="6" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>4307</X>
-          <Y>364</Y>
+          <X>3329</X>
+          <Y>437</Y>
         </Point>
         <Point>
-          <X>4307</X>
-          <Y>418</Y>
+          <X>3329</X>
+          <Y>377</Y>
         </Point>
       </RoutePoints>
     </Connector>
