@@ -84,19 +84,21 @@ namespace PM_LKMT.SubForm
         {
             if (e.KeyCode == Keys.Enter)
             {
-                this.panelAll.Controls.Clear();
-                foreach (Control control in panelAll.Controls)
+                List<Control> filter = new List<Control>();
+
+
+                foreach (Control control in this.panelAll.Controls)
                 {
                     if (control is ProductViewCard card)
                     {
                         if (card.productName.Text.ToLower().StartsWith(searchBox.Text.ToLower()) || card.productName.Text.ToLower().Contains(searchBox.Text.ToLower()))
                         {
-                            this.panelAll.Controls.Add(card);
-                            return;
+                            filter.Add(card);
                         }
                     }
                 }
-                MessageBox.Show("Không thấy kết quả phù hợp !?", "Thông báo", MessageBoxButtons.OKCancel);
+                this.panelAll.Controls.Clear();
+                this.panelAll.Controls.AddRange(filter.ToArray());
             }
 
         }

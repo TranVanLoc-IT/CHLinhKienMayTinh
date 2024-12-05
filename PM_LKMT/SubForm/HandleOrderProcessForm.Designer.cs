@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HandleOrderProcessForm));
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             flowLayoutPanel1 = new FlowLayoutPanel();
             orderStepBtn = new Button();
             completeStepBtn = new Button();
@@ -88,7 +88,7 @@
             // orderStepBtn
             // 
             orderStepBtn.BackColor = Color.Orange;
-            orderStepBtn.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            orderStepBtn.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic);
             orderStepBtn.ForeColor = SystemColors.ButtonFace;
             orderStepBtn.Location = new Point(0, 0);
             orderStepBtn.Margin = new Padding(0);
@@ -101,7 +101,7 @@
             // completeStepBtn
             // 
             completeStepBtn.Enabled = false;
-            completeStepBtn.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            completeStepBtn.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic);
             completeStepBtn.Location = new Point(150, 0);
             completeStepBtn.Margin = new Padding(0);
             completeStepBtn.Name = "completeStepBtn";
@@ -117,7 +117,7 @@
             cplBtn.Enabled = false;
             cplBtn.FlatAppearance.MouseDownBackColor = Color.Green;
             cplBtn.FlatAppearance.MouseOverBackColor = Color.Green;
-            cplBtn.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            cplBtn.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic);
             cplBtn.Location = new Point(300, 0);
             cplBtn.Margin = new Padding(0);
             cplBtn.Name = "cplBtn";
@@ -193,7 +193,7 @@
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             groupBox1.Controls.Add(flowPanel);
-            groupBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox1.Font = new Font("Times New Roman", 13.8F);
             groupBox1.Location = new Point(18, 430);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(455, 90);
@@ -220,7 +220,7 @@
             groupBox2.Controls.Add(cbPt);
             groupBox2.Controls.Add(cbNh);
             groupBox2.Controls.Add(maGd);
-            groupBox2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             groupBox2.Location = new Point(509, 17);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(507, 177);
@@ -231,7 +231,7 @@
             // leftMoney
             // 
             leftMoney.Enabled = false;
-            leftMoney.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            leftMoney.Font = new Font("Times New Roman", 13.8F);
             leftMoney.Location = new Point(296, 126);
             leftMoney.Name = "leftMoney";
             leftMoney.PlaceholderText = "Tiền trả lại";
@@ -241,14 +241,14 @@
             // 
             // recieveMoney
             // 
-            recieveMoney.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            recieveMoney.Font = new Font("Times New Roman", 13.8F);
             recieveMoney.Location = new Point(30, 126);
             recieveMoney.Name = "recieveMoney";
             recieveMoney.PlaceholderText = "Tiền nhận";
             recieveMoney.Size = new Size(248, 34);
             recieveMoney.TabIndex = 40;
             recieveMoney.TextAlign = HorizontalAlignment.Right;
-            recieveMoney.TextChanged += textBox1_TextChanged;
+            recieveMoney.KeyDown += recieveMoney_KeyDown;
             // 
             // label7
             // 
@@ -281,7 +281,7 @@
             // 
             // maGd
             // 
-            maGd.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            maGd.Font = new Font("Times New Roman", 13.8F);
             maGd.Location = new Point(30, 33);
             maGd.Name = "maGd";
             maGd.PlaceholderText = "Nhập mã giao dịch";
@@ -291,7 +291,7 @@
             // txtTotalPriceDiscount
             // 
             txtTotalPriceDiscount.BorderStyle = BorderStyle.None;
-            txtTotalPriceDiscount.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTotalPriceDiscount.Font = new Font("Times New Roman", 13.8F);
             txtTotalPriceDiscount.ForeColor = Color.Green;
             txtTotalPriceDiscount.Location = new Point(192, 269);
             txtTotalPriceDiscount.Name = "txtTotalPriceDiscount";
@@ -304,7 +304,7 @@
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
-            label6.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label6.ForeColor = SystemColors.ControlDarkDark;
             label6.Location = new Point(15, 276);
             label6.Name = "label6";
@@ -321,15 +321,15 @@
             dataGrid.BorderStyle = BorderStyle.Fixed3D;
             dataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.Padding = new Padding(1);
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dataGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 12F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.Padding = new Padding(1);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dataGrid.DefaultCellStyle = dataGridViewCellStyle1;
             dataGrid.Location = new Point(509, 259);
             dataGrid.Name = "dataGrid";
             dataGrid.RowHeadersWidth = 51;
@@ -339,7 +339,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label3.ForeColor = SystemColors.ControlDarkDark;
             label3.Location = new Point(15, 77);
             label3.Name = "label3";
@@ -351,7 +351,7 @@
             // 
             txtName.BorderStyle = BorderStyle.None;
             txtName.Enabled = false;
-            txtName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             txtName.Location = new Point(223, 69);
             txtName.Name = "txtName";
             txtName.Size = new Size(250, 27);
@@ -360,7 +360,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label4.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label4.ForeColor = SystemColors.ControlDarkDark;
             label4.Location = new Point(15, 124);
             label4.Name = "label4";
@@ -372,7 +372,7 @@
             // 
             sdt.BorderStyle = BorderStyle.None;
             sdt.Enabled = false;
-            sdt.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            sdt.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             sdt.Location = new Point(223, 114);
             sdt.Name = "sdt";
             sdt.Size = new Size(250, 27);
@@ -398,7 +398,7 @@
             // 
             useKM.BackColor = Color.Peru;
             useKM.Enabled = false;
-            useKM.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            useKM.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             useKM.ForeColor = SystemColors.ButtonHighlight;
             useKM.Location = new Point(379, 202);
             useKM.Name = "useKM";
@@ -411,7 +411,7 @@
             // btnPay
             // 
             btnPay.BackColor = Color.Green;
-            btnPay.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            btnPay.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             btnPay.ForeColor = Color.White;
             btnPay.Location = new Point(18, 370);
             btnPay.Name = "btnPay";
@@ -425,7 +425,7 @@
             // 
             txtKM.BorderStyle = BorderStyle.None;
             txtKM.Enabled = false;
-            txtKM.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtKM.Font = new Font("Times New Roman", 13.8F);
             txtKM.Location = new Point(15, 202);
             txtKM.Multiline = true;
             txtKM.Name = "txtKM";
@@ -437,7 +437,7 @@
             // 
             txtPricePayment.BorderStyle = BorderStyle.None;
             txtPricePayment.Enabled = false;
-            txtPricePayment.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPricePayment.Font = new Font("Times New Roman", 13.8F);
             txtPricePayment.ForeColor = Color.Red;
             txtPricePayment.Location = new Point(18, 337);
             txtPricePayment.Name = "txtPricePayment";
@@ -450,7 +450,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label2.ForeColor = SystemColors.ControlDarkDark;
             label2.Location = new Point(15, 311);
             label2.Name = "label2";
@@ -462,7 +462,7 @@
             // 
             txtPriceBefore.BorderStyle = BorderStyle.None;
             txtPriceBefore.Enabled = false;
-            txtPriceBefore.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPriceBefore.Font = new Font("Times New Roman", 13.8F);
             txtPriceBefore.Location = new Point(223, 161);
             txtPriceBefore.Name = "txtPriceBefore";
             txtPriceBefore.Size = new Size(250, 27);
@@ -474,7 +474,7 @@
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label5.ForeColor = SystemColors.ControlDarkDark;
             label5.Location = new Point(15, 169);
             label5.Name = "label5";
@@ -486,7 +486,7 @@
             // 
             txtMaDH.BorderStyle = BorderStyle.FixedSingle;
             txtMaDH.Enabled = false;
-            txtMaDH.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtMaDH.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             txtMaDH.Location = new Point(223, 17);
             txtMaDH.Name = "txtMaDH";
             txtMaDH.Size = new Size(250, 34);
@@ -495,7 +495,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ControlDarkDark;
             label1.Location = new Point(15, 29);
             label1.Name = "label1";

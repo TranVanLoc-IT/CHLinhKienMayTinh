@@ -47,8 +47,7 @@ namespace PM_LKMT.Controls
             {
                 int slcon = int.Parse(txtDQuantityLeft.Text);
                 int slmua = 1;
-                ++slmua;
-                if(slmua > slcon)
+                if(slmua + 1 > slcon)
                 {
 					MessageBox.Show("Vượt quá số lượng hàng hiện có!", "Thông báo");
                     return;

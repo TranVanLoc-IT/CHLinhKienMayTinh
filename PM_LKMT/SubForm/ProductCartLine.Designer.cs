@@ -37,7 +37,7 @@
             // price
             // 
             price.AutoSize = true;
-            price.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            price.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             price.Location = new Point(516, 7);
             price.Name = "price";
             price.Size = new Size(120, 25);
@@ -48,7 +48,8 @@
             // 
             txtName.BorderStyle = BorderStyle.None;
             txtName.Dock = DockStyle.Left;
-            txtName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtName.Enabled = false;
+            txtName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             txtName.Location = new Point(0, 0);
             txtName.Multiline = true;
             txtName.Name = "txtName";
@@ -59,7 +60,7 @@
             // 
             quantity.BackColor = Color.SteelBlue;
             quantity.BorderStyle = BorderStyle.None;
-            quantity.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            quantity.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold | FontStyle.Italic);
             quantity.ForeColor = SystemColors.InactiveBorder;
             quantity.Location = new Point(334, 0);
             quantity.Name = "quantity";

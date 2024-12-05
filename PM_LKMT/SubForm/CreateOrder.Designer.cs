@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateOrder));
             panel1 = new Panel();
             panel2 = new Panel();
+            panel3 = new Panel();
             dataGrid = new DataGridView();
             groupBox1 = new GroupBox();
             flowPanel = new FlowLayoutPanel();
@@ -54,6 +55,7 @@
             label1 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGrid).BeginInit();
             groupBox1.SuspendLayout();
             panelInfo.SuspendLayout();
@@ -72,7 +74,7 @@
             // panel2
             // 
             panel2.BackColor = Color.WhiteSmoke;
-            panel2.Controls.Add(dataGrid);
+            panel2.Controls.Add(panel3);
             panel2.Controls.Add(groupBox1);
             panel2.Controls.Add(cbFilter);
             panel2.Controls.Add(searchtxt);
@@ -83,9 +85,17 @@
             panel2.Size = new Size(1068, 574);
             panel2.TabIndex = 22;
             // 
+            // panel3
+            // 
+            panel3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panel3.Controls.Add(dataGrid);
+            panel3.Location = new Point(467, 322);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(574, 240);
+            panel3.TabIndex = 64;
+            // 
             // dataGrid
             // 
-            dataGrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGrid.BackgroundColor = SystemColors.ActiveCaption;
@@ -94,18 +104,19 @@
             dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Window;
-            dataGridViewCellStyle1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 12F);
             dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle1.Padding = new Padding(1);
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGrid.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGrid.Location = new Point(446, 297);
+            dataGrid.Dock = DockStyle.Fill;
+            dataGrid.Location = new Point(0, 0);
             dataGrid.Name = "dataGrid";
             dataGrid.RowHeadersWidth = 51;
-            dataGrid.Size = new Size(781, 211);
-            dataGrid.TabIndex = 64;
+            dataGrid.Size = new Size(574, 240);
+            dataGrid.TabIndex = 65;
             // 
             // groupBox1
             // 
@@ -113,11 +124,11 @@
             groupBox1.BackColor = Color.White;
             groupBox1.Controls.Add(flowPanel);
             groupBox1.FlatStyle = FlatStyle.Flat;
-            groupBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            groupBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold | FontStyle.Italic);
             groupBox1.ForeColor = Color.Black;
-            groupBox1.Location = new Point(443, 3);
+            groupBox1.Location = new Point(467, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(598, 232);
+            groupBox1.Size = new Size(574, 232);
             groupBox1.TabIndex = 63;
             groupBox1.TabStop = false;
             groupBox1.Text = "Các sản phẩm mua";
@@ -128,14 +139,14 @@
             flowPanel.AutoScroll = true;
             flowPanel.BackColor = Color.WhiteSmoke;
             flowPanel.FlowDirection = FlowDirection.TopDown;
-            flowPanel.Location = new Point(3, 30);
+            flowPanel.Location = new Point(0, 30);
             flowPanel.Name = "flowPanel";
-            flowPanel.Size = new Size(592, 199);
+            flowPanel.Size = new Size(571, 199);
             flowPanel.TabIndex = 46;
             // 
             // cbFilter
             // 
-            cbFilter.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            cbFilter.Font = new Font("Times New Roman", 13.8F);
             cbFilter.FormattingEnabled = true;
             cbFilter.Location = new Point(830, 260);
             cbFilter.Name = "cbFilter";
@@ -145,11 +156,11 @@
             // 
             // searchtxt
             // 
-            searchtxt.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            searchtxt.Location = new Point(443, 260);
+            searchtxt.Font = new Font("Times New Roman", 13.8F);
+            searchtxt.Location = new Point(467, 260);
             searchtxt.Name = "searchtxt";
             searchtxt.PlaceholderText = "Nhập mã đơn hàng để tìm";
-            searchtxt.Size = new Size(381, 34);
+            searchtxt.Size = new Size(357, 34);
             searchtxt.TabIndex = 62;
             searchtxt.TextChanged += searchtxt_TextChanged_2;
             // 
@@ -171,14 +182,14 @@
             panelInfo.Controls.Add(label1);
             panelInfo.Location = new Point(0, 0);
             panelInfo.Name = "panelInfo";
-            panelInfo.Size = new Size(437, 574);
+            panelInfo.Size = new Size(461, 574);
             panelInfo.TabIndex = 60;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label3.ForeColor = SystemColors.ControlDarkDark;
             label3.Location = new Point(18, 357);
             label3.Name = "label3";
@@ -191,7 +202,7 @@
             status.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             status.BorderStyle = BorderStyle.None;
             status.Enabled = false;
-            status.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            status.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             status.Location = new Point(209, 355);
             status.Name = "status";
             status.Size = new Size(231, 27);
@@ -201,7 +212,7 @@
             // 
             label5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label5.AutoSize = true;
-            label5.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label5.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label5.ForeColor = SystemColors.ControlDarkDark;
             label5.Location = new Point(15, 170);
             label5.Name = "label5";
@@ -213,7 +224,7 @@
             // 
             txtName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txtName.BorderStyle = BorderStyle.None;
-            txtName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             txtName.Location = new Point(197, 162);
             txtName.Name = "txtName";
             txtName.Size = new Size(231, 27);
@@ -223,7 +234,7 @@
             // 
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label6.AutoSize = true;
-            label6.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label6.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label6.ForeColor = SystemColors.ControlDarkDark;
             label6.Location = new Point(15, 232);
             label6.Name = "label6";
@@ -235,7 +246,7 @@
             // 
             sdt.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             sdt.BorderStyle = BorderStyle.None;
-            sdt.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            sdt.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             sdt.Location = new Point(196, 222);
             sdt.Name = "sdt";
             sdt.Size = new Size(231, 27);
@@ -246,7 +257,7 @@
             // 
             txtNote.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txtNote.BorderStyle = BorderStyle.None;
-            txtNote.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNote.Font = new Font("Times New Roman", 13.8F);
             txtNote.Location = new Point(22, 409);
             txtNote.Multiline = true;
             txtNote.Name = "txtNote";
@@ -273,7 +284,7 @@
             txtPricePayment.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txtPricePayment.BorderStyle = BorderStyle.None;
             txtPricePayment.Enabled = false;
-            txtPricePayment.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            txtPricePayment.Font = new Font("Times New Roman", 13.8F);
             txtPricePayment.Location = new Point(195, 286);
             txtPricePayment.Name = "txtPricePayment";
             txtPricePayment.Size = new Size(232, 27);
@@ -284,7 +295,7 @@
             // 
             label2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             label2.AutoSize = true;
-            label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label2.ForeColor = SystemColors.ControlDarkDark;
             label2.Location = new Point(15, 288);
             label2.Name = "label2";
@@ -310,7 +321,7 @@
             // 
             txtMaDH.BorderStyle = BorderStyle.FixedSingle;
             txtMaDH.Enabled = false;
-            txtMaDH.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            txtMaDH.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             txtMaDH.Location = new Point(19, 78);
             txtMaDH.Name = "txtMaDH";
             txtMaDH.Size = new Size(409, 34);
@@ -334,7 +345,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label1.ForeColor = SystemColors.ControlDarkDark;
             label1.Location = new Point(13, 26);
             label1.Name = "label1";
@@ -353,6 +364,7 @@
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGrid).EndInit();
             groupBox1.ResumeLayout(false);
             panelInfo.ResumeLayout(false);
@@ -372,7 +384,6 @@
         private TextBox txtMaDH;
         private Button deleteBtn;
         private Label label1;
-        private DataGridView dataGrid;
         private GroupBox groupBox1;
         private FlowLayoutPanel flowPanel;
         private ComboBox cbFilter;
@@ -383,5 +394,7 @@
         private TextBox sdt;
         private Label label3;
         private TextBox status;
+        private Panel panel3;
+        private DataGridView dataGrid;
     }
 }

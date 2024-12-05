@@ -38,7 +38,6 @@ namespace PM_LKMT.SubForm
             _errorProvider = new ErrorProvider();
             this.dataGrid.RowHeaderMouseClick += DataGrid_RowHeaderMouseClick;
             this.createBtn.Click += async (s, e) => await createBtn_Click(s, e);
-            this.deleteBtn.Click += deleteBtn_Click;
             this.cancelBtn.Click += async (s, e) => await cancelBtn_Click(s, e);
             cart = await ReadFromJsonFile($"../../../data/cart.json");
             if (cart.Count > 0)
@@ -125,8 +124,8 @@ namespace PM_LKMT.SubForm
         {
             var row = this.dataGrid.Rows[e.RowIndex];
             txtMaDH.Text = row.Cells[0].Value.ToString();
-            txtPricePayment.Text = row.Cells[5].Value.ToString();
-            status.Text = row.Cells[7].Value.ToString();
+            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(decimal.Parse(row.Cells[6].Value.ToString()));
+            status.Text = row.Cells[4].Value.ToString();
             ResponseDTO.KhachHang kh = _khBLL.GetAll().Where(r => r.HoTen.Equals(row.Cells[2].Value.ToString())).First();
             txtName.Text = kh.HoTen;
             sdt.Text = kh.SDT;
@@ -136,6 +135,7 @@ namespace PM_LKMT.SubForm
                 ProductCartLine line = new ProductCartLine();
                 line.txtName.Text = i.TenSanPham;
                 line.quantity.Value = i.SoLuong;
+                line.quantity.Enabled = false;
                 line.quantity.ValueChanged += Quantity_ValueChanged;
                 line.price.Text = _convertMoneyUnitBLL.ConvertToVND(i.ThanhTien);
 
@@ -154,6 +154,7 @@ namespace PM_LKMT.SubForm
 
         private async Task createBtn_Click(object sender, EventArgs e)
         {
+            if (!Validation()) return;
             if (flowPanel.Controls.Count == 0)
             {
                 MessageBox.Show("Chưa có sản phẩm nào để tạo ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -204,6 +205,7 @@ namespace PM_LKMT.SubForm
             sdt.Text = string.Empty;
             searchtxt.Text = string.Empty;
             txtPricePayment.Text = "0 VND";
+            status.Text = "";
         }
         private async Task cancelBtn_Click(object sender, EventArgs e)
         {
@@ -215,9 +217,9 @@ namespace PM_LKMT.SubForm
                 {
                     cart = new List<ProductCartModel>();
                     await WriteToJsonFile($"../../../data/cart.json", cart);
+                    Clear();
                 }
             }
-            Clear();
 
         }
 
@@ -245,19 +247,6 @@ namespace PM_LKMT.SubForm
             return JsonSerializer.Deserialize<List<StoreOrder>>(jsonString);
         }
 
-        private void deleteBtn_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtMaDH.Text))
-            {
-                MessageBox.Show("Nhập mã đơn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            string message = _dhBLL.Delete(txtMaDH.Text);
-            _donHangs.Remove(_donHangs.Where(r => r.MaDonHang == txtMaDH.Text).First());
-
-            MessageBox.Show(message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void loadGrid()
         {
             List<ComboBoxItemModel> items;
@@ -267,7 +256,8 @@ namespace PM_LKMT.SubForm
                 return;
             }
             this.dataGrid.DataSource = _donHangs;
-            this.dataGrid.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGrid.Columns[6].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGrid.Columns[7].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGrid.Show();
 
         }
@@ -332,11 +322,11 @@ namespace PM_LKMT.SubForm
 
         private bool Validation()
         {
-            foreach (Control c in this.Controls)
+            foreach (Control c in this.panelInfo.Controls)
             {
                 if (c is TextBox tb)
                 {
-                    if (string.IsNullOrWhiteSpace(tb.Text) && tb.Name != "txtNote")
+                    if (string.IsNullOrWhiteSpace(tb.Text) && tb.Name != "txtNote" && tb.Name != "txtMaDH")
                     {
                         _errorProvider.SetError(tb, "Không được để trống");
                         return false;
@@ -378,15 +368,25 @@ namespace PM_LKMT.SubForm
 
         private void deleteBtn_Click_1(object sender, EventArgs e)
         {
-            loadGrid();
-            ResponseDTO.DonHang found = _donHangs.Where(r => r.MaDonHang == searchtxt.Text).FirstOrDefault();
-            if (found != null)
+            if (string.IsNullOrWhiteSpace(txtMaDH.Text))
             {
-                _donHangs.Remove(found);
-                loadGrid();
-                Clear();
+                MessageBox.Show("Nhập mã đơn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            MessageBox.Show("Mã đơn hàng không đúng ! Vui lòng chọn lại thông tin !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var confirm = MessageBox.Show("Xác nhận xóa !", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (confirm == DialogResult.OK)
+            {
+                ResponseDTO.DonHang found = _donHangs.Where(r => r.MaDonHang == txtMaDH.Text).FirstOrDefault();
+                if (found != null)
+                {
+                    _dhBLL.Delete(found.MaDonHang);
+                    loadGrid();
+                    dataGrid.DataSource = _donHangs;
+                    Clear();
+                    MessageBox.Show("Xóa thành công đơn hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+            }
         }
     }
 }
