@@ -71,10 +71,10 @@ namespace PM_LKMT.SubForm
         {
             ResponseDTO.KhachHang kh = _khBLL.GetByIdOrByName(donHang.TenKH);
             txtMaDH.Text = donHang.MaDonHang;
-            txtPricePayment.Text = donHang.ThanhTien.ToString();
+            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(donHang.ThanhTien);
             txtStatus.Text = "Thành công";
             customerInfoTxt.Text = kh.HoTen + " - " + kh.SDT;
-
+            txtTotalPriceDiscount.Text = _convertMoneyUnitBLL.ConvertToVND(donHang.GiamGia);
         }
 
         private void btnComplete_Click(object sender, EventArgs e)

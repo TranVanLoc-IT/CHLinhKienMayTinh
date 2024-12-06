@@ -15,6 +15,7 @@ namespace PM_LKMT.SubForm
         private KhachHangBLL _khBLL;
         private DonHangBLL _dhBLL;
         private ChiTietDonHangBLL _ctdhbll;
+        private ChuongTrinhBLL _ct;
         private ConvertMoneyUnitBLL _convertMoneyUnitBLL;
         private List<ProductCartModel> cart = new List<ProductCartModel>();
         private List<ResponseDTO.DonHang> _donHangs;
@@ -33,6 +34,7 @@ namespace PM_LKMT.SubForm
         {
             this._convertMoneyUnitBLL = new ConvertMoneyUnitBLL();
             this._khBLL = new KhachHangBLL();
+            _ct = new ChuongTrinhBLL();
             this._ctdhbll = new ChiTietDonHangBLL();
             this._dhBLL = new DonHangBLL();
             _errorProvider = new ErrorProvider();
@@ -120,7 +122,16 @@ namespace PM_LKMT.SubForm
         {
             var row = this.dataGrid.Rows[e.RowIndex];
             txtMaDH.Text = row.Cells[0].Value.ToString();
-            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(decimal.Parse(row.Cells[6].Value.ToString()));
+            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(decimal.Parse(row.Cells[6].Value.ToString()) - decimal.Parse(row.Cells[7].Value.ToString()));
+            if(decimal.Parse(row.Cells[7].Value.ToString()) > 0)
+            {
+                string ct = _ct.GetNameApplied(row.Cells[0].Value.ToString());
+                txtNote.Text = $"{ct}. Đã giảm {_convertMoneyUnitBLL.ConvertToVND(decimal.Parse(row.Cells[7].Value.ToString()))} so với thành tiền gốc {_convertMoneyUnitBLL.ConvertToVND(decimal.Parse(row.Cells[6].Value.ToString()))}";
+            }
+            else
+            {
+                txtNote.Text = $"{row.Cells[5].Value.ToString()} ";
+            }
             status.Text = row.Cells[4].Value.ToString();
             ResponseDTO.KhachHang kh = _khBLL.GetAll().Where(r => r.HoTen.Equals(row.Cells[2].Value.ToString())).First();
             txtName.Text = kh.HoTen;
@@ -353,13 +364,14 @@ namespace PM_LKMT.SubForm
 
         private void searchtxt_TextChanged_2(object sender, EventArgs e)
         {
-            loadGrid();
-            ResponseDTO.DonHang found = _donHangs.Where(r => r.MaDonHang == searchtxt.Text).FirstOrDefault();
-            if (found != null)
+            var result = _donHangs.Where(r => r.MaDonHang.Trim().Equals(searchtxt.Text.Trim())).ToList();
+            if (result != null)
             {
+                dataGrid.DataSource = result;
+
                 return;
             }
-            dataGrid.DataSource = found;
+            loadGrid();
         }
 
         private void deleteBtn_Click_1(object sender, EventArgs e)

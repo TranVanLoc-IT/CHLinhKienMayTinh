@@ -50,6 +50,8 @@ namespace PM_LKMT.SubForm
             this.lsgd = new LichSuGDBLL();
             this._ctdhBLL = new ChiTietDonHangBLL();
             this._errorProvider = new ErrorProvider();
+            cbNh.SelectedIndex = 0;
+            txtPricePayment.TextChanged += TxtPricePayment_TextChanged;
             // Lưu trạng thái ban đầu
             main = new Panel
             {
@@ -70,6 +72,12 @@ namespace PM_LKMT.SubForm
             SetCbData();
 
         }
+
+        private void TxtPricePayment_TextChanged(object? sender, EventArgs e)
+        {
+            recieveMoney.Text = txtPricePayment.Text;
+        }
+
         private Control CloneControl(Control source)
         {
             Control clone = (Control)Activator.CreateInstance(source.GetType());
@@ -137,11 +145,10 @@ namespace PM_LKMT.SubForm
             {
                 maCt = cts.MaCT;
                 useKM.Enabled = true;
-                txtKM.Text = cts.MaCT + " - Giảm: " + cts.GiaTriPhanTram + "% " + cts.DieuKienApDung;
+                txtKM.Text = cts.DieuKienApDung + " - Giảm: " + cts.GiaTriPhanTram + $"% cho đơn hàng {_convertMoneyUnitBLL.ConvertToVND(cts.GiaTriHoaDon)} trở lên";
                 _discount = totalPrice * (cts.GiaTriPhanTram / 100m);
             }
-            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(totalPrice - _discount);
-            recieveMoney.Text = txtPricePayment.Text;
+           
         }
 
         private void ToCompleteForm()
@@ -162,7 +169,7 @@ namespace PM_LKMT.SubForm
         private bool Validation()
         {
 
-            if (cbNh.SelectedText == "Chọn")
+            if (cbNh.SelectedIndex == 0)
             {
                 _errorProvider.SetError(cbNh, "Chọn ngân hàng");
                 return false;
@@ -233,6 +240,7 @@ namespace PM_LKMT.SubForm
             try
             {
                 lsgd.Create(lichSuGD);
+                _dhBLL.UpdateOrderDiscount(txtMaDH.Text.ToString(), _discount);
                 MessageBox.Show("Thành công", "Thanh toán thành công", MessageBoxButtons.OK);
                 button1.PerformClick();
                 refreshBtn.PerformClick();
@@ -266,10 +274,11 @@ namespace PM_LKMT.SubForm
         private void button10_Click_1(object sender, EventArgs e)
         {
             _ct.UseEmptyKMCard(maCt, txtMaDH.Text);
-            _dhBLL.UpdateOrderDiscount(txtMaDH.Text.ToString(), _discount);
             useKM.Enabled = false;
             donHangmoi.GiamGia = -_discount;
-            this.txtTotalPriceDiscount.Text = _convertMoneyUnitBLL.ConvertToVND(_discount);
+            this.txtTotalPriceDiscount.Text = '-' + _convertMoneyUnitBLL.ConvertToVND(_discount);
+            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(decimal.Parse(txtPricePayment.Text.Substring(0, recieveMoney.Text.Length - 4)) - _discount);
+
         }
 
         private void txtPricePayment_TextChanged(object sender, EventArgs e)

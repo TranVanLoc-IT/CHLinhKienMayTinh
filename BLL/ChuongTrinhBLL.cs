@@ -77,6 +77,10 @@ namespace BLL
             return _dal.GetAll();
         }
 
+        public string GetNameApplied(string madh)
+        {
+            return _dal.GetNameApplied(madh);
+        }
         public IEnumerable<ResponseDTO.ChuongTrinh> GetChuongTrinhsByDaXoa(bool daXoa)
         {
             return _dal.GetChuongTrinhsByDaXoa(daXoa);

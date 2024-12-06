@@ -193,7 +193,7 @@
             button1.FlatAppearance.MouseDownBackColor = Color.Red;
             button1.FlatAppearance.MouseOverBackColor = Color.Red;
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(416, 314);
+            button1.Location = new Point(416, 340);
             button1.Name = "button1";
             button1.Size = new Size(57, 50);
             button1.TabIndex = 93;
@@ -205,7 +205,7 @@
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             groupBox1.Controls.Add(flowPanel);
             groupBox1.Font = new Font("Times New Roman", 13.8F);
-            groupBox1.Location = new Point(18, 430);
+            groupBox1.Location = new Point(18, 456);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(455, 90);
             groupBox1.TabIndex = 92;
@@ -283,12 +283,11 @@
             // 
             cbNh.Enabled = false;
             cbNh.FormattingEnabled = true;
-            cbNh.Items.AddRange(new object[] { "Chọn", "Ngân hàng quân đội (MB Bank)", "Ví điện tử Momo", "Ngân hàng ngoại thương (OCB)", "Ngân hàng Vietcombank", "Ngân hàng Vietinbank", "Ngân hàng Bản Việt" });
+            cbNh.Items.AddRange(new object[] { "Chọn ngân hàng", "Ngân hàng quân đội (MB Bank)", "Ví điện tử Momo", "Ngân hàng ngoại thương (OCB)", "Ngân hàng Vietcombank", "Ngân hàng Vietinbank", "Ngân hàng Bản Việt" });
             cbNh.Location = new Point(388, 80);
             cbNh.Name = "cbNh";
             cbNh.Size = new Size(250, 33);
             cbNh.TabIndex = 34;
-            cbNh.Text = "Chọn ngân hàng";
             // 
             // maGd
             // 
@@ -305,7 +304,7 @@
             txtTotalPriceDiscount.Enabled = false;
             txtTotalPriceDiscount.Font = new Font("Times New Roman", 13.8F);
             txtTotalPriceDiscount.ForeColor = Color.Green;
-            txtTotalPriceDiscount.Location = new Point(192, 269);
+            txtTotalPriceDiscount.Location = new Point(192, 295);
             txtTotalPriceDiscount.Name = "txtTotalPriceDiscount";
             txtTotalPriceDiscount.Size = new Size(281, 27);
             txtTotalPriceDiscount.TabIndex = 89;
@@ -318,7 +317,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label6.ForeColor = SystemColors.ControlDarkDark;
-            label6.Location = new Point(15, 276);
+            label6.Location = new Point(15, 302);
             label6.Name = "label6";
             label6.Size = new Size(66, 25);
             label6.TabIndex = 88;
@@ -345,7 +344,7 @@
             dataGrid.Location = new Point(509, 259);
             dataGrid.Name = "dataGrid";
             dataGrid.RowHeadersWidth = 51;
-            dataGrid.Size = new Size(507, 258);
+            dataGrid.Size = new Size(507, 261);
             dataGrid.TabIndex = 87;
             // 
             // label3
@@ -425,7 +424,7 @@
             btnPay.BackColor = Color.Green;
             btnPay.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             btnPay.ForeColor = Color.White;
-            btnPay.Location = new Point(18, 370);
+            btnPay.Location = new Point(18, 396);
             btnPay.Name = "btnPay";
             btnPay.Size = new Size(455, 55);
             btnPay.TabIndex = 32;
@@ -442,7 +441,7 @@
             txtKM.Multiline = true;
             txtKM.Name = "txtKM";
             txtKM.PlaceholderText = "Khuyến mãi khi đủ điều kiện";
-            txtKM.Size = new Size(352, 51);
+            txtKM.Size = new Size(352, 78);
             txtKM.TabIndex = 52;
             // 
             // txtPricePayment
@@ -451,7 +450,7 @@
             txtPricePayment.Enabled = false;
             txtPricePayment.Font = new Font("Times New Roman", 13.8F);
             txtPricePayment.ForeColor = Color.Red;
-            txtPricePayment.Location = new Point(18, 337);
+            txtPricePayment.Location = new Point(18, 363);
             txtPricePayment.Name = "txtPricePayment";
             txtPricePayment.Size = new Size(392, 27);
             txtPricePayment.TabIndex = 47;
@@ -464,7 +463,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(15, 311);
+            label2.Location = new Point(15, 337);
             label2.Name = "label2";
             label2.Size = new Size(196, 25);
             label2.TabIndex = 46;

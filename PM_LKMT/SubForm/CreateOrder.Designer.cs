@@ -191,7 +191,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label3.ForeColor = SystemColors.ControlDarkDark;
-            label3.Location = new Point(18, 357);
+            label3.Location = new Point(18, 328);
             label3.Name = "label3";
             label3.Size = new Size(116, 25);
             label3.TabIndex = 83;
@@ -203,7 +203,7 @@
             status.BorderStyle = BorderStyle.None;
             status.Enabled = false;
             status.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            status.Location = new Point(209, 355);
+            status.Location = new Point(209, 326);
             status.Name = "status";
             status.Size = new Size(231, 27);
             status.TabIndex = 82;
@@ -214,7 +214,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label5.ForeColor = SystemColors.ControlDarkDark;
-            label5.Location = new Point(15, 170);
+            label5.Location = new Point(15, 141);
             label5.Name = "label5";
             label5.Size = new Size(173, 25);
             label5.TabIndex = 81;
@@ -225,7 +225,7 @@
             txtName.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txtName.BorderStyle = BorderStyle.None;
             txtName.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            txtName.Location = new Point(197, 162);
+            txtName.Location = new Point(197, 133);
             txtName.Name = "txtName";
             txtName.Size = new Size(231, 27);
             txtName.TabIndex = 1;
@@ -236,7 +236,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label6.ForeColor = SystemColors.ControlDarkDark;
-            label6.Location = new Point(15, 232);
+            label6.Location = new Point(15, 203);
             label6.Name = "label6";
             label6.Size = new Size(141, 25);
             label6.TabIndex = 79;
@@ -247,7 +247,7 @@
             sdt.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             sdt.BorderStyle = BorderStyle.None;
             sdt.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            sdt.Location = new Point(196, 222);
+            sdt.Location = new Point(196, 193);
             sdt.Name = "sdt";
             sdt.Size = new Size(231, 27);
             sdt.TabIndex = 2;
@@ -258,11 +258,11 @@
             txtNote.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txtNote.BorderStyle = BorderStyle.None;
             txtNote.Font = new Font("Times New Roman", 13.8F);
-            txtNote.Location = new Point(22, 409);
+            txtNote.Location = new Point(22, 380);
             txtNote.Multiline = true;
             txtNote.Name = "txtNote";
             txtNote.PlaceholderText = "Ghi chú cho đơn hàng nếu có";
-            txtNote.Size = new Size(406, 75);
+            txtNote.Size = new Size(406, 113);
             txtNote.TabIndex = 3;
             // 
             // createBtn
@@ -273,7 +273,7 @@
             createBtn.FlatAppearance.MouseDownBackColor = Color.Green;
             createBtn.FlatAppearance.MouseOverBackColor = Color.Green;
             createBtn.FlatStyle = FlatStyle.Flat;
-            createBtn.Location = new Point(176, 512);
+            createBtn.Location = new Point(176, 511);
             createBtn.Name = "createBtn";
             createBtn.Size = new Size(57, 50);
             createBtn.TabIndex = 4;
@@ -285,7 +285,8 @@
             txtPricePayment.BorderStyle = BorderStyle.None;
             txtPricePayment.Enabled = false;
             txtPricePayment.Font = new Font("Times New Roman", 13.8F);
-            txtPricePayment.Location = new Point(195, 286);
+            txtPricePayment.ForeColor = Color.Red;
+            txtPricePayment.Location = new Point(195, 257);
             txtPricePayment.Name = "txtPricePayment";
             txtPricePayment.Size = new Size(232, 27);
             txtPricePayment.TabIndex = 63;
@@ -297,7 +298,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label2.ForeColor = SystemColors.ControlDarkDark;
-            label2.Location = new Point(15, 288);
+            label2.Location = new Point(15, 259);
             label2.Name = "label2";
             label2.Size = new Size(107, 25);
             label2.TabIndex = 62;
@@ -311,7 +312,7 @@
             cancelBtn.FlatAppearance.MouseDownBackColor = Color.IndianRed;
             cancelBtn.FlatAppearance.MouseOverBackColor = Color.IndianRed;
             cancelBtn.FlatStyle = FlatStyle.Flat;
-            cancelBtn.Location = new Point(253, 512);
+            cancelBtn.Location = new Point(253, 511);
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(57, 50);
             cancelBtn.TabIndex = 44;
@@ -322,7 +323,7 @@
             txtMaDH.BorderStyle = BorderStyle.FixedSingle;
             txtMaDH.Enabled = false;
             txtMaDH.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            txtMaDH.Location = new Point(19, 78);
+            txtMaDH.Location = new Point(19, 66);
             txtMaDH.Name = "txtMaDH";
             txtMaDH.Size = new Size(409, 34);
             txtMaDH.TabIndex = 61;
@@ -335,7 +336,7 @@
             deleteBtn.FlatAppearance.MouseDownBackColor = Color.IndianRed;
             deleteBtn.FlatAppearance.MouseOverBackColor = Color.IndianRed;
             deleteBtn.FlatStyle = FlatStyle.Flat;
-            deleteBtn.Location = new Point(96, 512);
+            deleteBtn.Location = new Point(96, 511);
             deleteBtn.Name = "deleteBtn";
             deleteBtn.Size = new Size(57, 50);
             deleteBtn.TabIndex = 43;
