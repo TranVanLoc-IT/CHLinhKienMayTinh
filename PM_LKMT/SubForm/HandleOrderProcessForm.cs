@@ -251,6 +251,8 @@ namespace PM_LKMT.SubForm
                     offset += 20;
 
                     gfx.DrawString($"Thành tiền: {_convertMoneyUnitBLL.ConvertToVND(donHangmoi.ThanhTien - donHangmoi.GiamGia)}", xFontBold, XBrushes.Black, new XRect(startX, startY + offset, page.Width, page.Height), XStringFormats.TopLeft);
+                    offset += 20;
+                    gfx.DrawString($"Ghi chú: {donHangmoi.GhiChu}", xFontBold, XBrushes.Black, new XRect(startX, startY + offset, page.Width, page.Height), XStringFormats.TopLeft);
                 }
 
                 // Lưu tài liệu
