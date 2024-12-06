@@ -79,7 +79,7 @@ namespace BLL
             {
                 data = _dal.GetAll();
             }
-            string[] result = data.OrderByDescending(r => r.SoLuongDaBan).Distinct().Take(3).Select( r => r.TenThuongHieu).ToArray();
+            string[] result = data.OrderBy(r => r.SoLuongDaBan).Distinct().Take(3).Select( r => r.TenThuongHieu).ToArray();
             return result;
         }
     }

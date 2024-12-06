@@ -103,13 +103,9 @@ namespace PM_LKMT.SubForm
                     dataGrid.DataSource = _donHangs;
                     break;
                 case "Yesterday":
-                    var yesterday = DateTime.Today.AddDays(-1); // Ngày hôm qua, lúc 00:00
-                    var startOfYesterday = yesterday; // Bắt đầu ngày hôm qua
-                    var endOfYesterday = yesterday.AddDays(1).AddTicks(-1); // Cuối ngày hôm qua, lúc 23:59:59.999
+                    _donHangs = _dhBLL.GetAllYesterday().ToList();
 
-                    dataGrid.DataSource = _donHangs
-                        .Where(r => r.NgayTao >= startOfYesterday && r.NgayTao <= endOfYesterday)
-                        .ToList();
+                    dataGrid.DataSource = _donHangs;
 
                     break;
             }

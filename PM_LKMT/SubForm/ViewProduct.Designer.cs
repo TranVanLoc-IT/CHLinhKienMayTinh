@@ -216,14 +216,12 @@
             // 
             // panelThuongHieuHot
             // 
-            panelThuongHieuHot.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelThuongHieuHot.AutoScroll = true;
-            panelThuongHieuHot.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            panelThuongHieuHot.ForeColor = Color.Orange;
-            panelThuongHieuHot.Location = new Point(361, 3);
+            panelThuongHieuHot.BackColor = SystemColors.ButtonFace;
+            panelThuongHieuHot.Location = new Point(103, 364);
             panelThuongHieuHot.Name = "panelThuongHieuHot";
-            panelThuongHieuHot.Size = new Size(0, 250);
-            panelThuongHieuHot.TabIndex = 11;
+            panelThuongHieuHot.Size = new Size(252, 192);
+            panelThuongHieuHot.TabIndex = 13;
             panelThuongHieuHot.WrapContents = false;
             // 
             // ViewProduct
@@ -251,7 +249,6 @@
         private Label labels;
         private FlowLayoutPanel panelAll;
         private Label label3;
-        private FlowLayoutPanel panelThuongHieuHot;
         private FlowLayoutPanel panelBanChay;
         private FlowLayoutPanel flowLayoutPanel2;
         private ComboBox cbBrandFilter;
@@ -261,5 +258,6 @@
         private Button refreshBtn;
         private Panel panel1;
         private TextBox searchBox;
+        private FlowLayoutPanel panelThuongHieuHot;
     }
 }

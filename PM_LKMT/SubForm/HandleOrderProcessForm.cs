@@ -60,14 +60,7 @@ namespace PM_LKMT.SubForm
 
             foreach (Control control in panel2.Controls)
             {
-                if(control.Controls.Count > 0)
-                {
-                    main.Controls.Add(CloneControl(control)); // Sao chép thay vì di chuyển
-                }
-                else
-                {
-                    main.Controls.Add(control);
-                }
+                main.Controls.Add(CloneControl(control)); // Sao chép thay vì di chuyển
             }
 
 
@@ -136,24 +129,24 @@ namespace PM_LKMT.SubForm
             }
             txtPriceBefore.Text = _convertMoneyUnitBLL.ConvertToVND(vatPrice);
 
-            decimal totalPrice = decimal.Parse(this.txtPricePayment.Text.Substring(0, txtPricePayment.Text.Length - 4));
-            var cts = _ct.GetAll().Where(r => r.GiaTriHoaDon <= totalPrice).OrderBy(r => r.GiaTriPhanTram).FirstOrDefault();
+            decimal totalPrice = decimal.Parse(row.Cells[6].Value.ToString()) + vatPrice;
+            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(totalPrice);
+
+            var cts = _ct.GetAllActivating().Where(r => r.GiaTriHoaDon <= totalPrice).OrderBy(r => r.GiaTriPhanTram).FirstOrDefault();
             if (cts != null)
             {
                 maCt = cts.MaCT;
                 useKM.Enabled = true;
-                txtKM.Text = cts.MaCT + "-" + cts.GiaTriPhanTram + " " + cts.DieuKienApDung;
-                _discount = totalPrice * cts.GiaTriPhanTram;
-                txtTotalPriceDiscount.Text = "-" + _convertMoneyUnitBLL.ConvertToVND(_discount);
+                txtKM.Text = cts.MaCT + " - Giảm: " + cts.GiaTriPhanTram + "% " + cts.DieuKienApDung;
+                _discount = totalPrice * (cts.GiaTriPhanTram / 100m);
             }
-
-            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(decimal.Parse(row.Cells[6].Value.ToString()) + vatPrice - _discount);
+            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(totalPrice - _discount);
             recieveMoney.Text = txtPricePayment.Text;
         }
 
         private void ToCompleteForm()
         {
-            panel2.Controls.Clear();
+            panel3.Visible = true;
             _currentStep = 2;
             orderStepBtn.Enabled = false;
             orderStepBtn.BackColor = Color.ForestGreen;
@@ -162,7 +155,8 @@ namespace PM_LKMT.SubForm
             cplBtn.Enabled = true;
             resultControl = new OrderResult(bought, donHangmoi, lichSuGD);
             resultControl.Dock = DockStyle.Fill;
-            panel2.Controls.Add(resultControl);
+            panel3.Controls.Clear();
+            panel3.Controls.Add(resultControl);
         }
 
         private bool Validation()
@@ -186,29 +180,6 @@ namespace PM_LKMT.SubForm
         {
             IEnumerable<ResponseDTO.DonHang> dhs = _dhBLL.GetAllUnconfirmed();
             this.dataGrid.DataSource = dhs.ToList();
-        }
-        private bool ConfirmNextStep()
-        {
-            var result = MessageBox.Show("Xác nhận chuyển bước, mọi thay đổi sẽ được lưu !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.OK)
-            {
-                switch (_currentStep)
-                {
-                    case 1:
-                        if (string.IsNullOrWhiteSpace(txtMaDH.Text))
-                        {
-                            _errorProvider.SetError(txtMaDH, "Thiếu mã đơn hàng");
-                            return false;
-                        }
-                        _currentStep++;
-                        break;
-                    case 2:
-                        _currentStep = 1;
-                        break;
-                }
-                return true;
-            }
-            return false;
         }
 
         private void refreshBtn_Click(object sender, EventArgs e)
@@ -263,6 +234,8 @@ namespace PM_LKMT.SubForm
             {
                 lsgd.Create(lichSuGD);
                 MessageBox.Show("Thành công", "Thanh toán thành công", MessageBoxButtons.OK);
+                button1.PerformClick();
+                refreshBtn.PerformClick();
                 ToCompleteForm();
             }
             catch (Exception ex)
@@ -293,6 +266,9 @@ namespace PM_LKMT.SubForm
         private void button10_Click_1(object sender, EventArgs e)
         {
             _ct.UseEmptyKMCard(maCt, txtMaDH.Text);
+            _dhBLL.UpdateOrderDiscount(txtMaDH.Text.ToString(), _discount);
+            useKM.Enabled = false;
+            donHangmoi.GiamGia = -_discount;
             this.txtTotalPriceDiscount.Text = _convertMoneyUnitBLL.ConvertToVND(_discount);
         }
 
@@ -325,14 +301,7 @@ namespace PM_LKMT.SubForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            panel2.Controls.Clear(); // Xóa tất cả control hiện tại
-            foreach (Control control in main.Controls)
-            {
-                panel2.Controls.Add(control); // Thêm lại các control từ main
-            }
-            panel2.Dock = main.Dock; // Khôi phục thuộc tính Dock
-            panel2.Size = main.Size; // Khôi phục kích thước
-            panel2.BackColor = main.BackColor; // Khôi phục màu nền
+            panel3.Visible = false;
 
             orderStepBtn.BackColor = Color.Orange;
             cplBtn.Enabled= false;

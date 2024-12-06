@@ -25,6 +25,7 @@ namespace PM_LKMT.SubForm
             this._bll = new SanPhamBLL();
             this._thuonghieu = new ThuongHieuBLL();
             this._lsp = new LoaiSanPhamBLL();
+            this.AutoScroll = true;
             InitializeComponent();
             LoadData();
         }
@@ -48,9 +49,9 @@ namespace PM_LKMT.SubForm
             }
             foreach (string br in hotBrand)
             {
-                PictureBox card = LoadImage(br);
-
+                PictureBox card = LoadImage(br.ToLower());
                 this.panelThuongHieuHot.Controls.Add(card);
+
             }
             foreach (ResponseDTO.SanPham sp in data)
             {
@@ -63,7 +64,7 @@ namespace PM_LKMT.SubForm
         {
             PictureBox pic = new PictureBox();
             pic.Size = new Size(189, 189);
-            pic.BackgroundImageLayout = ImageLayout.None;
+            pic.BackgroundImageLayout = ImageLayout.Stretch;
             string filePath = $"../../../images/Product/{name}.jpg";
 
             if (File.Exists(filePath))
@@ -75,7 +76,7 @@ namespace PM_LKMT.SubForm
             }
             else
             {
-                MessageBox.Show("File not found: " + filePath);
+                //MessageBox.Show("File not found: " + filePath);
             }
             return pic;
         }

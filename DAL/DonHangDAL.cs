@@ -52,6 +52,23 @@ namespace DAL
                 GiamGia = r.TienGiam
             });
         }
+
+        public IEnumerable<ResponseDTO.DonHang> GetAllYesterday()
+        {
+            var yesterday = DateTime.Today.AddDays(-1); // Ngày hôm qua, lúc 00:00
+            var startOfYesterday = yesterday; // Bắt đầu ngày hôm qua
+            return _db.GetData().Where(r => !r.DaXoa && r.NgayTao.Date == yesterday.Date).Select(r => new ResponseDTO.DonHang()
+            {
+                MaDonHang = r.MaDonHang,
+                NgayTao = r.NgayTao,
+                TenNhanVien = _nv.GetData().Where(k => k.MaNV == r.NhanVienTao).Select(k => k.HoTen).First(),
+                ThanhTien = r.ThanhTien,
+                TenKH = _kh.GetData().Where(k => k.MaKH == r.MaKH).Select(k => k.HoTen).First(),
+                TinhTrang = r.TinhTrang,
+                GhiChu = r.GhiChu,
+                GiamGia = r.TienGiam
+            });
+        }
         public IEnumerable<ResponseDTO.ChiTietDHResult> GetAllCTDHResult(string madh)
         {
 
@@ -66,6 +83,20 @@ namespace DAL
         {
             var all = GetAllToday().Where(r => r.TinhTrang.Equals("Chưa thanh toán"));
             return all;
+        }
+        public string UpdateOrderDiscount(string dh, decimal giam)
+        {
+            if (dh == null) return Constant.NOT_FOUND;
+            try
+            {
+                QueriesTableAdapter query = new QueriesTableAdapter();
+                query.UpdateOrderDiscount(giam, dh);
+            }
+            catch (Exception ex)
+            {
+                return Constant.SQL_ERROR;
+            }
+            return Constant.SUCCESS;
         }
     }
 }

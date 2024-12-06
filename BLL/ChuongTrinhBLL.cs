@@ -67,6 +67,11 @@ namespace BLL
             return Constant.SUCCESS;
         }
 
+        public IEnumerable<ResponseDTO.ChuongTrinh> GetAllActivating()
+        {
+            return _dal.GetAllActivating();
+        }
+
         public IEnumerable<ResponseDTO.ChuongTrinh> GetAll()
         {
             return _dal.GetAll();

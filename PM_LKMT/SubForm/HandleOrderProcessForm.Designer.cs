@@ -37,6 +37,7 @@
             panel1 = new Panel();
             frame = new Panel();
             panel2 = new Panel();
+            panel3 = new Panel();
             button1 = new Button();
             groupBox1 = new GroupBox();
             flowPanel = new FlowLayoutPanel();
@@ -149,6 +150,7 @@
             // panel2
             // 
             panel2.BackColor = Color.WhiteSmoke;
+            panel2.Controls.Add(panel3);
             panel2.Controls.Add(button1);
             panel2.Controls.Add(groupBox1);
             panel2.Controls.Add(groupBox2);
@@ -174,6 +176,15 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(1016, 532);
             panel2.TabIndex = 24;
+            // 
+            // panel3
+            // 
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(0, 0);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1016, 532);
+            panel3.TabIndex = 94;
+            panel3.Visible = false;
             // 
             // button1
             // 
@@ -291,6 +302,7 @@
             // txtTotalPriceDiscount
             // 
             txtTotalPriceDiscount.BorderStyle = BorderStyle.None;
+            txtTotalPriceDiscount.Enabled = false;
             txtTotalPriceDiscount.Font = new Font("Times New Roman", 13.8F);
             txtTotalPriceDiscount.ForeColor = Color.Green;
             txtTotalPriceDiscount.Location = new Point(192, 269);
@@ -426,11 +438,11 @@
             txtKM.BorderStyle = BorderStyle.None;
             txtKM.Enabled = false;
             txtKM.Font = new Font("Times New Roman", 13.8F);
-            txtKM.Location = new Point(15, 202);
+            txtKM.Location = new Point(21, 202);
             txtKM.Multiline = true;
             txtKM.Name = "txtKM";
             txtKM.PlaceholderText = "Khuyến mãi khi đủ điều kiện";
-            txtKM.Size = new Size(358, 51);
+            txtKM.Size = new Size(352, 51);
             txtKM.TabIndex = 52;
             // 
             // txtPricePayment
@@ -538,9 +550,7 @@
         private TextBox txtName;
         private Label label4;
         private TextBox sdt;
-        private Button useKM;
         private Button btnPay;
-        private TextBox txtKM;
         private TextBox txtPricePayment;
         private Label label2;
         private TextBox txtPriceBefore;
@@ -559,5 +569,8 @@
         private Button refreshBtn;
         private Button button1;
         private Button cplBtn;
+        private Panel panel3;
+        private Button useKM;
+        private TextBox txtKM;
     }
 }

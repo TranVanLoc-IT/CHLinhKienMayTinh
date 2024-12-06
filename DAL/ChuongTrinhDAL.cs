@@ -44,9 +44,11 @@ namespace DAL
             query.XoaChuongTrinh(id);
         }
 
-        public IEnumerable<ResponseDTO.ChuongTrinh> GetAll()
+        public IEnumerable<ResponseDTO.ChuongTrinh> GetAllActivating()
         {
-            return (IEnumerable<ResponseDTO.ChuongTrinh>)_db.GetData().Where(row => row.DaXoa == false).Select(row => new ResponseDTO.ChuongTrinh
+            DateTime today = DateTime.Now;
+            var allKm = _km.GetData().Where(r => !r.DaDung).Select(r => r.MaCT).Distinct();
+            return _db.GetData().Where(row => !row.DaXoa && today >= row.NgayBD && today <= row.NgayKT && allKm.Contains(row.MaCT)).Select(row => new ResponseDTO.ChuongTrinh
             {
                 MaCT = row.MaCT,
                 NgayBD = row.NgayBD.Date,
@@ -58,6 +60,20 @@ namespace DAL
             }).ToList();
         }
 
+        public IEnumerable<ResponseDTO.ChuongTrinh> GetAll()
+        {
+
+            return _db.GetData().Where(row => !row.DaXoa).Select(row => new ResponseDTO.ChuongTrinh
+            {
+                MaCT = row.MaCT,
+                NgayBD = row.NgayBD.Date,
+                NgayKT = row.NgayKT.Date,
+                NgayTao = row.NgayTao.Date,
+                GiaTriPhanTram = row.GiaTriPhanTram,
+                GiaTriHoaDon = row.GiaTriHoaDon,
+                DieuKienApDung = row.DieuKienApDung
+            }).ToList();
+        }
         public IEnumerable<ResponseDTO.ChuongTrinh> GetChuongTrinhsByDaXoa(bool daXoa)
         {
             return (IEnumerable<ResponseDTO.ChuongTrinh>)_db.GetData().Where(row => row.DaXoa == daXoa).Select(row => new ResponseDTO.ChuongTrinh

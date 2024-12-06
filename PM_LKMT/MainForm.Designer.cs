@@ -53,7 +53,7 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.CornflowerBlue;
-            menuStrip1.Font = new Font("Times New Roman", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            menuStrip1.Font = new Font("Times New Roman", 13.8F);
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { côngTyLinhKiệnECOMToolStripMenuItem, staffInfo, func, logout, timeWork });
             menuStrip1.Location = new Point(0, 0);
@@ -64,7 +64,7 @@
             // 
             // côngTyLinhKiệnECOMToolStripMenuItem
             // 
-            côngTyLinhKiệnECOMToolStripMenuItem.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            côngTyLinhKiệnECOMToolStripMenuItem.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             côngTyLinhKiệnECOMToolStripMenuItem.ForeColor = Color.Azure;
             côngTyLinhKiệnECOMToolStripMenuItem.Image = Resource.logoapp;
             côngTyLinhKiệnECOMToolStripMenuItem.Name = "côngTyLinhKiệnECOMToolStripMenuItem";
@@ -73,7 +73,7 @@
             // 
             // staffInfo
             // 
-            staffInfo.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            staffInfo.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             staffInfo.ForeColor = Color.Azure;
             staffInfo.Name = "staffInfo";
             staffInfo.Size = new Size(223, 29);
@@ -82,7 +82,7 @@
             // func
             // 
             func.DropDownItems.AddRange(new ToolStripItem[] { viewProductPage, orderPage, warehousePage, paymentPage, manageBillPage, exportBillPage, manageCustomerPage, manageProductPage, manageImportPage, manageSalePage });
-            func.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            func.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             func.ForeColor = Color.Azure;
             func.Name = "func";
             func.Size = new Size(137, 29);
@@ -93,7 +93,7 @@
             viewProductPage.BackColor = SystemColors.Control;
             viewProductPage.BackgroundImage = Resource.see;
             viewProductPage.BackgroundImageLayout = ImageLayout.None;
-            viewProductPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            viewProductPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             viewProductPage.ImageAlign = ContentAlignment.MiddleLeft;
             viewProductPage.Margin = new Padding(2);
             viewProductPage.Name = "viewProductPage";
@@ -107,7 +107,7 @@
             orderPage.BackColor = SystemColors.Control;
             orderPage.BackgroundImage = Resource.box;
             orderPage.BackgroundImageLayout = ImageLayout.None;
-            orderPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            orderPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             orderPage.Margin = new Padding(2);
             orderPage.Name = "orderPage";
             orderPage.Size = new Size(292, 30);
@@ -119,7 +119,7 @@
             warehousePage.BackColor = SystemColors.Control;
             warehousePage.BackgroundImage = Resource.warehouse;
             warehousePage.BackgroundImageLayout = ImageLayout.None;
-            warehousePage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            warehousePage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             warehousePage.Margin = new Padding(2);
             warehousePage.Name = "warehousePage";
             warehousePage.Size = new Size(292, 30);
@@ -130,7 +130,7 @@
             paymentPage.BackColor = SystemColors.Control;
             paymentPage.BackgroundImage = Resource.icons8_payment_48;
             paymentPage.BackgroundImageLayout = ImageLayout.None;
-            paymentPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            paymentPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             paymentPage.Margin = new Padding(2);
             paymentPage.Name = "paymentPage";
             paymentPage.Size = new Size(292, 30);
@@ -142,7 +142,7 @@
             manageBillPage.BackColor = SystemColors.Control;
             manageBillPage.BackgroundImage = Resource.icons8_bill_50;
             manageBillPage.BackgroundImageLayout = ImageLayout.None;
-            manageBillPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            manageBillPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageBillPage.Margin = new Padding(2);
             manageBillPage.Name = "manageBillPage";
             manageBillPage.Size = new Size(292, 30);
@@ -153,7 +153,7 @@
             exportBillPage.BackColor = SystemColors.Control;
             exportBillPage.BackgroundImage = Resource.printer;
             exportBillPage.BackgroundImageLayout = ImageLayout.None;
-            exportBillPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            exportBillPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             exportBillPage.Margin = new Padding(2);
             exportBillPage.Name = "exportBillPage";
             exportBillPage.Size = new Size(292, 30);
@@ -164,7 +164,7 @@
             manageCustomerPage.BackColor = SystemColors.Control;
             manageCustomerPage.BackgroundImage = Resource.icons8_customer_48;
             manageCustomerPage.BackgroundImageLayout = ImageLayout.None;
-            manageCustomerPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            manageCustomerPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageCustomerPage.Margin = new Padding(2);
             manageCustomerPage.Name = "manageCustomerPage";
             manageCustomerPage.Size = new Size(292, 30);
@@ -175,7 +175,7 @@
             manageProductPage.BackColor = SystemColors.Control;
             manageProductPage.BackgroundImage = Resource.icons8_computer_48;
             manageProductPage.BackgroundImageLayout = ImageLayout.None;
-            manageProductPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            manageProductPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageProductPage.Margin = new Padding(2);
             manageProductPage.Name = "manageProductPage";
             manageProductPage.Size = new Size(292, 30);
@@ -186,7 +186,7 @@
             manageImportPage.BackColor = SystemColors.Control;
             manageImportPage.BackgroundImage = Resource.icons8_paper_48;
             manageImportPage.BackgroundImageLayout = ImageLayout.None;
-            manageImportPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            manageImportPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageImportPage.Margin = new Padding(2);
             manageImportPage.Name = "manageImportPage";
             manageImportPage.Size = new Size(292, 30);
@@ -197,7 +197,7 @@
             manageSalePage.BackColor = SystemColors.Control;
             manageSalePage.BackgroundImage = Resource.icons8_discount_48;
             manageSalePage.BackgroundImageLayout = ImageLayout.None;
-            manageSalePage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            manageSalePage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageSalePage.Margin = new Padding(2);
             manageSalePage.Name = "manageSalePage";
             manageSalePage.Size = new Size(292, 30);
@@ -206,7 +206,7 @@
             // 
             // logout
             // 
-            logout.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            logout.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             logout.ForeColor = Color.Azure;
             logout.Name = "logout";
             logout.Size = new Size(130, 29);
@@ -218,7 +218,7 @@
             timeWork.BackColor = Color.CornflowerBlue;
             timeWork.BorderStyle = BorderStyle.None;
             timeWork.Enabled = false;
-            timeWork.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            timeWork.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
             timeWork.ForeColor = Color.WhiteSmoke;
             timeWork.Name = "timeWork";
             timeWork.Size = new Size(180, 29);
@@ -246,7 +246,6 @@
             Controls.Add(main);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            MaximizeBox = false;
             MinimizeBox = false;
             Name = "MainForm";
             Text = "Trang chủ";

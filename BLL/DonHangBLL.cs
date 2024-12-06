@@ -28,6 +28,20 @@ namespace BLL
             }
             return Constant.SUCCESS;
         }
+
+        public string UpdateOrderDiscount(string dh, decimal giam)
+        {
+            if (dh == null) return Constant.NOT_FOUND;
+            try
+            {
+                _dal.UpdateOrderDiscount(dh, giam);
+            }
+            catch (Exception ex)
+            {
+                return Constant.SQL_ERROR;
+            }
+            return Constant.SUCCESS;
+        }
         public string Create(EditDTO.DonHang dh)
         {
 
@@ -58,6 +72,12 @@ namespace BLL
         {
 
             return _dal.GetAllToday();
+        }
+
+        public IEnumerable<ResponseDTO.DonHang> GetAllYesterday()
+        {
+
+            return _dal.GetAllYesterday();
         }
 
         public IEnumerable<ResponseDTO.DonHang> GetAllUnconfirmed()
