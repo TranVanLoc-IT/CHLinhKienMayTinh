@@ -50,7 +50,7 @@ namespace DAL
                 TinhTrang = r.TinhTrang,
                 GhiChu = r.GhiChu,
                 GiamGia = r.TienGiam
-            });
+            }).OrderByDescending(r => r.NgayTao);
         }
 
         public IEnumerable<ResponseDTO.DonHang> GetAllYesterday()
@@ -67,7 +67,7 @@ namespace DAL
                 TinhTrang = r.TinhTrang,
                 GhiChu = r.GhiChu,
                 GiamGia = r.TienGiam
-            });
+            }).OrderByDescending(r => r.NgayTao);
         }
         public IEnumerable<ResponseDTO.ChiTietDHResult> GetAllCTDHResult(string madh)
         {

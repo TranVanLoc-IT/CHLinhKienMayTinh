@@ -20,7 +20,7 @@ namespace DAL
         }
         public void Create(EditDTO.LichSuGD gd)
         {
-            _adapter.Insert(gd.MaDonHang, gd.NganHang, gd.MaDonHang, gd.SoTien, gd.NgayTao, gd.PhuongThuc, gd.TrangThai);
+            _adapter.Insert(gd.MaGiaoDich, gd.NganHang, gd.MaDonHang, gd.SoTien, gd.NgayTao, gd.PhuongThuc, gd.TrangThai);
 
             _dh.UpdateStatus(gd.MaDonHang);
         }

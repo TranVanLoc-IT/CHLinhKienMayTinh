@@ -1,10 +1,13 @@
 ﻿using BLL;
 using DTO;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,11 +25,11 @@ namespace PM_LKMT.SubForm
         private ConvertMoneyUnitBLL _convertMoneyUnitBLL;
         private ErrorProvider _errorProvider;
         private EditDTO.LichSuGD lichSuGD;
-
+        private ResponseDTO.KhachHang kh;
         private IEnumerable<ResponseDTO.ChiTietDHResult> sps;
         private ResponseDTO.DonHang donHang;
-
-        public OrderResult(IEnumerable<ResponseDTO.ChiTietDHResult> sps, ResponseDTO.DonHang donHang, EditDTO.LichSuGD lichSuGD)
+        public OrderResult(IEnumerable<ResponseDTO.ChiTietDHResult> sps, ResponseDTO.DonHang donHang, 
+                           EditDTO.LichSuGD lichSuGD)
         {
             InitializeComponent();
             this.Load += async (s, e) => await Config();
@@ -46,7 +49,7 @@ namespace PM_LKMT.SubForm
         }
         private void LoadProduct()
         {
-          
+
             Label lb = new Label();
             Label price = new Label();
 
@@ -69,17 +72,16 @@ namespace PM_LKMT.SubForm
         }
         private void FillInfo()
         {
-            ResponseDTO.KhachHang kh = _khBLL.GetByIdOrByName(donHang.TenKH);
+            kh = _khBLL.GetByIdOrByName(donHang.TenKH);
             txtMaDH.Text = donHang.MaDonHang;
-            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(donHang.ThanhTien);
-            txtStatus.Text = "Thành công";
+            txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(donHang.ThanhTien - donHang.GiamGia);
+            txtStatus.Text = "Đã thanh toán";
             customerInfoTxt.Text = kh.HoTen + " - " + kh.SDT;
             txtTotalPriceDiscount.Text = _convertMoneyUnitBLL.ConvertToVND(donHang.GiamGia);
+            txtMoneyB.Text = _convertMoneyUnitBLL.ConvertToVND(donHang.ThanhTien);
         }
 
-        private void btnComplete_Click(object sender, EventArgs e)
-        {
+       
 
-        }
     }
 }

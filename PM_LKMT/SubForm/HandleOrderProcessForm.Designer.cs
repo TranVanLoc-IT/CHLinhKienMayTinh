@@ -34,6 +34,7 @@
             orderStepBtn = new Button();
             completeStepBtn = new Button();
             cplBtn = new Button();
+            btnPrint = new Button();
             panel1 = new Panel();
             frame = new Panel();
             panel2 = new Panel();
@@ -80,6 +81,7 @@
             flowLayoutPanel1.Controls.Add(orderStepBtn);
             flowLayoutPanel1.Controls.Add(completeStepBtn);
             flowLayoutPanel1.Controls.Add(cplBtn);
+            flowLayoutPanel1.Controls.Add(btnPrint);
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -126,6 +128,21 @@
             cplBtn.TabIndex = 4;
             cplBtn.UseVisualStyleBackColor = true;
             cplBtn.Click += button2_Click;
+            // 
+            // btnPrint
+            // 
+            btnPrint.BackgroundImage = (Image)resources.GetObject("btnPrint.BackgroundImage");
+            btnPrint.BackgroundImageLayout = ImageLayout.Center;
+            btnPrint.Enabled = false;
+            btnPrint.FlatAppearance.MouseDownBackColor = Color.Green;
+            btnPrint.FlatAppearance.MouseOverBackColor = Color.Green;
+            btnPrint.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold | FontStyle.Italic);
+            btnPrint.Location = new Point(371, 0);
+            btnPrint.Margin = new Padding(0);
+            btnPrint.Name = "btnPrint";
+            btnPrint.Size = new Size(71, 53);
+            btnPrint.TabIndex = 5;
+            btnPrint.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -192,7 +209,6 @@
             button1.BackgroundImageLayout = ImageLayout.Stretch;
             button1.FlatAppearance.MouseDownBackColor = Color.Red;
             button1.FlatAppearance.MouseOverBackColor = Color.Red;
-            button1.FlatStyle = FlatStyle.Flat;
             button1.Location = new Point(416, 340);
             button1.Name = "button1";
             button1.Size = new Size(57, 50);
@@ -397,7 +413,6 @@
             refreshBtn.BackgroundImageLayout = ImageLayout.Stretch;
             refreshBtn.FlatAppearance.MouseDownBackColor = Color.Aqua;
             refreshBtn.FlatAppearance.MouseOverBackColor = Color.Aqua;
-            refreshBtn.FlatStyle = FlatStyle.Flat;
             refreshBtn.Location = new Point(959, 203);
             refreshBtn.Name = "refreshBtn";
             refreshBtn.Size = new Size(57, 50);
@@ -571,5 +586,6 @@
         private Panel panel3;
         private Button useKM;
         private TextBox txtKM;
+        private Button btnPrint;
     }
 }

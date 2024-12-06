@@ -42,6 +42,8 @@
             label4 = new Label();
             customerInfoTxt = new TextBox();
             panel1 = new Panel();
+            txtMoneyB = new TextBox();
+            label1 = new Label();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -71,32 +73,32 @@
             label6.AutoSize = true;
             label6.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(12, 218);
+            label6.Location = new Point(9, 268);
             label6.Name = "label6";
-            label6.Size = new Size(66, 25);
+            label6.Size = new Size(74, 25);
             label6.TabIndex = 59;
-            label6.Text = "Giảm";
+            label6.Text = "Giảm:";
             // 
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             groupBox1.Controls.Add(flowPanel);
             groupBox1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            groupBox1.Location = new Point(433, 3);
+            groupBox1.Location = new Point(461, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(379, 182);
+            groupBox1.Size = new Size(351, 373);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Sản phẩm đã mua";
             // 
             // flowPanel
             // 
-            flowPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             flowPanel.AutoScroll = true;
+            flowPanel.Dock = DockStyle.Fill;
             flowPanel.FlowDirection = FlowDirection.TopDown;
             flowPanel.Location = new Point(3, 30);
             flowPanel.Name = "flowPanel";
-            flowPanel.Size = new Size(373, 149);
+            flowPanel.Size = new Size(345, 340);
             flowPanel.TabIndex = 0;
             // 
             // txtTotalPriceDiscount
@@ -104,11 +106,11 @@
             txtTotalPriceDiscount.BorderStyle = BorderStyle.None;
             txtTotalPriceDiscount.Enabled = false;
             txtTotalPriceDiscount.Font = new Font("Times New Roman", 13.8F);
-            txtTotalPriceDiscount.Location = new Point(166, 216);
+            txtTotalPriceDiscount.Location = new Point(163, 266);
             txtTotalPriceDiscount.Name = "txtTotalPriceDiscount";
             txtTotalPriceDiscount.Size = new Size(261, 27);
             txtTotalPriceDiscount.TabIndex = 60;
-            txtTotalPriceDiscount.Text = "0";
+            txtTotalPriceDiscount.Text = "0 VND";
             txtTotalPriceDiscount.TextAlign = HorizontalAlignment.Right;
             // 
             // label2
@@ -116,21 +118,22 @@
             label2.AutoSize = true;
             label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(12, 258);
+            label2.Location = new Point(9, 308);
             label2.Name = "label2";
-            label2.Size = new Size(227, 25);
+            label2.Size = new Size(249, 25);
             label2.TabIndex = 61;
-            label2.Text = "Tổng tiền phải chi trả";
+            label2.Text = "Thành tiền phải chi trả:";
             // 
             // txtPricePayment
             // 
             txtPricePayment.BorderStyle = BorderStyle.None;
             txtPricePayment.Enabled = false;
             txtPricePayment.Font = new Font("Times New Roman", 13.8F);
-            txtPricePayment.Location = new Point(15, 299);
+            txtPricePayment.Location = new Point(12, 349);
             txtPricePayment.Name = "txtPricePayment";
             txtPricePayment.Size = new Size(394, 27);
             txtPricePayment.TabIndex = 62;
+            txtPricePayment.Text = "0 VND";
             txtPricePayment.TextAlign = HorizontalAlignment.Right;
             // 
             // textBox2
@@ -150,7 +153,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(433, 188);
+            label7.Location = new Point(461, 383);
             label7.Name = "label7";
             label7.Size = new Size(116, 25);
             label7.TabIndex = 64;
@@ -161,18 +164,17 @@
             txtStatus.BorderStyle = BorderStyle.None;
             txtStatus.Enabled = false;
             txtStatus.Font = new Font("Times New Roman", 13.8F);
-            txtStatus.Location = new Point(442, 216);
+            txtStatus.Location = new Point(470, 416);
             txtStatus.Name = "txtStatus";
             txtStatus.Size = new Size(273, 27);
             txtStatus.TabIndex = 65;
-            txtStatus.TextAlign = HorizontalAlignment.Right;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(12, 333);
+            label4.Location = new Point(9, 383);
             label4.Name = "label4";
             label4.Size = new Size(135, 25);
             label4.TabIndex = 66;
@@ -183,7 +185,7 @@
             customerInfoTxt.BorderStyle = BorderStyle.None;
             customerInfoTxt.Enabled = false;
             customerInfoTxt.Font = new Font("Times New Roman", 13.8F);
-            customerInfoTxt.Location = new Point(15, 368);
+            customerInfoTxt.Location = new Point(12, 418);
             customerInfoTxt.Name = "customerInfoTxt";
             customerInfoTxt.Size = new Size(298, 27);
             customerInfoTxt.TabIndex = 67;
@@ -191,6 +193,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(txtMoneyB);
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(customerInfoTxt);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(txtStatus);
@@ -206,8 +210,31 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(750, 423);
+            panel1.Size = new Size(750, 458);
             panel1.TabIndex = 1;
+            // 
+            // txtMoneyB
+            // 
+            txtMoneyB.BorderStyle = BorderStyle.None;
+            txtMoneyB.Enabled = false;
+            txtMoneyB.Font = new Font("Times New Roman", 13.8F);
+            txtMoneyB.Location = new Point(163, 216);
+            txtMoneyB.Name = "txtMoneyB";
+            txtMoneyB.Size = new Size(261, 27);
+            txtMoneyB.TabIndex = 70;
+            txtMoneyB.Text = "0 VND";
+            txtMoneyB.TextAlign = HorizontalAlignment.Right;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(9, 218);
+            label1.Name = "label1";
+            label1.Size = new Size(115, 25);
+            label1.TabIndex = 69;
+            label1.Text = "Tổng tiền:";
             // 
             // OrderResult
             // 
@@ -215,7 +242,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel1);
             Name = "OrderResult";
-            Size = new Size(750, 423);
+            Size = new Size(750, 458);
             groupBox1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -237,5 +264,7 @@
         private Label label4;
         private TextBox customerInfoTxt;
         private Panel panel1;
+        private TextBox txtMoneyB;
+        private Label label1;
     }
 }
