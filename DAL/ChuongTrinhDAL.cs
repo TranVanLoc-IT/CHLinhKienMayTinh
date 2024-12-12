@@ -81,7 +81,9 @@ namespace DAL
 
         public string GetNameApplied(string madh)
         {
-            string mact = _km.GetData().Where(r => r.MaDH == madh).Select(r => r.MaCT).First();
+            QueriesTableAdapter query = new QueriesTableAdapter();
+            string mact = query.LayCTApDung(madh);
+
             return GetAll().Where(r => r.MaCT == mact).Select(r => $"{r.DieuKienApDung} - Giảm {r.GiaTriPhanTram} cho hóa đơn {_convert.ConvertToVND(r.GiaTriHoaDon)} trở lên").First();
         }
         public IEnumerable<ResponseDTO.ChuongTrinh> GetChuongTrinhsByDaXoa(bool daXoa)
