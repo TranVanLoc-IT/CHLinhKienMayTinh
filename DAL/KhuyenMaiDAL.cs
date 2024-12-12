@@ -2,6 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +18,16 @@ namespace DAL
             _km = new KHUYENMAITableAdapter();
         }
         // Phương thức trả về KHUYENMAIDataTable hiện tại
-        public KHUYENMAIDataTable GetData()
+        public List<ResponseDTO.KhuyenMai> GetData()
         {
-            return _km.GetData();  // Giả sử phương thức này đã có trong TableAdapter
+            return _km.GetData().Select(row => new ResponseDTO.KhuyenMai
+            {
+                MaCT = row.MaCT,
+                MaHD = row.IsMaDHNull() ? "" : row.MaDH, // Kiểm tra giá trị NULL trước khi gán
+                MaKhuyenMai = row.MaKhuyenMai,
+                DaDung = row.DaDung
+            }).ToList();
+
         }
 
         public void Update(KHUYENMAIDataTable km)
@@ -29,10 +37,42 @@ namespace DAL
 
         public void Create(EditDTO.KhuyenMai km)
         {
-            _km.Insert(km.MaKhuyenMai, km.MaHD, km.MaCT, km.DaDung);
+            // Chuỗi kết nối tới cơ sở dữ liệu
+            string connectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+
+            // Câu lệnh SQL
+            string sql = @"
+                INSERT INTO KhuyenMai (MaKhuyenMai, MaDH, MaCT, DaDung)
+                VALUES (@MaKhuyenMai, @MaHD, @MaCT, @DaDung)";
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    using (SqlCommand command = new SqlCommand(sql, connection))
+                    {
+                        // Thêm tham số và kiểm tra giá trị NULL
+                        command.Parameters.AddWithValue("@MaKhuyenMai", km.MaKhuyenMai ?? (object)DBNull.Value);
+                        command.Parameters.AddWithValue("@MaHD", km.MaHD ?? (object)DBNull.Value);
+                        command.Parameters.AddWithValue("@MaCT", km.MaCT ?? (object)DBNull.Value);
+                        command.Parameters.AddWithValue("@DaDung", km.DaDung);
+
+                        // Thực thi lệnh SQL
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Xử lý ngoại lệ SQL
+                Console.WriteLine("Lỗi SQL: " + ex.Message);
+                throw;
+            }
         }
 
-        public void Delete(string id)
+            public void Delete(string id)
         {
             QueriesTableAdapter query = new QueriesTableAdapter();
             query.XoaKhuyenMai(id);
@@ -42,7 +82,7 @@ namespace DAL
             return _km.GetData().Where(row => row.MaCT == maCT && row.DaDung == daDung).Select(row => new ResponseDTO.KhuyenMai
             {
                 MaCT = row.MaCT,
-                MaHD = row.MaDH,
+                MaHD = row.IsMaDHNull() ? "" : row.MaDH,
                 MaKhuyenMai = row.MaKhuyenMai,
                 DaDung = row.DaDung
             }).ToList();

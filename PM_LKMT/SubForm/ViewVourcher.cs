@@ -64,7 +64,8 @@ namespace PM_LKMT.SubForm
                     loadData(dvgVourcher, bll.GetKhuyenMaisByDaDung(MaCT, false));
                     count++;
                     return;
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Thao tác thất bại!");
                     return;
@@ -83,7 +84,7 @@ namespace PM_LKMT.SubForm
             {
                 txtMaKM.Text = dvgVourcher.CurrentRow.Cells[0].Value.ToString();
                 txtMaCT.Text = dvgVourcher.CurrentRow.Cells[1].Value.ToString();
-                if(dvgVourcher.CurrentRow.Cells[2].Value != null)
+                if (dvgVourcher.CurrentRow.Cells[2].Value != null)
                 {
                     txtHoaDon.Text = dvgVourcher.CurrentRow.Cells[2].Value.ToString();
                 }
@@ -165,6 +166,11 @@ namespace PM_LKMT.SubForm
                     item.MaHD,
                 }).ToList();
             return data;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            txtMaKM.Text = IDAutoGeneratorBLL.Generate("KM", 3);
         }
     }
 }

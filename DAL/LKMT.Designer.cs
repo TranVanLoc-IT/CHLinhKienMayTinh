@@ -15282,7 +15282,7 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.IDbCommand[16];
+            this._commandCollection = new global::System.Data.IDbCommand[17];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
@@ -15367,7 +15367,7 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[12])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@giamgia", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "TienGiam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[12])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@madh", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaDonHang", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[13] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[13])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=DESKTOP-UHH2GNH\\DUCHIEN;Initial Catalog=LKMT;Integrated Security=True" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[13])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True" +
                     ";TrustServerCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[13])).CommandText = "UPDATE KHUYENMAI SET DaDung = 1 WHERE MaKhuyenMai = @MaKhuyenMai";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[13])).CommandType = global::System.Data.CommandType.Text;
@@ -15385,6 +15385,16 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[15])).CommandText = "select mact from khuyenmai where madh = @madh";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[15])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[15])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@madh", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaDH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[16] = new global::System.Data.SqlClient.SqlCommand();
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[16])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+                    "erverCertificate=True");
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[16])).CommandText = "dbo.TaoKM";
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[16])).CommandType = global::System.Data.CommandType.StoredProcedure;
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[16])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RETURN_VALUE", global::System.Data.SqlDbType.Variant, 0, global::System.Data.ParameterDirection.ReturnValue, 0, 0, null, global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[16])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@makm", global::System.Data.SqlDbType.Char, 9, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhuyenMai", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[16])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mact", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaDH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[16])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@madh", global::System.Data.SqlDbType.Char, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MaCT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[16])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dadung", global::System.Data.SqlDbType.Bit, 1, global::System.Data.ParameterDirection.Input, 0, 0, "DaDung", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15904,6 +15914,53 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
             else {
                 return ((string)(returnValue));
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int TaoKM(string makm, string mact, string madh, global::System.Nullable<bool> dadung) {
+            global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[16]));
+            if ((makm == null)) {
+                throw new global::System.ArgumentNullException("makm");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(makm));
+            }
+            if ((mact == null)) {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[2].Value = ((string)(mact));
+            }
+            if ((madh == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(madh));
+            }
+            if ((dadung.HasValue == true)) {
+                command.Parameters[4].Value = ((bool)(dadung.Value));
+            }
+            else {
+                command.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     

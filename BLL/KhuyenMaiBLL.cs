@@ -17,7 +17,7 @@ namespace BLL
             _km = new KhuyenMaiDAL();
         }
         // Phương thức lấy DataTable hiện tại
-        public KHUYENMAIDataTable GetDataTable()
+        public List<ResponseDTO.KhuyenMai> GetDataTable()
         {
             return _km.GetData(); // Lấy dữ liệu từ DAL
         }

@@ -238,7 +238,8 @@ namespace PM_LKMT.SubForm
                 MessageBox.Show("Thao tác thành công");
                 loadData(dgvProgramVour, bLL.GetAll());
                 return;
-            } else
+            }
+            else
             {
                 MessageBox.Show("Thao tác thất bại!");
                 return;
@@ -261,7 +262,8 @@ namespace PM_LKMT.SubForm
                 txtPercentInvoice.Text = dgvProgramVour.CurrentRow.Cells[4].Value.ToString();
                 txtSoLuong.Text = dgvProgramVour.CurrentRow.Cells[5].Value.ToString();
                 txtConditionApply.Text = dgvProgramVour.CurrentRow.Cells[6].Value.ToString();
-            } else
+            }
+            else
             {
                 btnTaoKM.Enabled = false;
             }
@@ -310,6 +312,11 @@ namespace PM_LKMT.SubForm
                 return parsedDate;
             }
             return DateTime.MinValue;
+        }
+
+        private void btnTaoKM_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 
