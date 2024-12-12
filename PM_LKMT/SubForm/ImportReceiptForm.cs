@@ -31,6 +31,14 @@ namespace PM_LKMT.SubForm
             this.btnDeleteCTPN.Click += BtnDeleteCTPN_Click;
             this.btnUpdateCTPN.Click += BtnUpdateCTPN_Click;
             this.btnAddPN.Click += BtnAddPN_Click;
+            this.btnDeletePN.Click += BtnDeletePN_Click;
+        }
+
+        private void BtnDeletePN_Click(object? sender, EventArgs e)
+        {
+            string idPN = dgvPN.CurrentRow.Cells[0].Value.ToString();
+            phieuNhapBLL.Delete(idPN);
+            loadPN();
         }
 
         private void BtnAddPN_Click(object? sender, EventArgs e)
