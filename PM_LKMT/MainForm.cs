@@ -1,5 +1,6 @@
 ﻿using DTO;
 using PM_LKMT.SubForm;
+using PM_LKMT.UserControlCustom;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -133,6 +134,19 @@ namespace PM_LKMT
             currentForm.Dock = DockStyle.Fill;  //  
             this.main.Controls.Add(currentForm);
             currentForm.Show();
+        }
+
+        private void warehousePage_Click(object sender, EventArgs e)
+        {
+            {
+                this.main.Controls.Clear();
+                WarehouseForm currentForm = new WarehouseForm();
+                currentForm.TopLevel = false;       // 
+                currentForm.FormBorderStyle = FormBorderStyle.None; // 
+                currentForm.Dock = DockStyle.Fill;  //  
+                this.main.Controls.Add(currentForm);
+                currentForm.Show();
+            }
         }
     }
 }

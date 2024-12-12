@@ -1,38 +1,81 @@
-﻿using DTO;
+﻿using DAL.LKMTTableAdapters;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DAL.LKMT;
 
 namespace DAL
 {
     public class KhoDAL
     {
-        public bool Update(EditDTO.SanPham ct)
-        {
+        private SANPHAMTableAdapter _spAdapter;
 
-            return false;
+        public KhoDAL()
+        {
+            _spAdapter = new SANPHAMTableAdapter();
         }
-        public bool Create(EditDTO.SanPham ct)
-        {
 
-            return false;
+        // Lấy toàn bộ danh sách sản phẩm (DataTable)
+        public SANPHAMDataTable GetData()
+        {
+            return _spAdapter.GetData();
         }
-        public bool Delete(EditDTO.SanPham ct)
-        {
 
-            return false;
+        // Cập nhật dữ liệu từ DataTable
+        public void Update(SANPHAMDataTable sp)
+        {
+            _spAdapter.Update(sp);
         }
-        public EditDTO.SanPham GetById(EditDTO.SanPham ct)
-        {
 
-            return null;
+        // Tạo mới sản phẩm
+        public void Create(EditDTO.SanPham sp)
+        {
+            _spAdapter.Insert(
+                sp.MaSanPham,
+                sp.MaLoaiSP,
+                sp.MaThuongHieu,
+                sp.TenSanPham,
+                sp.DonGia,
+                sp.TGBaoHanh,
+                sp.Hinh,
+                sp.MoTa,
+                sp.SoLuongTon,
+                sp.SoLuongDaBan,
+                sp.NgayTao,
+                sp.DaXoa,
+                sp.CapNhatGanNhat,
+                sp.NguoiChinhSuaGanNhat
+            );
         }
-        public IEnumerable<EditDTO.SanPham> GetAll(EditDTO.SanPham ct)
-        {
 
-            return null;
+        // Xóa sản phẩm dựa trên mã sản phẩm
+        public void Delete(string id)
+        {
+            QueriesTableAdapter query = new QueriesTableAdapter();
+            query.XoaSanPham(id); // Giả sử stored procedure XoaSanPham đã được định nghĩa
+        }
+
+        // Lấy danh sách sản phẩm theo số lượng tồn kho
+        public IEnumerable<ResponseDTO.SanPham> GetSanPhamsByQuantity(int soLuongTon)
+        {
+            return _spAdapter.GetData()
+                .Where(row => row.SoLuongTon <= soLuongTon)
+                .Select(row => new ResponseDTO.SanPham
+                {
+                    MaSanPham = row.MaSanPham,
+                    TenSanPham = row.TenSanPham,
+                    SoLuongTon = row.SoLuongTon,
+                    DonGia = row.DonGia
+                }).ToList();
+        }
+
+        // Đếm tổng số sản phẩm trong kho
+        public int GetTotalProducts()
+        {
+            return _spAdapter.GetData().Count();
         }
     }
 }

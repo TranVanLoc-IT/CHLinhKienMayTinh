@@ -58,7 +58,8 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { côngTyLinhKiệnECOMToolStripMenuItem, staffInfo, func, logout, timeWork });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1099, 33);
+            menuStrip1.Padding = new Padding(5, 2, 0, 2);
+            menuStrip1.Size = new Size(962, 30);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -68,7 +69,7 @@
             côngTyLinhKiệnECOMToolStripMenuItem.ForeColor = Color.Azure;
             côngTyLinhKiệnECOMToolStripMenuItem.Image = Resource.logoapp;
             côngTyLinhKiệnECOMToolStripMenuItem.Name = "côngTyLinhKiệnECOMToolStripMenuItem";
-            côngTyLinhKiệnECOMToolStripMenuItem.Size = new Size(204, 29);
+            côngTyLinhKiệnECOMToolStripMenuItem.Size = new Size(171, 26);
             côngTyLinhKiệnECOMToolStripMenuItem.Text = "Công ty ECOM";
             // 
             // staffInfo
@@ -76,7 +77,7 @@
             staffInfo.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             staffInfo.ForeColor = Color.Azure;
             staffInfo.Name = "staffInfo";
-            staffInfo.Size = new Size(223, 29);
+            staffInfo.Size = new Size(182, 26);
             staffInfo.Text = "Xin chào: nhân viên";
             // 
             // func
@@ -85,7 +86,7 @@
             func.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             func.ForeColor = Color.Azure;
             func.Name = "func";
-            func.Size = new Size(137, 29);
+            func.Size = new Size(111, 26);
             func.Text = "Chức năng";
             // 
             // viewProductPage
@@ -97,7 +98,7 @@
             viewProductPage.ImageAlign = ContentAlignment.MiddleLeft;
             viewProductPage.Margin = new Padding(2);
             viewProductPage.Name = "viewProductPage";
-            viewProductPage.Size = new Size(292, 30);
+            viewProductPage.Size = new Size(239, 26);
             viewProductPage.Text = "Xem sản phẩm";
             viewProductPage.TextAlign = ContentAlignment.MiddleRight;
             viewProductPage.Click += viewProductPage_Click;
@@ -110,7 +111,7 @@
             orderPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             orderPage.Margin = new Padding(2);
             orderPage.Name = "orderPage";
-            orderPage.Size = new Size(292, 30);
+            orderPage.Size = new Size(239, 26);
             orderPage.Text = "Đơn hàng";
             orderPage.Click += orderPage_Click;
             // 
@@ -122,8 +123,9 @@
             warehousePage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             warehousePage.Margin = new Padding(2);
             warehousePage.Name = "warehousePage";
-            warehousePage.Size = new Size(292, 30);
+            warehousePage.Size = new Size(239, 26);
             warehousePage.Text = "Kho hàng";
+            warehousePage.Click += warehousePage_Click;
             // 
             // paymentPage
             // 
@@ -133,7 +135,7 @@
             paymentPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             paymentPage.Margin = new Padding(2);
             paymentPage.Name = "paymentPage";
-            paymentPage.Size = new Size(292, 30);
+            paymentPage.Size = new Size(239, 26);
             paymentPage.Text = "Thanh toán";
             paymentPage.Click += paymentPage_Click;
             // 
@@ -145,7 +147,7 @@
             manageBillPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageBillPage.Margin = new Padding(2);
             manageBillPage.Name = "manageBillPage";
-            manageBillPage.Size = new Size(292, 30);
+            manageBillPage.Size = new Size(239, 26);
             manageBillPage.Text = "Quản lí hóa đơn";
             // 
             // exportBillPage
@@ -156,7 +158,7 @@
             exportBillPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             exportBillPage.Margin = new Padding(2);
             exportBillPage.Name = "exportBillPage";
-            exportBillPage.Size = new Size(292, 30);
+            exportBillPage.Size = new Size(239, 26);
             exportBillPage.Text = "Xuất hóa đơn";
             // 
             // manageCustomerPage
@@ -167,7 +169,7 @@
             manageCustomerPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageCustomerPage.Margin = new Padding(2);
             manageCustomerPage.Name = "manageCustomerPage";
-            manageCustomerPage.Size = new Size(292, 30);
+            manageCustomerPage.Size = new Size(239, 26);
             manageCustomerPage.Text = "Khách hàng";
             // 
             // manageProductPage
@@ -178,7 +180,7 @@
             manageProductPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageProductPage.Margin = new Padding(2);
             manageProductPage.Name = "manageProductPage";
-            manageProductPage.Size = new Size(292, 30);
+            manageProductPage.Size = new Size(239, 26);
             manageProductPage.Text = "Quản lí linh kiện";
             // 
             // manageImportPage
@@ -189,7 +191,7 @@
             manageImportPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageImportPage.Margin = new Padding(2);
             manageImportPage.Name = "manageImportPage";
-            manageImportPage.Size = new Size(292, 30);
+            manageImportPage.Size = new Size(239, 26);
             manageImportPage.Text = "Quản lí phiếu nhập";
             // 
             // manageSalePage
@@ -200,7 +202,7 @@
             manageSalePage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             manageSalePage.Margin = new Padding(2);
             manageSalePage.Name = "manageSalePage";
-            manageSalePage.Size = new Size(292, 30);
+            manageSalePage.Size = new Size(239, 26);
             manageSalePage.Text = "Quản lí khuyến mãi";
             manageSalePage.Click += manageSalePage_Click;
             // 
@@ -209,7 +211,7 @@
             logout.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             logout.ForeColor = Color.Azure;
             logout.Name = "logout";
-            logout.Size = new Size(130, 29);
+            logout.Size = new Size(106, 26);
             logout.Text = "Đăng xuất";
             logout.Click += logout_Click;
             // 
@@ -221,16 +223,17 @@
             timeWork.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             timeWork.ForeColor = Color.Snow;
             timeWork.Name = "timeWork";
-            timeWork.Size = new Size(240, 29);
+            timeWork.Size = new Size(210, 26);
             timeWork.Text = "21/20/2024 12:00:12";
             timeWork.ToolTipText = "Thời gian làm việc";
             // 
             // main
             // 
             main.Dock = DockStyle.Fill;
-            main.Location = new Point(0, 33);
+            main.Location = new Point(0, 30);
+            main.Margin = new Padding(3, 2, 3, 2);
             main.Name = "main";
-            main.Size = new Size(1099, 429);
+            main.Size = new Size(962, 316);
             main.TabIndex = 1;
             // 
             // timer1
@@ -239,13 +242,14 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1099, 462);
+            ClientSize = new Size(962, 346);
             Controls.Add(main);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(3, 2, 3, 2);
             MinimizeBox = false;
             Name = "MainForm";
             Text = "Phần mềm bán hàng linh kiện ECOM";
