@@ -47,14 +47,14 @@ namespace PM_LKMT.SubForm
             if (count <= SoLuong)
             {
                 btnAdd.Enabled = true;
-                if (string.IsNullOrEmpty(txtMaCT.Text) || string.IsNullOrEmpty(txtMaKM.Text) || string.IsNullOrEmpty(txtHoaDon.Text))
+                if (string.IsNullOrEmpty(txtMaCT.Text) || string.IsNullOrEmpty(txtMaKM.Text))
                     return;
 
                 // Thêm đối tượng chương trình
                 EditDTO.KhuyenMai vour = new EditDTO.KhuyenMai();
                 vour.MaCT = txtMaCT.Text;
                 vour.MaKhuyenMai = txtMaKM.Text;
-                vour.MaHD = string.Empty;
+                vour.MaHD = null;
                 vour.DaDung = false;
 
                 string ret = bll.Create(vour);
@@ -83,7 +83,14 @@ namespace PM_LKMT.SubForm
             {
                 txtMaKM.Text = dvgVourcher.CurrentRow.Cells[0].Value.ToString();
                 txtMaCT.Text = dvgVourcher.CurrentRow.Cells[1].Value.ToString();
-                txtHoaDon.Text = dvgVourcher.CurrentRow.Cells[2].Value.ToString();
+                if(dvgVourcher.CurrentRow.Cells[2].Value != null)
+                {
+                    txtHoaDon.Text = dvgVourcher.CurrentRow.Cells[2].Value.ToString();
+                }
+                else
+                {
+                    txtHoaDon.Text = "";
+                }
             }
         }
 
