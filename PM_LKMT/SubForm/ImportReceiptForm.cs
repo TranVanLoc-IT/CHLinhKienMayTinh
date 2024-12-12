@@ -208,20 +208,14 @@ namespace PM_LKMT.SubForm
 
         private void DgvPN_SelectionChanged(object? sender, EventArgs e)
         {
-            if (dgvPN.RowCount == 0)
-            {
-                MessageBox.Show("Không có phiếu nhập nào!");
-                return;
-            }
-
-            if (listCTPN.Count > 0)
-            {
-                MessageBox.Show("Vui lòng hoàn thành phiếu nhập trước!");
-                return;
-            }
 
             if (dgvPN.SelectedRows.Count > 0 && dgvPN.CurrentRow != null)
             {
+                if (listCTPN.Count > 0)
+                {
+                    MessageBox.Show("Vui lòng hoàn thành phiếu nhập trước!");
+                    return;
+                }
                 string idPN = dgvPN.CurrentRow.Cells[0].Value.ToString();
                 loadCTPN(chiTietPhieuNhapBLL.GetAll(idPN));
                 txtTotalPrice.Text = chiTietPhieuNhapBLL.GetTotal(idPN).ToString("C0", new System.Globalization.CultureInfo("vi-VN"));

@@ -227,3 +227,8 @@ INSERT INTO CHUONGTRINH VALUES
 
 select * from phieunhap
 select * from chitietphieunhap
+
+
+select * from SANPHAM
+
+update SANPHAM set SoLuongTon = SoLuongTon + 1 where MaSanPham = 'SP001'
