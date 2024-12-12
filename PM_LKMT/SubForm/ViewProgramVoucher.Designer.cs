@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label1 = new Label();
             dgvProgramVour = new DataGridView();
             label3 = new Label();
@@ -49,6 +49,9 @@
             btnKhoiPhuc = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
+            btnTaoKM = new Button();
+            txtSoLuong = new TextBox();
+            label9 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProgramVour).BeginInit();
             SuspendLayout();
             // 
@@ -70,14 +73,14 @@
             dgvProgramVour.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvProgramVour.BackgroundColor = Color.White;
             dgvProgramVour.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 14F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvProgramVour.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 14F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvProgramVour.DefaultCellStyle = dataGridViewCellStyle1;
             dgvProgramVour.Location = new Point(0, 77);
             dgvProgramVour.Name = "dgvProgramVour";
             dgvProgramVour.RowHeadersWidth = 62;
@@ -171,7 +174,7 @@
             label7.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 14F);
-            label7.Location = new Point(12, 480);
+            label7.Location = new Point(12, 531);
             label7.Name = "label7";
             label7.Size = new Size(245, 38);
             label7.TabIndex = 12;
@@ -181,7 +184,7 @@
             // 
             txtConditionApply.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             txtConditionApply.Font = new Font("Segoe UI", 14F);
-            txtConditionApply.Location = new Point(268, 483);
+            txtConditionApply.Location = new Point(268, 534);
             txtConditionApply.Multiline = true;
             txtConditionApply.Name = "txtConditionApply";
             txtConditionApply.Size = new Size(625, 88);
@@ -237,7 +240,7 @@
             btnAdd.FlatAppearance.MouseOverBackColor = Color.Green;
             btnAdd.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnAdd.ForeColor = SystemColors.ButtonFace;
-            btnAdd.Location = new Point(516, 597);
+            btnAdd.Location = new Point(623, 653);
             btnAdd.Margin = new Padding(4);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(149, 74);
@@ -256,7 +259,7 @@
             btnKhoiPhuc.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnKhoiPhuc.ForeColor = SystemColors.ButtonFace;
             btnKhoiPhuc.ImageAlign = ContentAlignment.MiddleLeft;
-            btnKhoiPhuc.Location = new Point(1150, 597);
+            btnKhoiPhuc.Location = new Point(1257, 653);
             btnKhoiPhuc.Margin = new Padding(4);
             btnKhoiPhuc.Name = "btnKhoiPhuc";
             btnKhoiPhuc.Size = new Size(149, 74);
@@ -274,7 +277,7 @@
             btnDelete.FlatAppearance.MouseOverBackColor = Color.Red;
             btnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnDelete.ForeColor = SystemColors.ButtonFace;
-            btnDelete.Location = new Point(734, 597);
+            btnDelete.Location = new Point(841, 653);
             btnDelete.Margin = new Padding(4);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(149, 74);
@@ -293,7 +296,7 @@
             btnUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             btnUpdate.ForeColor = SystemColors.ButtonFace;
             btnUpdate.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUpdate.Location = new Point(945, 598);
+            btnUpdate.Location = new Point(1052, 654);
             btnUpdate.Margin = new Padding(4);
             btnUpdate.Name = "btnUpdate";
             btnUpdate.Size = new Size(149, 74);
@@ -302,12 +305,54 @@
             btnUpdate.TextAlign = ContentAlignment.MiddleRight;
             btnUpdate.UseVisualStyleBackColor = false;
             // 
+            // btnTaoKM
+            // 
+            btnTaoKM.Anchor = AnchorStyles.Bottom;
+            btnTaoKM.BackColor = Color.LightSeaGreen;
+            btnTaoKM.BackgroundImage = Resource.add;
+            btnTaoKM.BackgroundImageLayout = ImageLayout.None;
+            btnTaoKM.Enabled = false;
+            btnTaoKM.FlatAppearance.MouseOverBackColor = Color.Green;
+            btnTaoKM.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnTaoKM.ForeColor = SystemColors.ButtonFace;
+            btnTaoKM.Location = new Point(410, 654);
+            btnTaoKM.Margin = new Padding(4);
+            btnTaoKM.Name = "btnTaoKM";
+            btnTaoKM.Size = new Size(149, 74);
+            btnTaoKM.TabIndex = 29;
+            btnTaoKM.Text = "Tạo KM";
+            btnTaoKM.TextAlign = ContentAlignment.MiddleRight;
+            btnTaoKM.UseVisualStyleBackColor = false;
+            // 
+            // txtSoLuong
+            // 
+            txtSoLuong.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            txtSoLuong.Font = new Font("Segoe UI", 14F);
+            txtSoLuong.Location = new Point(268, 478);
+            txtSoLuong.Name = "txtSoLuong";
+            txtSoLuong.Size = new Size(625, 45);
+            txtSoLuong.TabIndex = 31;
+            // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 14F);
+            label9.Location = new Point(15, 475);
+            label9.Name = "label9";
+            label9.Size = new Size(128, 38);
+            label9.TabIndex = 30;
+            label9.Text = "Số lượng";
+            // 
             // ViewProgramVoucher
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1783, 748);
+            Controls.Add(txtSoLuong);
+            Controls.Add(label9);
+            Controls.Add(btnTaoKM);
             Controls.Add(btnUpdate);
             Controls.Add(btnDelete);
             Controls.Add(btnKhoiPhuc);
@@ -357,5 +402,8 @@
         public Button btnKhoiPhuc;
         public Button btnDelete;
         public Button btnUpdate;
+        public Button btnTaoKM;
+        private TextBox txtSoLuong;
+        private Label label9;
     }
 }

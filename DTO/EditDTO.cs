@@ -110,6 +110,7 @@ namespace DTO
             public string DieuKienApDung { get; set; }
             public DateTime NgayTao { get; set; }
             public bool DaXoa { get; set; }
+            public int SoLuong { get; set; }
         }
 
         public class ChiTietPhieuNhap
@@ -148,7 +149,6 @@ namespace DTO
             public string MaCT { get; set; }
             public string MaHD { get; set; }
             public bool DaDung { get; set; }
-            public int SoLuong { get; set; }
         }
 
     }

@@ -16,6 +16,7 @@ namespace PM_LKMT.SubForm
 {
     public partial class ViewProgramVoucher : Form
     {
+        int idxRowDgv = 0;
         ChuongTrinhBLL bLL;
         public ViewProgramVoucher()
         {
@@ -31,6 +32,15 @@ namespace PM_LKMT.SubForm
             btnUpdate.Click += BtnUpdate_Click;
             btnKhoiPhuc.Click += BtnKhoiPhuc_Click;
             cboDaXoa.SelectedValueChanged += CboDaXoa_SelectedValueChanged;
+            btnTaoKM.Click += BtnTaoKM_Click;
+        }
+
+        private void BtnTaoKM_Click(object? sender, EventArgs e)
+        {
+            ViewVourcher currentForm = new ViewVourcher();
+            ViewVourcher.MaCT = dgvProgramVour.Rows[idxRowDgv].Cells[0].Value.ToString();
+            ViewVourcher.SoLuong = Convert.ToInt32(dgvProgramVour.Rows[idxRowDgv].Cells[5].Value.ToString());
+            currentForm.Show();
         }
 
         private void BtnKhoiPhuc_Click(object? sender, EventArgs e)
@@ -70,11 +80,11 @@ namespace PM_LKMT.SubForm
                     loadData(dgvProgramVour, bLL.GetAll());
                     btnKhoiPhuc.Enabled = false;
                     cboDaXoa.SelectedIndex = 0;
-                    MessageBox.Show("Khôi phục thành công");
+                    MessageBox.Show("Thao tác thành công");
                 }
                 else
                 {
-                    MessageBox.Show("Khôi phục thất bại!");
+                    MessageBox.Show("Thao tác thất bại!");
                 }
             }
             else
@@ -144,6 +154,7 @@ namespace PM_LKMT.SubForm
                 program.GiaTriPhanTram = byte.Parse(txtPercentValue.Text);
                 program.GiaTriHoaDon = decimal.Parse(txtPercentInvoice.Text);
                 program.DieuKienApDung = txtConditionApply.Text;
+                program.SoLuong = Convert.ToInt32(txtSoLuong.Text);
 
                 var chuongTrinhDataTable = bLL.GetDataTable();
 
@@ -158,6 +169,7 @@ namespace PM_LKMT.SubForm
                             row["GiaTriPhanTram"] = program.GiaTriPhanTram;
                             row["GiaTriHoaDon"] = program.GiaTriHoaDon;
                             row["DieuKienApDung"] = program.DieuKienApDung;
+                            row["SoLuong"] = program.SoLuong;
                         }
                     }
                     else
@@ -171,11 +183,11 @@ namespace PM_LKMT.SubForm
                 if (result == Constant.SUCCESS)
                 {
                     loadData(dgvProgramVour, bLL.GetAll());
-                    MessageBox.Show("Cập nhật thành công");
+                    MessageBox.Show("Thao tác thành công");
                 }
                 else
                 {
-                    MessageBox.Show("Cập nhật thất bại!");
+                    MessageBox.Show("Thao tác thất bại!");
                 }
             }
             else
@@ -218,24 +230,40 @@ namespace PM_LKMT.SubForm
             program.GiaTriPhanTram = byte.Parse(txtPercentValue.Text);
             program.GiaTriHoaDon = decimal.Parse(txtPercentInvoice.Text);
             program.DieuKienApDung = txtConditionApply.Text;
+            program.SoLuong = Convert.ToInt32(txtSoLuong.Text);
 
             string ret = bLL.Create(program);
             if (DTO.Constant.SUCCESS == ret)
+            {
+                MessageBox.Show("Thao tác thành công");
                 loadData(dgvProgramVour, bLL.GetAll());
-            return;
+                return;
+            } else
+            {
+                MessageBox.Show("Thao tác thất bại!");
+                return;
+            }
         }
 
         private void DgvProgramVour_SelectionChanged(object? sender, EventArgs e)
         {
             int idx = dgvProgramVour.Rows.Count;
-            if (idx > -1)
+            if (idx > -1 && dgvProgramVour.CurrentCell != null)
             {
+                idxRowDgv = dgvProgramVour.CurrentCell.RowIndex;
+                // Mở button tạo khuyến mãi
+                btnTaoKM.Enabled = true;
+                // Load dữ liệu
                 txtProgramId.Text = dgvProgramVour.CurrentRow.Cells[0].Value.ToString();
                 txtDateStart.Text = dgvProgramVour.CurrentRow.Cells[1].Value.ToString();
                 txtDateEnd.Text = dgvProgramVour.CurrentRow.Cells[2].Value.ToString();
                 txtPercentValue.Text = dgvProgramVour.CurrentRow.Cells[3].Value.ToString();
                 txtPercentInvoice.Text = dgvProgramVour.CurrentRow.Cells[4].Value.ToString();
-                txtConditionApply.Text = dgvProgramVour.CurrentRow.Cells[5].Value.ToString();
+                txtSoLuong.Text = dgvProgramVour.CurrentRow.Cells[5].Value.ToString();
+                txtConditionApply.Text = dgvProgramVour.CurrentRow.Cells[6].Value.ToString();
+            } else
+            {
+                btnTaoKM.Enabled = false;
             }
         }
 
@@ -267,8 +295,9 @@ namespace PM_LKMT.SubForm
                     NgayKT = item.NgayKT.ToString("dd/MM/yyyy"),
                     item.GiaTriPhanTram,
                     GiaTriHoaDon = item.GiaTriHoaDon.ToString("#,###"),
+                    item.SoLuong,
                     item.DieuKienApDung,
-                    NgayTao = item.NgayTao.ToString("dd/MM/yyyy")
+                    NgayTao = item.NgayTao.ToString("dd/MM/yyyy"),
                 }).ToList();
             return data;
         }
