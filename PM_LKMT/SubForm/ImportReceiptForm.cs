@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +25,7 @@ namespace PM_LKMT.SubForm
             this.dgvPN.CellFormatting += DgvPN_CellFormatting;
             this.dgvPN.SelectionChanged += DgvPN_SelectionChanged;
             this.dgvCTPN.CellFormatting += DgvCTPN_CellFormatting;
+            this.dgvCTPN.SelectionChanged += DgvCTPN_SelectionChanged;
             this.dgvSP.SelectionChanged += DgvSP_SelectionChanged;
             this.dgvSP.CellFormatting += DgvSP_CellFormatting;
             this.txtSearchSP.KeyUp += TxtSearchSP_KeyUp;
@@ -34,50 +36,103 @@ namespace PM_LKMT.SubForm
             this.btnDeletePN.Click += BtnDeletePN_Click;
         }
 
+
+
         private void BtnDeletePN_Click(object? sender, EventArgs e)
         {
-            string idPN = dgvPN.CurrentRow.Cells[0].Value.ToString();
-            phieuNhapBLL.Delete(idPN);
-            loadPN();
+            if (dgvPN.CurrentRow != null && dgvPN.CurrentRow.Index >= 0)
+            {
+                string idPN = dgvPN.CurrentRow.Cells[0].Value.ToString();
+                phieuNhapBLL.Delete(idPN);
+                loadPN();
+            }
+            else
+            {
+                MessageBox.Show("Không có dòng nào được chọn!");
+            }
         }
 
         private void BtnAddPN_Click(object? sender, EventArgs e)
         {
-            EditDTO.PhieuNhap pn = new EditDTO.PhieuNhap();
-            pn.MaPN = phieuNhapBLL.GeneratorMaPN();
-            pn.TongTien = listCTPN.Sum(p => p.ThanhTien);
-            pn.NgayNhap = DateTime.Now;
-            pn.DaXoa = false;
-            List<EditDTO.ChiTietPhieuNhap> list = new List<EditDTO.ChiTietPhieuNhap>();
-            foreach(var item in listCTPN)
+            if (listCTPN.Count == 0)
             {
-                EditDTO.ChiTietPhieuNhap ctpn = new EditDTO.ChiTietPhieuNhap();
-                ctpn.MaPN = pn.MaPN;
-                ctpn.MaSanPham = item.MaSP;
-                ctpn.MaThuongHieu = item.MaThuongHieu;
-                ctpn.GiaNhap = item.GiaNhap;
-                ctpn.SoLuong = item.SoLuong;
-                ctpn.ThanhTien = item.ThanhTien;
-                list.Add(ctpn);
+                MessageBox.Show("Vui lòng thêm sản phẩm vào phiếu nhập");
+                return;
             }
-            phieuNhapBLL.Create(pn, list);
-            loadPN();
+            else
+            {
+                EditDTO.PhieuNhap pn = new EditDTO.PhieuNhap();
+                pn.MaPN = phieuNhapBLL.GeneratorMaPN();
+                pn.TongTien = listCTPN.Sum(p => p.ThanhTien);
+                pn.NgayNhap = DateTime.Now;
+                pn.DaXoa = false;
+                List<EditDTO.ChiTietPhieuNhap> list = new List<EditDTO.ChiTietPhieuNhap>();
+                foreach (var item in listCTPN)
+                {
+                    EditDTO.ChiTietPhieuNhap ctpn = new EditDTO.ChiTietPhieuNhap();
+                    ctpn.MaPN = pn.MaPN;
+                    ctpn.MaSanPham = item.MaSP;
+                    ctpn.MaThuongHieu = item.MaThuongHieu;
+                    ctpn.GiaNhap = item.GiaNhap;
+                    ctpn.SoLuong = item.SoLuong;
+                    ctpn.ThanhTien = item.ThanhTien;
+                    list.Add(ctpn);
+                }
+                string msg = phieuNhapBLL.Create(pn, list);
+                MessageBox.Show(msg);
+                loadPN();
+                loadSP();
+                listCTPN = new List<ResponseDTO.ChiTietPhieuNhap>();
+                loadCTPN(listCTPN);
+            }
         }
 
         private void BtnUpdateCTPN_Click(object? sender, EventArgs e)
         {
-            if (listCTPN.Count > 0)
+            if (listCTPN.Count == 0)
             {
-                listCTPN[dgvCTPN.CurrentRow.Index].SoLuong = int.Parse(txtSL.Text);
+                MessageBox.Show("Vui lòng thêm sản phẩm trước khi sửa");
+                return;
+            }
+
+            if (dgvCTPN.SelectedRows.Count > 0 && dgvCTPN.CurrentRow != null)
+            {
+                listCTPN[dgvCTPN.CurrentRow.Index].SoLuong = int.Parse(txtSuaSLSP.Text);
+                listCTPN[dgvCTPN.CurrentRow.Index].ThanhTien = listCTPN[dgvCTPN.CurrentRow.Index].SoLuong * listCTPN[dgvCTPN.CurrentRow.Index].GiaNhap;
                 loadCTPN(listCTPN);
                 txtTotalPrice.Text = listCTPN.Sum(p => p.ThanhTien).ToString("C0", new System.Globalization.CultureInfo("vi-VN"));
             }
-            
+        }
+
+        private void DgvCTPN_SelectionChanged(object? sender, EventArgs e)
+        {
+            if (dgvCTPN.SelectedRows.Count > 0 && dgvCTPN.CurrentRow != null)
+            {
+                if (dgvCTPN.CurrentRow.Cells[3].Value != null)
+                {
+                    txtSuaSLSP.Text = dgvCTPN.CurrentRow.Cells[3].Value.ToString();
+                }
+                else
+                {
+                    txtSuaSLSP.Text = "0"; // Hoặc giá trị mặc định
+                }
+            }
+            else
+            {
+                txtSuaSLSP.Text = ""; // Khi không có dòng nào được chọn
+            }
+
         }
 
         private void BtnDeleteCTPN_Click(object? sender, EventArgs e)
         {
-            if(listCTPN.Count > 0)
+            if (listCTPN.Count == 0)
+            {
+                MessageBox.Show("Vui lòng thêm sản phẩm trước khi xóa");
+                return;
+            }
+
+            if (listCTPN.Count > 0)
             {
                 listCTPN.RemoveAt(dgvCTPN.CurrentRow.Index);
                 loadCTPN(listCTPN);
@@ -88,13 +143,13 @@ namespace PM_LKMT.SubForm
 
         private void BtnAddCTPN_Click(object? sender, EventArgs e)
         {
-            if(txtSL.Text == "" || txtMaSP.Text == "" || txtMaTH.Text == "" || txtGiaNhap.Text == "")
+            if (txtSL.Text == "" || txtMaSP.Text == "" || txtMaTH.Text == "" || txtGiaNhap.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đủ thông tin");
                 return;
             }
             ResponseDTO.ChiTietPhieuNhap item = listCTPN.Where(p => p.MaSP == txtMaSP.Text).FirstOrDefault();
-            if(item == null)
+            if (item == null)
             {
                 ResponseDTO.ChiTietPhieuNhap ctpn = new ResponseDTO.ChiTietPhieuNhap();
                 ctpn.MaSP = txtMaSP.Text;
@@ -103,11 +158,12 @@ namespace PM_LKMT.SubForm
                 ctpn.SoLuong = int.Parse(txtSL.Text);
                 ctpn.ThanhTien = ctpn.GiaNhap * ctpn.SoLuong;
                 listCTPN.Add(ctpn);
-            }    
+            }
             else
             {
                 item.SoLuong += int.Parse(txtSL.Text);
-            }    
+                item.ThanhTien = item.GiaNhap * item.SoLuong;
+            }
             loadCTPN(listCTPN);
             txtTotalPrice.Text = listCTPN.Sum(p => p.ThanhTien).ToString("C0", new System.Globalization.CultureInfo("vi-VN"));
 
@@ -148,14 +204,27 @@ namespace PM_LKMT.SubForm
             }
         }
 
+
+
         private void DgvPN_SelectionChanged(object? sender, EventArgs e)
         {
-            if (dgvPN.SelectedRows.Count > 0)
+            if (dgvPN.RowCount == 0)
+            {
+                MessageBox.Show("Không có phiếu nhập nào!");
+                return;
+            }
+
+            if (listCTPN.Count > 0)
+            {
+                MessageBox.Show("Vui lòng hoàn thành phiếu nhập trước!");
+                return;
+            }
+
+            if (dgvPN.SelectedRows.Count > 0 && dgvPN.CurrentRow != null)
             {
                 string idPN = dgvPN.CurrentRow.Cells[0].Value.ToString();
                 loadCTPN(chiTietPhieuNhapBLL.GetAll(idPN));
                 txtTotalPrice.Text = chiTietPhieuNhapBLL.GetTotal(idPN).ToString("C0", new System.Globalization.CultureInfo("vi-VN"));
-
             }
         }
 
@@ -171,7 +240,7 @@ namespace PM_LKMT.SubForm
         private void ImportReceiptForm_Load(object? sender, EventArgs e)
         {
             loadPN();
-            loadSP();
+            loadSP(); 
         }
 
         public void loadPN()
@@ -189,7 +258,7 @@ namespace PM_LKMT.SubForm
         {
             dgvCTPN.DataSource = null;
             dgvCTPN.DataSource = list;
-            dgvCTPN.Columns["MaSP"].HeaderText = "Tên sản phẩm";
+            dgvCTPN.Columns["MaSP"].HeaderText = "Mã sản phẩm";
             dgvCTPN.Columns["MaThuongHieu"].HeaderText = "Mã thương hiệu";
             dgvCTPN.Columns["GiaNhap"].HeaderText = "Giá nhập";
             dgvCTPN.Columns["SoLuong"].HeaderText = "Số lượng";
@@ -209,6 +278,11 @@ namespace PM_LKMT.SubForm
             dgvSP.Columns["SoLuongTon"].HeaderText = "Số lượng tồn";
             dgvSP.Columns["DonGia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvSP.Columns["SoLuongTon"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+        }
+
+        private void txtTotalPrice_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

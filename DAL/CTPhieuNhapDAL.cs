@@ -11,11 +11,11 @@ namespace DAL
     public class CTPhieuNhapDAL
     {
         private CHITIETPHIEUNHAPTableAdapter _db;
-        private SanPhamDAL _spDAL;
+        public QueriesTableAdapter _query;
         public CTPhieuNhapDAL()
         {
             _db = new CHITIETPHIEUNHAPTableAdapter();
-            _spDAL = new SanPhamDAL();
+            _query = new QueriesTableAdapter();
         }
         public List<ResponseDTO.ChiTietPhieuNhap> GetAll(string idPN)
         {
@@ -26,7 +26,7 @@ namespace DAL
             foreach (var dh in dhs)
             {
                 _db.Insert(dh.MaPN, dh.MaSanPham, dh.MaThuongHieu,dh.GiaNhap, dh.SoLuong, dh.ThanhTien);
-                //_spDAL.UpdateQuantity(dh.MaSanPham, dh.SoLuong);
+                _query.CapNhatSLTonSPKhiNhap(dh.SoLuong, dh.MaSanPham);
             }
         }
     }

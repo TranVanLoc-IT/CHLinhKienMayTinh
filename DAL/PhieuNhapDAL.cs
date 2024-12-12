@@ -38,6 +38,12 @@ namespace DAL
         {
             return _db.GetData().Where(p => p.DaXoa == false).Select(p => new ResponseDTO.PhieuNhap { MaPN = p.MaPN, TongTien = p.TangTien, NgayNhap = p.NgayNhap }).ToList<ResponseDTO.PhieuNhap>();
         }
+
+        public List<ResponseDTO.PhieuNhap> GetAllValid()
+        {
+            return _db.GetData().Select(p => new ResponseDTO.PhieuNhap { MaPN = p.MaPN, TongTien = p.TangTien, NgayNhap = p.NgayNhap }).ToList<ResponseDTO.PhieuNhap>();
+        }
+
         public ResponseDTO.PhieuNhap GetById(string id)
         {
             return (ResponseDTO.PhieuNhap)_db.GetData().Where(r => r.MaPN == id);

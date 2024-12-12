@@ -41,6 +41,7 @@
     <Shape ID="DesignTable:CHITIETPHIEUNHAP" ZOrder="10" X="3093" Y="150" Height="227" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="168" />
     <Shape ID="DesignTable:PHIEUNHAP" ZOrder="7" X="3265" Y="437" Height="181" Width="255" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="122" />
     <Shape ID="DesignTable:KHUYENMAI" ZOrder="4" X="2517" Y="248" Height="204" Width="258" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="145" />
+<<<<<<< HEAD
     <Shape ID="DesignSources:QueriesTableAdapter" ZOrder="1" X="2084" Y="70" Height="309" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="305" />
 <<<<<<< HEAD
 =======
@@ -64,6 +65,9 @@
 >>>>>>> 733b3e4 (update#1)
 =======
 >>>>>>> 84d8ab1 (update#2)
+=======
+    <Shape ID="DesignSources:QueriesTableAdapter" ZOrder="1" X="2383" Y="-43" Height="287" Width="376" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="559" />
+>>>>>>> 5eb981f (update#4)
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK__CHITIETDO__MaDon__5535A963" ZOrder="20" LineWidth="11">
