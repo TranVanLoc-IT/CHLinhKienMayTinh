@@ -6572,20 +6572,22 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string MaDH {
-                get {
-                    try {
-                        return ((string)(this[this.tableKHUYENMAI.MaDHColumn]));
+            public string MaDH
+            {
+                get
+                {
+                    if (this.IsMaDHNull())
+                    {
+                        return null; // Trả về null nếu giá trị là DBNull
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MaDH\' in table \'KHUYENMAI\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableKHUYENMAI.MaDHColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableKHUYENMAI.MaDHColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string MaCT {
