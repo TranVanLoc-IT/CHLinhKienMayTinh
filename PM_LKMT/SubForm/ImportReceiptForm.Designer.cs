@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel4 = new Panel();
             button1 = new Button();
             groupBox2 = new GroupBox();
@@ -38,6 +39,9 @@
             dgvPN = new DataGridView();
             searchTxt = new TextBox();
             panel1 = new Panel();
+            dgvCTPN = new DataGridView();
+            txtSuaSLSP = new TextBox();
+            label5 = new Label();
             txtGiaNhap = new TextBox();
             txtSL = new TextBox();
             txtMaTH = new TextBox();
@@ -53,7 +57,6 @@
             btnUpdateCTPN = new Button();
             txtMaSP = new TextBox();
             label1 = new Label();
-            dgvCTPN = new DataGridView();
             txtTotalPrice = new TextBox();
             label6 = new Label();
             labelsl = new Label();
@@ -62,9 +65,9 @@
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPN).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCTPN).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvSP).BeginInit();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvCTPN).BeginInit();
             SuspendLayout();
             // 
             // panel4
@@ -146,15 +149,15 @@
             dgvPN.BorderStyle = BorderStyle.Fixed3D;
             dgvPN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dgvPN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.Padding = new Padding(1);
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dgvPN.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Window;
+            dataGridViewCellStyle1.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle1.Padding = new Padding(1);
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
+            dgvPN.DefaultCellStyle = dataGridViewCellStyle1;
             dgvPN.Location = new Point(3, 48);
             dgvPN.Name = "dgvPN";
             dgvPN.RowHeadersWidth = 51;
@@ -173,6 +176,9 @@
             // panel1
             // 
             panel1.BackColor = Color.WhiteSmoke;
+            panel1.Controls.Add(dgvCTPN);
+            panel1.Controls.Add(txtSuaSLSP);
+            panel1.Controls.Add(label5);
             panel1.Controls.Add(txtGiaNhap);
             panel1.Controls.Add(txtSL);
             panel1.Controls.Add(txtMaTH);
@@ -185,7 +191,6 @@
             panel1.Controls.Add(groupBox1);
             panel1.Controls.Add(txtMaSP);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(dgvCTPN);
             panel1.Controls.Add(txtTotalPrice);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(labelsl);
@@ -194,6 +199,48 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1635, 425);
             panel1.TabIndex = 4;
+            // 
+            // dgvCTPN
+            // 
+            dgvCTPN.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCTPN.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvCTPN.BackgroundColor = SystemColors.ActiveCaption;
+            dgvCTPN.BorderStyle = BorderStyle.Fixed3D;
+            dgvCTPN.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
+            dgvCTPN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.Padding = new Padding(1);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvCTPN.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvCTPN.Location = new Point(996, 70);
+            dgvCTPN.Name = "dgvCTPN";
+            dgvCTPN.RowHeadersWidth = 51;
+            dgvCTPN.Size = new Size(612, 279);
+            dgvCTPN.TabIndex = 33;
+            // 
+            // txtSuaSLSP
+            // 
+            txtSuaSLSP.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtSuaSLSP.Location = new Point(1125, 366);
+            txtSuaSLSP.Name = "txtSuaSLSP";
+            txtSuaSLSP.Size = new Size(97, 39);
+            txtSuaSLSP.TabIndex = 32;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
+            label5.ForeColor = Color.Black;
+            label5.Location = new Point(1302, 374);
+            label5.Name = "label5";
+            label5.Size = new Size(94, 25);
+            label5.TabIndex = 31;
+            label5.Text = "Tổng tiền";
             // 
             // txtGiaNhap
             // 
@@ -224,15 +271,15 @@
             dgvSP.BorderStyle = BorderStyle.Fixed3D;
             dgvSP.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Sunken;
             dgvSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Window;
-            dataGridViewCellStyle4.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle4.Padding = new Padding(1);
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            dgvSP.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.Padding = new Padding(1);
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvSP.DefaultCellStyle = dataGridViewCellStyle3;
             dgvSP.Location = new Point(5, 70);
             dgvSP.Name = "dgvSP";
             dgvSP.RowHeadersWidth = 51;
@@ -377,38 +424,25 @@
             label1.TabIndex = 19;
             label1.Text = "Mã sản phẩm";
             // 
-            // dgvCTPN
-            // 
-            dgvCTPN.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dgvCTPN.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvCTPN.BackgroundColor = SystemColors.ActiveCaption;
-            dgvCTPN.BorderStyle = BorderStyle.Fixed3D;
-            dgvCTPN.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCTPN.GridColor = SystemColors.HotTrack;
-            dgvCTPN.Location = new Point(992, 42);
-            dgvCTPN.Name = "dgvCTPN";
-            dgvCTPN.RowHeadersWidth = 51;
-            dgvCTPN.Size = new Size(640, 302);
-            dgvCTPN.TabIndex = 17;
-            // 
             // txtTotalPrice
             // 
             txtTotalPrice.Font = new Font("Times New Roman", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtTotalPrice.Location = new Point(1093, 358);
+            txtTotalPrice.Location = new Point(1402, 366);
             txtTotalPrice.Name = "txtTotalPrice";
             txtTotalPrice.Size = new Size(230, 39);
             txtTotalPrice.TabIndex = 11;
+            txtTotalPrice.TextChanged += txtTotalPrice_TextChanged;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(993, 366);
+            label6.Location = new Point(996, 374);
             label6.Name = "label6";
-            label6.Size = new Size(94, 25);
+            label6.Size = new Size(123, 25);
             label6.TabIndex = 10;
-            label6.Text = "Tổng tiền";
+            label6.Text = "Sửa số lượng";
             // 
             // labelsl
             // 
@@ -447,9 +481,9 @@
             ((System.ComponentModel.ISupportInitialize)dgvPN).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvCTPN).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvSP).EndInit();
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvCTPN).EndInit();
             ResumeLayout(false);
         }
 
@@ -458,7 +492,6 @@
         private Panel panel4;
         private TextBox searchTxt;
         private Panel panel1;
-        private DataGridView dgvCTPN;
         private TextBox txtTotalPrice;
         private Label label6;
         private TextBox txtCustomerName;
@@ -487,5 +520,8 @@
         private TextBox txtMaTH;
         private TextBox txtSL;
         private TextBox txtGiaNhap;
+        private TextBox txtSuaSLSP;
+        private Label label5;
+        private DataGridView dgvCTPN;
     }
 }

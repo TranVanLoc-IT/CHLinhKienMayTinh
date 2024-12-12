@@ -82,20 +82,28 @@ namespace BLL
         public string GeneratorMaPN()
         {
             // Giả sử maPN là "PN0005"
-            string maPN = _dal.GetAll().Last().MaPN;
+            List<ResponseDTO.PhieuNhap> pn = _dal.GetAllValid();
+            
+            if (pn.Count > 0)
+            {
+                string maPN = pn.Last().MaPN;
+                // Tách phần "PN" và số sau "PN"
+                string prefix = maPN.Substring(0, 2); // Lấy "PN"
+                string numberPart = maPN.Substring(2); // Lấy phần số "0005"
 
-            // Tách phần "PN" và số sau "PN"
-            string prefix = maPN.Substring(0, 2); // Lấy "PN"
-            string numberPart = maPN.Substring(2); // Lấy phần số "0005"
+                // Chuyển phần số thành số nguyên, cộng 1
+                int number = int.Parse(numberPart);
+                number++;
 
-            // Chuyển phần số thành số nguyên, cộng 1
-            int number = int.Parse(numberPart);
-            number++;
+                // Tạo lại chuỗi với phần số mới
+                maPN = prefix + number.ToString().PadLeft(4, '0'); // Đảm bảo số luôn có 4 chữ số
 
-            // Tạo lại chuỗi với phần số mới
-            maPN = prefix + number.ToString().PadLeft(4, '0'); // Đảm bảo số luôn có 4 chữ số
-
-            return maPN;
+                return maPN;
+            }
+            else
+            {
+                return "PN0001";
+            }
         }
     }
 }

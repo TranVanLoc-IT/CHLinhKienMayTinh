@@ -34,6 +34,7 @@ namespace PM_LKMT.SubForm
             btnDelete.Click += BtnDelete_Click;
             btnAdd.Click += BtnAdd_Click;
             btnBack.Click += BtnBack_Click;
+            txtHoaDon.Enabled = false;
         }
 
         private void BtnBack_Click(object? sender, EventArgs e)
@@ -53,7 +54,7 @@ namespace PM_LKMT.SubForm
                 EditDTO.KhuyenMai vour = new EditDTO.KhuyenMai();
                 vour.MaCT = txtMaCT.Text;
                 vour.MaKhuyenMai = txtMaKM.Text;
-                vour.MaHD = txtHoaDon.Text;
+                vour.MaHD = string.Empty;
                 vour.DaDung = false;
 
                 string ret = bll.Create(vour);
