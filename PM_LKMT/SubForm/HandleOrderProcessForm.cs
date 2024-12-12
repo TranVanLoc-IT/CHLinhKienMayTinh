@@ -195,7 +195,7 @@ namespace PM_LKMT.SubForm
             {
                 PdfPage page = document.AddPage();
                 page.Width = XUnit.FromMillimeter(190);  // Chiều rộng giấy hóa đơn (80mm)
-                page.Height = XUnit.FromMillimeter(130 + bought.Count() * 15); // Chiều cao giấy hóa đơn (150mm)
+                page.Height = XUnit.FromMillimeter(130 + bought.Count() * 35); // Chiều cao giấy hóa đơn (150mm)
 
                 using (XGraphics gfx = XGraphics.FromPdfPage(page))
                 {
@@ -216,6 +216,13 @@ namespace PM_LKMT.SubForm
                     offset += 20;
                     gfx.DrawString($"Nhân viên thực hiện: {userName}", xFont, XBrushes.Black, new XRect(startX, startY + offset, page.Width, page.Height), XStringFormats.TopLeft);
                     offset += 20;
+                    gfx.DrawString($"Phương thức thanh toán: {lichSuGD.PhuongThuc}", xFont, XBrushes.Black, new XRect(startX, startY + offset, page.Width, page.Height), XStringFormats.TopLeft);
+                    offset += 20;
+                    if(lichSuGD.PhuongThuc == "Chuyển khoản")
+                    {
+                        gfx.DrawString($"Ngân hàng: {lichSuGD.NganHang} - Mã giao dịch: {lichSuGD.MaGiaoDich}", xFont, XBrushes.Black, new XRect(startX, startY + offset, page.Width, page.Height), XStringFormats.TopLeft);
+                        offset += 20;
+                    }
                     gfx.DrawString($"Trạng thái: Đã thanh toán", xFont, XBrushes.Black, new XRect(startX, startY + offset, page.Width, page.Height), XStringFormats.TopLeft);
                     offset += 20;
 
@@ -227,14 +234,35 @@ namespace PM_LKMT.SubForm
                     gfx.DrawString("Danh sách sản phẩm:", xFont, XBrushes.Black, new XRect(startX, startY + offset, page.Width, page.Height), XStringFormats.TopLeft);
                     offset += 20;
 
+                    startY += offset;
+                    // Khởi tạo các thông số cho bảng
+                    int cellWidth = 150; // Độ rộng của mỗi ô
+                    int cellHeight = 25; // Chiều cao của mỗi ô
+
+                    // Vẽ tiêu đề bảng (nếu cần)
+                    gfx.DrawString("Sản phẩm", xFont, XBrushes.Black, new XRect(startX, startY, cellWidth, cellHeight), XStringFormats.Center);
+                    gfx.DrawString("Số lượng", xFont, XBrushes.Black, new XRect(startX + cellWidth, startY, cellWidth, cellHeight), XStringFormats.Center);
+                    gfx.DrawString("Giá", xFont, XBrushes.Black, new XRect(startX + 2 * cellWidth, startY, cellWidth, cellHeight), XStringFormats.Center);
+
+                    // Vẽ đường kẻ phân cách
+                    gfx.DrawLine(XPens.Black, startX, startY + cellHeight, startX + 3 * cellWidth, startY + cellHeight);
+
+                    startY += cellHeight;
+
                     foreach (var sp in bought)
                     {
-                        gfx.DrawString($"{sp.TenSanPham}             SL: {sp.SoLuong}             Giá: {_convertMoneyUnitBLL.ConvertToVND(sp.ThanhTien)}", xFont, XBrushes.Black, new XRect(startX, startY + offset, page.Width, page.Height), XStringFormats.TopLeft);
-                        offset += 20;
+                        // Vẽ từng hàng của bảng
+                        gfx.DrawString($"{sp.TenSanPham}", xFont, XBrushes.Black, new XRect(startX, startY, cellWidth, cellHeight), XStringFormats.Center);
+                        gfx.DrawString($"{sp.SoLuong}", xFont, XBrushes.Black, new XRect(startX + cellWidth, startY, cellWidth, cellHeight), XStringFormats.Center);
+                        gfx.DrawString($"{_convertMoneyUnitBLL.ConvertToVND(sp.ThanhTien)}", xFont, XBrushes.Black, new XRect(startX + 2 * cellWidth, startY, cellWidth, cellHeight), XStringFormats.Center);
+
+                        // Vẽ đường kẻ phân cách
+                        gfx.DrawLine(XPens.Black, startX, startY + cellHeight, startX + 3 * cellWidth, startY + cellHeight);
+
+                        startY += cellHeight;
                     }
-
-                    offset += 20;
-
+                    // RESET OFFSET
+                    offset = 10;
                     // Tổng tiền, giảm giá và trạng thái
                     gfx.DrawString($"Tổng tiền (Gồm VAT): {_convertMoneyUnitBLL.ConvertToVND(donHangmoi.ThanhTien)}", xFont, XBrushes.Black, new XRect(startX, startY + offset, page.Width, page.Height), XStringFormats.TopLeft);
                     offset += 20;
@@ -340,9 +368,7 @@ namespace PM_LKMT.SubForm
             else
             {
                 lichSuGD.NganHang = null;
-
             }
-
 
             try
             {

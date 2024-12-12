@@ -96,6 +96,7 @@
             // 
             // dataGrid
             // 
+            dataGrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGrid.BackgroundColor = SystemColors.ActiveCaption;
@@ -111,8 +112,8 @@
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGrid.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGrid.Dock = DockStyle.Fill;
             dataGrid.Location = new Point(0, 0);
+            dataGrid.Margin = new Padding(0);
             dataGrid.Name = "dataGrid";
             dataGrid.RowHeadersWidth = 51;
             dataGrid.Size = new Size(574, 240);
@@ -140,6 +141,7 @@
             flowPanel.BackColor = Color.WhiteSmoke;
             flowPanel.FlowDirection = FlowDirection.TopDown;
             flowPanel.Location = new Point(0, 30);
+            flowPanel.Margin = new Padding(0);
             flowPanel.Name = "flowPanel";
             flowPanel.Size = new Size(571, 199);
             flowPanel.TabIndex = 46;

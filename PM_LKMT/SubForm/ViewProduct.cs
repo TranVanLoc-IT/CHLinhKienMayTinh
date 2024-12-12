@@ -51,7 +51,6 @@ namespace PM_LKMT.SubForm
             {
                 PictureBox card = LoadImage(br.ToLower());
                 this.panelThuongHieuHot.Controls.Add(card);
-
             }
             foreach (ResponseDTO.SanPham sp in data)
             {

@@ -58,10 +58,10 @@
             // 
             // quantity
             // 
-            quantity.BackColor = Color.SteelBlue;
+            quantity.BackColor = Color.White;
             quantity.BorderStyle = BorderStyle.None;
             quantity.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold | FontStyle.Italic);
-            quantity.ForeColor = SystemColors.InactiveBorder;
+            quantity.ForeColor = SystemColors.ControlDarkDark;
             quantity.Location = new Point(334, 0);
             quantity.Name = "quantity";
             quantity.Size = new Size(150, 30);

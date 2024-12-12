@@ -30,8 +30,16 @@ namespace DAL
         }
         public void Create(EditDTO.DonHang dh)
         {
+            while (true)
+            {
+                if (_db.GetData().Where(r => r.MaDonHang == dh.MaDonHang).Any())
+                {
+                    dh.MaDonHang = IDAutoGeneratorDAL.Generate("DH", 8);
+                    continue;
+                }
+                break;
+            }
             _db.Insert(dh.MaDonHang, dh.NhanVienTao, dh.MaKH, dh.NgayTao, DateTime.Now, dh.TinhTrang, dh.GhiChu, dh.ThanhTien, dh.TienGiam, dh.DaXoa);
-            
         }
         public void Delete(string id)
         {

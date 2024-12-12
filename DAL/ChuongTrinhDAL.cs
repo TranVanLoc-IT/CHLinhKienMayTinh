@@ -105,6 +105,7 @@ namespace DAL
         }
         public void UseEmptyKMCard(string MaCT, string madh)
         {
+            if (string.IsNullOrWhiteSpace(MaCT)) return;
             string makmEmpty = _km.GetData().Where(r => r.MaCT == MaCT && !r.DaDung).First().MaKhuyenMai;
             QueriesTableAdapter adapter = new QueriesTableAdapter();
             adapter.updatekm(madh, makmEmpty);

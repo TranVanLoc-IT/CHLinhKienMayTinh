@@ -1,4 +1,5 @@
-﻿using DTO;
+﻿using BLL;
+using DTO;
 using System.Data;
 using System.Text.Json;
 
@@ -7,11 +8,13 @@ namespace PM_LKMT.Controls
     public partial class ProductDetails : UserControl
     {
         private ResponseDTO.SanPham _sp;
+        private ConvertMoneyUnitBLL _unitBll;
         private List<ProductCartModel> carts =  new List<ProductCartModel>();
         public ProductDetails(ResponseDTO.SanPham sp)
         {
             InitializeComponent();
             _sp = sp;
+            _unitBll = new ConvertMoneyUnitBLL();
             this.Load += async (s, e) => await LoadData(sp);
         }
       
@@ -23,7 +26,7 @@ namespace PM_LKMT.Controls
             txtDId.Text = sp.MaSanPham;
             txtDName.Text = sp.TenSanPham;
             txtDBrand.Text = sp.TenThuongHieu;
-            txtDPrice.Text = sp.DonGia.ToString() + "VND";
+            txtDPrice.Text = _unitBll.ConvertToVND(sp.DonGia);
             txtDQuantityLeft.Text = sp.SoLuongTon.ToString();
 
             string filePath = $"../../../images/Product/{sp.MaSanPham}.jpg";
@@ -76,6 +79,7 @@ namespace PM_LKMT.Controls
 				// Ghi dữ liệu vào file JSON
 				await WriteToJsonFile($"../../../data/cart.json", carts);
                 MessageBox.Show("Thêm thành công!", "Thông báo");
+                this.Dispose();
 			}
 			catch(Exception ex)
             {

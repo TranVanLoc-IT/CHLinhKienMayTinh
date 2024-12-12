@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             txtMaDH = new TextBox();
-            label3 = new Label();
             label6 = new Label();
             groupBox1 = new GroupBox();
             flowPanel = new FlowLayoutPanel();
@@ -52,21 +51,10 @@
             // 
             txtMaDH.Enabled = false;
             txtMaDH.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            txtMaDH.Location = new Point(166, 10);
+            txtMaDH.Location = new Point(12, 23);
             txtMaDH.Name = "txtMaDH";
-            txtMaDH.Size = new Size(261, 34);
+            txtMaDH.Size = new Size(415, 34);
             txtMaDH.TabIndex = 56;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            label3.ForeColor = Color.Black;
-            label3.Location = new Point(12, 23);
-            label3.Name = "label3";
-            label3.Size = new Size(148, 25);
-            label3.TabIndex = 55;
-            label3.Text = "Mã đơn hàng";
             // 
             // label6
             // 
@@ -205,7 +193,6 @@
             panel1.Controls.Add(txtTotalPriceDiscount);
             panel1.Controls.Add(groupBox1);
             panel1.Controls.Add(label6);
-            panel1.Controls.Add(label3);
             panel1.Controls.Add(txtMaDH);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(0, 0);
@@ -251,7 +238,6 @@
 
         #endregion
         private TextBox txtMaDH;
-        private Label label3;
         private Label label6;
         private GroupBox groupBox1;
         private FlowLayoutPanel flowPanel;

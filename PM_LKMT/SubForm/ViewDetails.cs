@@ -19,6 +19,12 @@ namespace PM_LKMT.SubForm
             detail.Dock = DockStyle.Fill;
             this.Size = detail.Size;
             this.Controls.Add(detail);
+            detail.Disposed += Detail_Disposed;
+        }
+
+        private void Detail_Disposed(object? sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

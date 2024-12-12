@@ -58,7 +58,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { côngTyLinhKiệnECOMToolStripMenuItem, staffInfo, func, logout, timeWork });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1153, 33);
+            menuStrip1.Size = new Size(1099, 33);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -218,10 +218,10 @@
             timeWork.BackColor = Color.CornflowerBlue;
             timeWork.BorderStyle = BorderStyle.None;
             timeWork.Enabled = false;
-            timeWork.Font = new Font("Times New Roman", 10.8F, FontStyle.Bold);
-            timeWork.ForeColor = Color.WhiteSmoke;
+            timeWork.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            timeWork.ForeColor = Color.Snow;
             timeWork.Name = "timeWork";
-            timeWork.Size = new Size(180, 29);
+            timeWork.Size = new Size(240, 29);
             timeWork.Text = "21/20/2024 12:00:12";
             timeWork.ToolTipText = "Thời gian làm việc";
             // 
@@ -230,7 +230,7 @@
             main.Dock = DockStyle.Fill;
             main.Location = new Point(0, 33);
             main.Name = "main";
-            main.Size = new Size(1153, 429);
+            main.Size = new Size(1099, 429);
             main.TabIndex = 1;
             // 
             // timer1
@@ -242,13 +242,13 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1153, 462);
+            ClientSize = new Size(1099, 462);
             Controls.Add(main);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             MinimizeBox = false;
             Name = "MainForm";
-            Text = "Trang chủ";
+            Text = "Phần mềm bán hàng linh kiện ECOM";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

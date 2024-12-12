@@ -54,5 +54,6 @@ namespace PM_LKMT.Controls
             view.BringToFront();
             view.Show();
         }
+
     }
 }

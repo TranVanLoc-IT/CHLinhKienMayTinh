@@ -175,7 +175,6 @@ namespace PM_LKMT.SubForm
                 }
                 EditDTO.DonHang donHangMoi = new EditDTO.DonHang();
                 donHangMoi.MaDonHang = IDAutoGeneratorBLL.Generate("DH", 8);
-                this.txtMaDH.Text = donHangMoi.MaDonHang;
                 donHangMoi.TinhTrang = "Chưa thanh toán";
                 donHangMoi.NhanVienTao = LoginBLL.GetCurrentUserId(this.userName);
                 donHangMoi.DaXoa = false;
@@ -185,9 +184,8 @@ namespace PM_LKMT.SubForm
                 donHangMoi.GhiChu = txtNote.Text;
                 _dhBLL.Create(donHangMoi);
                 _ctdhbll.CreateRange(donHangMoi.MaDonHang, cart);
-
+                this.txtMaDH.Text = donHangMoi.MaDonHang;
                 MessageBox.Show("Tạo đơn hàng thành công !", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
             catch (Exception ex)
             {
@@ -289,11 +287,14 @@ namespace PM_LKMT.SubForm
             decimal totalPrice = 0;
             foreach (Control c in this.flowPanel.Controls)
             {
-                if (c is ProductCartLine cart)
+                if (c is ProductCartLine sp)
                 {
-
-                    totalQuantity += cart.quantity.Value;
-                    totalPrice += decimal.Parse(cart.price.Text.Substring(0, cart.price.Text.Length - 4));
+                    totalQuantity += sp.quantity.Value;
+                    totalPrice += decimal.Parse(sp.price.Text.Substring(0, sp.price.Text.Length - 4));
+                    var productUpdate = cart.Where(r => r.TenSanPham.Equals(sp.txtName.Text)).First();
+                    cart.Remove(productUpdate);
+                    productUpdate.SoLuong = int.Parse(sp.quantity.Value.ToString());
+                    cart.Add(productUpdate);
                 }
             }
             this.txtPricePayment.Text = _convertMoneyUnitBLL.ConvertToVND(totalPrice);
@@ -311,13 +312,13 @@ namespace PM_LKMT.SubForm
 
         private void CreateNewCus()
         {
-            if (!Validation()) return;
             EditDTO.KhachHang kh = new EditDTO.KhachHang();
             kh.MaKH = IDAutoGeneratorBLL.Generate("KH", 7);
             kh.HoTen = txtName.Text;
             kh.NgayThamGia = DateTime.Now;
             kh.NguoiChinhSuaGanNhat = LoginBLL.GetCurrentUserId(this.userName);
             kh.SDT = sdt.Text;
+            _khBLL.Create(kh);
             makh = kh.MaKH;
             if (string.IsNullOrWhiteSpace(kh.HoTen))
             {
@@ -333,7 +334,7 @@ namespace PM_LKMT.SubForm
             {
                 if (c is TextBox tb)
                 {
-                    if (string.IsNullOrWhiteSpace(tb.Text) && tb.Name != "txtNote" && tb.Name != "txtMaDH")
+                    if (string.IsNullOrWhiteSpace(tb.Text) && tb.Name != "txtNote" && tb.Name != "txtMaDH" && tb.Name != "status")
                     {
                         _errorProvider.SetError(tb, "Không được để trống");
                         return false;

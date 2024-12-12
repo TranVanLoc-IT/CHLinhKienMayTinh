@@ -49,22 +49,22 @@ namespace PM_LKMT.SubForm
         }
         private void LoadProduct()
         {
-
-            Label lb = new Label();
-            Label price = new Label();
-
-            // Thiết lập thông tin cho lb
-            lb.Font = new Font("Times New Roman", 13, FontStyle.Italic);
-            lb.ForeColor = Color.Black;
-            lb.AutoSize = true;
-
-            // Thiết lập thông tin cho price
-            price.Font = new Font("Times New Roman", 14, FontStyle.Bold);
-            price.ForeColor = Color.Red;
-            price.AutoSize = true;
             foreach (var i in sps)
             {
-                lb.Text = i.TenSanPham + " SL: " + i.SoLuong;
+                // Tạo Label mới cho từng sản phẩm
+                Label lb = new Label();
+                Label price = new Label();
+
+                // Thiết lập thông tin cho lb
+                lb.Font = new Font("Times New Roman", 13, FontStyle.Italic);
+                lb.ForeColor = Color.Black;
+                lb.AutoSize = true;
+
+                // Thiết lập thông tin cho price
+                price.Font = new Font("Times New Roman", 14, FontStyle.Bold);
+                price.ForeColor = Color.Red;
+                price.AutoSize = true;
+                lb.Text = i.TenSanPham + " - SL: " + i.SoLuong;
                 price.Text = "Thành tiền: " + _convertMoneyUnitBLL.ConvertToVND(i.ThanhTien);
                 this.flowPanel.Controls.Add(lb);
                 this.flowPanel.Controls.Add(price);
