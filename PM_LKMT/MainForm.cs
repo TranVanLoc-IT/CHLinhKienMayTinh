@@ -35,7 +35,6 @@ namespace PM_LKMT
         {
             if (role.StartsWith("Thu ngân"))
             {
-                manageCustomerPage.Visible = false;
                 manageImportPage.Visible = false;
                 manageSalePage.Visible = false;
                 manageProductPage.Visible = false;
@@ -45,19 +44,15 @@ namespace PM_LKMT
             else if (role.StartsWith("Nhân viên"))
             {
                 paymentPage.Visible = false;
-                exportBillPage.Visible = false;
                 manageSalePage.Visible = false;
-                manageBillPage.Visible = false;
                 manageProductPage.Visible = false;
                 manageSalePage.Visible = false;
             }
             else
             {
-                manageCustomerPage.Visible = false;
                 orderPage.Visible = false;
                 warehousePage.Visible = false;
                 paymentPage.Visible = false;
-                exportBillPage.Visible = false;
                 warehousePage.Visible = false;
                 viewProductPage.Visible = false;
             }

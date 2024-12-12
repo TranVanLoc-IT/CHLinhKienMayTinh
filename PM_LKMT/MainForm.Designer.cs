@@ -37,9 +37,6 @@
             orderPage = new ToolStripMenuItem();
             warehousePage = new ToolStripMenuItem();
             paymentPage = new ToolStripMenuItem();
-            manageBillPage = new ToolStripMenuItem();
-            exportBillPage = new ToolStripMenuItem();
-            manageCustomerPage = new ToolStripMenuItem();
             manageProductPage = new ToolStripMenuItem();
             manageImportPage = new ToolStripMenuItem();
             manageSalePage = new ToolStripMenuItem();
@@ -81,7 +78,7 @@
             // 
             // func
             // 
-            func.DropDownItems.AddRange(new ToolStripItem[] { viewProductPage, orderPage, warehousePage, paymentPage, manageBillPage, exportBillPage, manageCustomerPage, manageProductPage, manageImportPage, manageSalePage });
+            func.DropDownItems.AddRange(new ToolStripItem[] { viewProductPage, orderPage, warehousePage, paymentPage, manageProductPage, manageImportPage, manageSalePage });
             func.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
             func.ForeColor = Color.Azure;
             func.Name = "func";
@@ -136,39 +133,6 @@
             paymentPage.Size = new Size(292, 30);
             paymentPage.Text = "Thanh toán";
             paymentPage.Click += paymentPage_Click;
-            // 
-            // manageBillPage
-            // 
-            manageBillPage.BackColor = SystemColors.Control;
-            manageBillPage.BackgroundImage = Resource.icons8_bill_50;
-            manageBillPage.BackgroundImageLayout = ImageLayout.None;
-            manageBillPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            manageBillPage.Margin = new Padding(2);
-            manageBillPage.Name = "manageBillPage";
-            manageBillPage.Size = new Size(292, 30);
-            manageBillPage.Text = "Quản lí hóa đơn";
-            // 
-            // exportBillPage
-            // 
-            exportBillPage.BackColor = SystemColors.Control;
-            exportBillPage.BackgroundImage = Resource.printer;
-            exportBillPage.BackgroundImageLayout = ImageLayout.None;
-            exportBillPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            exportBillPage.Margin = new Padding(2);
-            exportBillPage.Name = "exportBillPage";
-            exportBillPage.Size = new Size(292, 30);
-            exportBillPage.Text = "Xuất hóa đơn";
-            // 
-            // manageCustomerPage
-            // 
-            manageCustomerPage.BackColor = SystemColors.Control;
-            manageCustomerPage.BackgroundImage = Resource.icons8_customer_48;
-            manageCustomerPage.BackgroundImageLayout = ImageLayout.None;
-            manageCustomerPage.Font = new Font("Times New Roman", 13.8F, FontStyle.Bold);
-            manageCustomerPage.Margin = new Padding(2);
-            manageCustomerPage.Name = "manageCustomerPage";
-            manageCustomerPage.Size = new Size(292, 30);
-            manageCustomerPage.Text = "Khách hàng";
             // 
             // manageProductPage
             // 
@@ -267,9 +231,6 @@
         private ToolStripMenuItem orderPage;
         private ToolStripMenuItem warehousePage;
         private ToolStripMenuItem paymentPage;
-        private ToolStripMenuItem manageBillPage;
-        private ToolStripMenuItem exportBillPage;
-        private ToolStripMenuItem manageCustomerPage;
         private ToolStripMenuItem manageProductPage;
         private ToolStripMenuItem manageImportPage;
         private ToolStripMenuItem manageSalePage;

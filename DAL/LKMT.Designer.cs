@@ -6572,22 +6572,20 @@ namespace DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string MaDH
-            {
-                get
-                {
-                    if (this.IsMaDHNull())
-                    {
-                        return null; // Trả về null nếu giá trị là DBNull
+            public string MaDH {
+                get {
+                    try {
+                        return ((string)(this[this.tableKHUYENMAI.MaDHColumn]));
                     }
-                    return ((string)(this[this.tableKHUYENMAI.MaDHColumn]));
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MaDH\' in table \'KHUYENMAI\' is DBNull.", e);
+                    }
                 }
-                set
-                {
+                set {
                     this[this.tableKHUYENMAI.MaDHColumn] = value;
                 }
             }
-
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public string MaCT {
@@ -8649,7 +8647,7 @@ SELECT MaDonHang, MaSanPham, ThanhTien, SoLuong FROM CHITIETDONHANG WHERE (MaDon
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -9062,7 +9060,7 @@ SELECT MaThuongHieu, TenThuongHieu, NgayTao, DaXoa FROM THUONGHIEU WHERE (MaThuo
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -9489,7 +9487,7 @@ SELECT MaPN, MaSanPham, MaThuongHieu, GiaNhap, SoLuong, ThanhTien FROM CHITIETPH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -9988,7 +9986,7 @@ SELECT MaCT, NgayBD, NgayKT, GiaTriPhanTram, GiaTriHoaDon, DieuKienApDung, NgayT
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -10603,7 +10601,7 @@ SELECT MaDonHang, NhanVienTao, MaKH, NgayTao, NgayCapNhat, TinhTrang, GhiChu, Th
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -11247,7 +11245,7 @@ SELECT MaKH, SDT, HoTen, NgayThamGia, DaXoa, ChinhSuaGanNhat, NguoiChinhSuaGanNh
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -11748,7 +11746,7 @@ SELECT MaKhuyenMai, MaDH, MaCT, DaDung FROM KHUYENMAI WHERE (MaKhuyenMai = @MaKh
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -12184,7 +12182,7 @@ SELECT MaGiaoDich, NganHang, MaDonHang, SoTien, NgayGiaoDich, PhuongThuc, TrangT
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -12693,7 +12691,7 @@ SELECT MaLoaiSP, MaNhomSP, TenLoai, NgayTao, DaXoa FROM LOAISANPHAM WHERE (MaLoa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -13181,7 +13179,7 @@ SELECT MaNV, Email, MatKhau, HoTen, SDT, DiaChi, ChucVu, TrangThai, NgayVaoLam, 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -13819,7 +13817,7 @@ SELECT MaNhomSP, TenNhom, NgayTao, DaXoa FROM NHOMSANPHAM WHERE (MaNhomSP = @MaN
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -14235,7 +14233,7 @@ SELECT MaPN, TangTien, NgayNhap, DaXoa FROM PHIEUNHAP WHERE (MaPN = @MaPN)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -14727,7 +14725,7 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = "Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            this._connection.ConnectionString = "Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                 "rue;Encrypt=True;TrustServerCertificate=True";
         }
         
@@ -15284,15 +15282,15 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.IDbCommand[15];
+            this._commandCollection = new global::System.Data.IDbCommand[16];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).CommandText = "UPDATE CHUONGTRINH SET DAXOA = 1 WHERE MACT = @ID";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[0])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Char, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MaCT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).CommandText = "UPDATE SANPHAM SET SOLUONGTON = SOLUONGTON - @SLMUA, SOLUONGDABAN = SOLUONGDABAN " +
                 "+ @SLMUA WHERE masanpham = @ID";
@@ -15300,87 +15298,93 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SLMUA", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuongTon", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[1])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Char, 5, global::System.Data.ParameterDirection.Input, 0, 0, "MaSanPham", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).CommandText = "UPDATE SANPHAM SET DAXOA = 1 WHERE MASP = @ID";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[2])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Variant, 1024, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).CommandText = "UPDATE DONHANG SET DAXOA = 1 WHERE MADONHANG = @ID";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[3])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaDonHang", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).CommandText = "UPDATE KHACHHANG SET DAXOA = 1 WHERE MAKH = @ID";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[4])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaKH", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[5])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[5])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[5])).CommandText = "UPDATE HOADON SET DAXOA = 1 WHERE MAHOADON = @ID";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[5])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[5])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Char, 8, global::System.Data.ParameterDirection.Input, 0, 0, "MaHoaDon", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).CommandText = "UPDATE PHIEUNHAP SET DAXOA = 1 WHERE MAPN = @ID";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[6])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Char, 6, global::System.Data.ParameterDirection.Input, 0, 0, "MaPN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[7])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[7])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[7])).CommandText = "select chucvu + \' - \' + hoten from nhanvien where manv = @id and matkhau = @mk";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[7])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[7])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Char, 7, global::System.Data.ParameterDirection.Input, 0, 0, "MaNV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[7])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@mk", global::System.Data.SqlDbType.Char, 20, global::System.Data.ParameterDirection.Input, 0, 0, "MatKhau", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[8])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[8])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[8])).CommandText = "select manv from nhanvien where hoten = @hoten";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[8])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[8])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@hoten", global::System.Data.SqlDbType.NVarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "HoTen", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[9])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[9])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[9])).CommandText = "select makh from khachhang where sdt = @sdt";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[9])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[9])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@sdt", global::System.Data.SqlDbType.Char, 11, global::System.Data.ParameterDirection.Input, 0, 0, "SDT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[10])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[10])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[10])).CommandText = "UPDATE donhang set tinhtrang = \'Đã thanh toán\' where madonhang = @madh";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[10])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[10])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@madh", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaDonHang", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[11] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[11])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[11])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[11])).CommandText = "UPDATE KhuyenMai SET MaDH = @madh, dadung=1 where makhuyenmai = @makm";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[11])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[11])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@madh", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaDH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[11])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@makm", global::System.Data.SqlDbType.Char, 9, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhuyenMai", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[12] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[12])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[12])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
                     "erverCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[12])).CommandText = "UPDATE DONHANG SET tiengiam= @giamgia where madonhang = @madh";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[12])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[12])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@giamgia", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 2, "TienGiam", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[12])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@madh", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaDonHang", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[13] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[13])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=True" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[13])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=DESKTOP-UHH2GNH\\DUCHIEN;Initial Catalog=LKMT;Integrated Security=True" +
                     ";TrustServerCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[13])).CommandText = "UPDATE KHUYENMAI SET DaDung = 1 WHERE MaKhuyenMai = @MaKhuyenMai";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[13])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[13])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaKhuyenMai", global::System.Data.SqlDbType.Char, 9, global::System.Data.ParameterDirection.Input, 0, 0, "MaKhuyenMai", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[14] = new global::System.Data.SqlClient.SqlCommand();
-            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[14])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=LAPTOP-OTPB45DT\\SQLEXPRESS;Initial Catalog=LKMT;Integrated Security=T" +
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[14])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=T" +
                     "rue;Encrypt=True;TrustServerCertificate=True");
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[14])).CommandText = "update SANPHAM set SoLuongTon = SoLuongTon + @SLSPNhap where MaSanPham = @MaSP";
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[14])).CommandType = global::System.Data.CommandType.Text;
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[14])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SLSPNhap", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "SoLuongTon", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[14])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaSP", global::System.Data.SqlDbType.Char, 5, global::System.Data.ParameterDirection.Input, 0, 0, "MaSanPham", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[15] = new global::System.Data.SqlClient.SqlCommand();
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[15])).Connection = new global::System.Data.SqlClient.SqlConnection("Data Source=MSI;Initial Catalog=LKMT;Integrated Security=True;Encrypt=True;TrustS" +
+                    "erverCertificate=True");
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[15])).CommandText = "select mact from khuyenmai where madh = @madh";
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[15])).CommandType = global::System.Data.CommandType.Text;
+            ((global::System.Data.SqlClient.SqlCommand)(this._commandCollection[15])).Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@madh", global::System.Data.SqlDbType.Char, 10, global::System.Data.ParameterDirection.Input, 0, 0, "MaDH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15866,6 +15870,40 @@ SELECT MaSanPham, MaLoaiSP, MaThuongHieu, TenSanPham, DonGia, TGBaoHanh, Hinh, M
                 }
             }
             return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual string LayCTApDung(string madh) {
+            global::System.Data.SqlClient.SqlCommand command = ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[15]));
+            if ((madh == null)) {
+                command.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[0].Value = ((string)(madh));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return null;
+            }
+            else {
+                return ((string)(returnValue));
+            }
         }
     }
     
