@@ -37,7 +37,7 @@ namespace DAL
 
         public void Create(EditDTO.ChuongTrinh ct)
         {
-            _db.Insert(ct.MaCT, ct.NgayBD, ct.NgayKT, ct.GiaTriPhanTram, ct.GiaTriHoaDon, ct.DieuKienApDung, ct.NgayTao, ct.DaXoa);
+            _db.Insert(ct.MaCT, ct.NgayBD, ct.NgayKT, ct.GiaTriPhanTram, ct.GiaTriHoaDon, ct.DieuKienApDung, ct.NgayTao, ct.DaXoa, ct.SoLuong);
         }
 
         public void Delete(string id)
@@ -58,7 +58,8 @@ namespace DAL
                 NgayTao = row.NgayTao.Date,
                 GiaTriPhanTram = row.GiaTriPhanTram,
                 GiaTriHoaDon = row.GiaTriHoaDon,
-                DieuKienApDung = row.DieuKienApDung
+                DieuKienApDung = row.DieuKienApDung,
+                SoLuong = row.SoLuong
             }).ToList();
         }
 
@@ -73,7 +74,8 @@ namespace DAL
                 NgayTao = row.NgayTao.Date,
                 GiaTriPhanTram = row.GiaTriPhanTram,
                 GiaTriHoaDon = row.GiaTriHoaDon,
-                DieuKienApDung = row.DieuKienApDung
+                DieuKienApDung = row.DieuKienApDung,
+                SoLuong = row.SoLuong
             }).ToList();
         }
 
@@ -93,6 +95,7 @@ namespace DAL
                 GiaTriPhanTram = row.GiaTriPhanTram,
                 GiaTriHoaDon = row.GiaTriHoaDon,
                 DieuKienApDung = row.DieuKienApDung,
+                SoLuong = row.SoLuong
             }).ToList();
         }
         public bool CheckEmptyKMCard(string MaCT)
